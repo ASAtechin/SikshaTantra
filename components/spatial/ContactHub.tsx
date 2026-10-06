@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Mail, MessageCircle, Phone, X } from "lucide-react";
 import { RequestDemoForm } from "@/components/sections/RequestDemoForm";
@@ -48,10 +49,11 @@ export function ContactHub({ onOpen }: ContactHubProps) {
         <ArrowUpRight className="h-3.5 w-3.5 text-white/55 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </button>
 
-      <AnimatePresence>
-        {open && (
+      {typeof document !== "undefined" && createPortal(
+        <AnimatePresence>
+          {open && (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-end justify-center bg-[#17211d]/45 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-[#17211d]/45 p-2 backdrop-blur-sm sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -67,7 +69,7 @@ export function ContactHub({ onOpen }: ContactHubProps) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.99 }}
               transition={{ type: "spring", stiffness: 230, damping: 27 }}
-              className="flex max-h-[94dvh] w-full max-w-3xl flex-col overflow-hidden rounded-t-[28px] border border-white/80 bg-[#fbfaf5] shadow-[0_40px_120px_-35px_rgba(15,25,20,.55)] sm:rounded-[28px]"
+              className="flex max-h-[94dvh] w-full max-w-3xl flex-col overflow-hidden rounded-[24px] border border-white/80 bg-[#fbfaf5] shadow-[0_40px_120px_-35px_rgba(15,25,20,.55)] sm:rounded-[28px]"
             >
               <header className="flex items-start justify-between gap-4 border-b border-[#26312e]/10 px-5 py-4 sm:px-7">
                 <div>
@@ -88,8 +90,10 @@ export function ContactHub({ onOpen }: ContactHubProps) {
               </div>
             </motion.section>
           </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }

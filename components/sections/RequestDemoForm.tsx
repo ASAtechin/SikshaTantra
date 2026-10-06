@@ -86,10 +86,15 @@ export function RequestDemoForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const json = await res.json();
-      if (!res.ok || !json.success) {
+      const response = await res.json().catch(() => null) as { success?: boolean; error?: string } | null;
+      if (!res.ok || response?.success !== true) {
         setStatus("error");
-        setErrorMessage(json.error ?? "Something went wrong. Please try again.");
+        setErrorMessage(
+          response?.error ??
+          (res.status >= 500
+            ? "We couldn't deliver your request right now. Please contact us directly."
+            : "We couldn't submit your request. Check the details and try again.")
+        );
         return;
       }
       setStatus("success");
@@ -98,7 +103,7 @@ export function RequestDemoForm() {
     } catch {
       setStatus("error");
       setErrorMessage(
-        "We couldn't reach our server. Please email hello@shikshatantra.in and we'll respond within one business day."
+        "We couldn't reach our server. Please contact us directly and we'll respond within one business day."
       );
     }
   }
@@ -307,12 +312,20 @@ export function RequestDemoForm() {
 
       {status === "error" && (
         <motion.div
+          role="alert"
+          aria-live="assertive"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           className="mt-5 flex items-start gap-2.5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          {errorMessage}
+          <div>
+            <p>{errorMessage}</p>
+            <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs font-semibold">
+              <a className="underline underline-offset-2" href="mailto:hello@shikshatantra.in">Email hello@shikshatantra.in</a>
+              <a className="underline underline-offset-2" href="tel:+919407174355">Call +91 94071 74355</a>
+            </p>
+          </div>
         </motion.div>
       )}
 
