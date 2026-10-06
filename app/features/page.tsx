@@ -8,8 +8,8 @@ import { Badge } from "@/components/ui/Badge";
 import { modules } from "@/lib/modules-data";
 
 export const metadata: Metadata = {
-  title: "Every ERP Module — Shikshatantra",
-  description: "A detailed look at all twelve Shikshatantra modules, how each one works, and what it replaces.",
+  title: "Every ERP Module",
+  description: "A detailed look at all twelve Siksha Tantra modules, how each one works, and what it replaces.",
 };
 
 export default function FeaturesIndexPage() {

@@ -8,6 +8,7 @@ import {
   Lock,
   ArrowRight,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
@@ -15,6 +16,13 @@ import { Badge } from "@/components/ui/Badge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { SignageIllustration } from "@/components/illustrations/SignageIllustration";
+
+export const metadata: Metadata = {
+  title: "DigiBoard Campus Signage",
+  description:
+    "DigiBoard turns live school data into real-time campus displays — timetable changes, announcements, and drill-tested emergency alerts that fail safe.",
+  alternates: { canonical: "/digiboard" },
+};
 
 const capabilities = [
   {
@@ -74,7 +82,7 @@ export default function DigiBoardPage() {
                 Every screen on campus, always telling the truth
               </h1>
               <p className="mt-6 max-w-lg text-balance text-lg leading-relaxed text-white/65">
-                DigiBoard is Shikshatantra&apos;s real-time digital signage network — included
+                DigiBoard is Siksha Tantra&apos;s real-time digital signage network — included
                 with every plan, not an expensive add-on. It turns hallway TVs, gate displays,
                 and staff-room screens into a live reflection of what&apos;s actually happening,
                 never a guess.

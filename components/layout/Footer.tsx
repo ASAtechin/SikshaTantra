@@ -6,10 +6,10 @@ const columns = [
   {
     title: "Product",
     links: [
+      { href: "/", label: "Interactive Home" },
       { href: "/features", label: "All ERP Modules" },
       { href: "/digiboard", label: "DigiBoard Signage" },
-      { href: "/#why-us", label: "Why Shikshatantra" },
-      { href: "/#how-it-works", label: "Implementation Journey" },
+      { href: "/request-demo", label: "Request a Demo" },
     ],
   },
   {
@@ -22,14 +22,6 @@ const columns = [
       { href: "/features/child-safeguarding", label: "Child Safeguarding" },
     ],
   },
-  {
-    title: "Company",
-    links: [
-      { href: "/#team", label: "Our Team" },
-      { href: "/request-demo", label: "Request a Demo" },
-      { href: "/#why-us", label: "Security & Trust" },
-    ],
-  },
 ];
 
 export function Footer() {
@@ -39,14 +31,14 @@ export function Footer() {
       <div className="pointer-events-none absolute -right-10 bottom-0 h-72 w-72 rounded-full bg-teal-500/10 blur-3xl" />
 
       <Container className="relative py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500 text-brand-950">
                 <GraduationCap className="h-5 w-5" />
               </span>
               <span className="font-display text-lg font-bold">
-                Shiksha<span className="text-amber-400">tantra</span>
+                Siksha <span className="text-amber-400">Tantra</span>
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
@@ -58,8 +50,8 @@ export function Footer() {
               <a href="mailto:hello@shikshatantra.in" className="flex items-center gap-2 hover:text-white">
                 <Mail className="h-4 w-4 text-amber-400" /> hello@shikshatantra.in
               </a>
-              <a href="tel:+911234567890" className="flex items-center gap-2 hover:text-white">
-                <Phone className="h-4 w-4 text-amber-400" /> +91 12345 67890
+              <a href="tel:+919407174355" className="flex items-center gap-2 hover:text-white">
+                <Phone className="h-4 w-4 text-amber-400" /> +91 94071 74355
               </a>
               <span className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-amber-400" /> Pune, Maharashtra, India
@@ -84,7 +76,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row">
-          <p>© {new Date().getFullYear()} Shikshatantra. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Siksha Tantra. All rights reserved.</p>
           <p>Designed and engineered for schools that refuse to guess.</p>
         </div>
       </Container>

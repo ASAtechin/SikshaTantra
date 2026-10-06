@@ -23,7 +23,7 @@ export async function generateMetadata({
   const mod = getModule(slug);
   if (!mod) return {};
   return {
-    title: `${mod.name} — Shikshatantra`,
+    title: mod.name,
     description: mod.summary,
   };
 }

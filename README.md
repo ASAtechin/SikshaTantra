@@ -1,6 +1,6 @@
 # Shikshatantra
 
-**A school-management ERP experience, presented with DigiBoard digital signage.**
+**A spatial learning and school-operations experience, connected to DigiBoard.**
 
 Shikshatantra is the customer-facing product website for a planned, modular school ERP. It explains how the system is intended to support school operations, demonstrates the DigiBoard signage concept, and lets school representatives request an implementation discussion.
 
@@ -8,7 +8,9 @@ Shikshatantra is the customer-facing product website for a planned, modular scho
 
 ## Website
 
-- `/` — Product overview, school workflow pain points, interactive module explorer, DigiBoard introduction, comparison, rollout approach, and implementation CTA.
+- `/` — Full-viewport spatial canvas with zoom/pan, learning/school/DigiBoard portals, a responsive tactile mobile map, and persistent contact action.
+- Canvas library — Board × medium × grade × stream × subject × chapter selection, followed by an interactive Living Book sample reader.
+- School Life — Siksha OS operations simulator for fictional fee, attendance, marks, transport, and timetable scenarios.
 - `/features` — Index of the ERP modules.
 - `/features/[slug]` — Module-specific explanation, workflow steps, capabilities, and visual interface mockup.
 - `/digiboard` — Dedicated overview of campus digital signage, schedule updates, alerts, and offline behavior.
@@ -20,6 +22,18 @@ Shikshatantra is the customer-facing product website for a planned, modular scho
 The feature pages cover admissions and enrollment, identity and access, attendance, timetable and substitutions, assessment and report cards, fees and finance, communication, transport, library and inventory, HR and staff, child safeguarding, and governance and analytics.
 
 DigiBoard is presented as the companion signage product, showing campus information sourced from the same school workflows. The detailed pages are generated from shared module data in `lib/modules-data.ts` so the overview and module pages stay aligned.
+
+## Experience Blueprint
+
+The design council synthesis is to treat the site as a bounded field atlas rather than a vertical product brochure: a central canvas connects four destinations (Living Books, School Life, Ideas in Motion, and Campus Signals), while a searchable command dock focuses destinations and reports the current canvas transform. Desktop supports drag, wheel/button zoom, focus transitions, and reset; smaller screens use a touch-oriented portal map.
+
+Siksha OS is a separate simulator workspace, not a claim that these workflows are live. Its fee ledger, roll call, term marks, route, and teacher-substitution views use local fictional data and visibly label simulated actions. The Living Books path follows the typed `BoardType → Medium → grade → Stream → subject → Textbook → TextbookChapter → CurriculumTopic` model in `lib/curriculum-types.ts`; `createDemoTextbook` is the current demo provider. A production curriculum adapter must populate the same contract with verified source, edition, and rights metadata before official chapter catalogs are presented.
+
+The existing ContactHub remains the contact entry point. It reuses the implementation request form and `POST /api/lead` contract; canvas panels close when the contact dialog opens, avoiding stacked dialogs. The design direction uses restrained paper, forest, sage, and ochre surfaces, spring-based focal transitions, visible keyboard focus, and reduced-motion support.
+
+## Curriculum Content Boundary
+
+The Board/Class/Stream/Subject selector and Living Book widgets are **interaction demonstrations**, backed by `lib/curriculum-demo-data.ts`. They are original sample activities, not official NCERT/CISCE/state-board chapter catalogs or reproduced textbook material. No official curriculum feed, source attribution, board-content license, or textbook provider is configured in this repository. Before showing authoritative chapters as official content, add a verified source adapter, record source/version/rights metadata, and have each board mapping reviewed by the responsible curriculum owner. The UI labels this boundary to avoid presenting sample mappings as verified curriculum.
 
 ## Stack
 

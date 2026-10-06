@@ -80,6 +80,51 @@ body {
   color: var(--foreground);
 }
 
+.spatial-shell {
+  background:
+    radial-gradient(ellipse at 16% 18%, rgba(226, 205, 154, .2), transparent 34%),
+    radial-gradient(ellipse at 82% 75%, rgba(159, 188, 162, .22), transparent 38%),
+    #f2f1e9;
+}
+
+.spatial-world {
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(255, 255, 250, .72), transparent 48%),
+    linear-gradient(130deg, rgba(231, 229, 215, .32), rgba(239, 242, 232, .2));
+}
+
+.spatial-ambient {
+  background:
+    radial-gradient(ellipse at 18% 24%, rgba(226, 195, 124, .2), transparent 31%),
+    radial-gradient(ellipse at 80% 28%, rgba(163, 194, 169, .2), transparent 30%),
+    radial-gradient(ellipse at 54% 92%, rgba(189, 172, 199, .12), transparent 36%);
+}
+
+.spatial-grain {
+  opacity: .36;
+  background-image: radial-gradient(rgba(36, 55, 45, .15) .7px, transparent .7px);
+  background-size: 17px 17px;
+  mask-image: linear-gradient(to bottom, black, transparent 95%);
+}
+
+.spatial-mobile-glow {
+  background: radial-gradient(circle, rgba(238, 207, 125, .36), rgba(125, 159, 133, .13) 52%, transparent 72%);
+}
+
+.spatial-panel {
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spatial-world *,
+  .spatial-shell * {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 .bg-grain {
   background-image: radial-gradient(rgba(14, 16, 48, 0.08) 1px, transparent 1px);
   background-size: 18px 18px;
