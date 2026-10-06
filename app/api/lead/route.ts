@@ -64,7 +64,7 @@ export async function POST(request: Request) {
       {
         success: false,
         error:
-          "We couldn't deliver your request right now. Please email hello@shikshatantra.in directly and we'll respond within one business day.",
+          "We couldn't deliver your request right now. Please email hello@shikshatantra.in or call +91 94071 74355, and we'll respond within one business day.",
       },
       { status: 503 }
     );
