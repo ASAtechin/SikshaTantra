@@ -11,10 +11,8 @@ import { cn } from "@/lib/utils";
 import { modules } from "@/lib/modules-data";
 
 const navLinks = [
+  { href: "/", label: "Explore" },
   { href: "/digiboard", label: "DigiBoard" },
-  { href: "/#why-us", label: "Why Us" },
-  { href: "/#how-it-works", label: "How It Works" },
-  { href: "/#team", label: "Our Team" },
 ];
 
 const megaMenuModules = modules.slice(0, 8);
@@ -57,7 +55,7 @@ export function Navbar() {
             <GraduationCap className="h-5 w-5" />
           </span>
           <span className="font-display text-lg font-bold text-brand-950">
-            Shiksha<span className="text-amber-600">tantra</span>
+            Siksha <span className="text-amber-600">Tantra</span>
           </span>
         </Link>
 
@@ -135,10 +133,10 @@ export function Navbar() {
 
         <div className="hidden items-center gap-5 lg:flex">
           <a
-            href="tel:+911234567890"
+            href="tel:+919407174355"
             className="flex items-center gap-1.5 text-sm font-semibold text-brand-950/60 transition-colors hover:text-brand-950"
           >
-            <Phone className="h-3.5 w-3.5" /> +91 12345 67890
+            <Phone className="h-3.5 w-3.5" /> +91 94071 74355
           </a>
           <LinkButton href="/request-demo" variant="primary" size="sm" className="group">
             Request a Demo
@@ -182,10 +180,10 @@ export function Navbar() {
                 </Link>
               ))}
               <a
-                href="tel:+911234567890"
+                href="tel:+919407174355"
                 className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold text-brand-950/80 hover:bg-brand-950/5"
               >
-                <Phone className="h-4 w-4" /> +91 12345 67890
+                <Phone className="h-4 w-4" /> +91 94071 74355
               </a>
               <div className="mt-2 flex flex-col gap-2 px-3">
                 <LinkButton href="/request-demo" variant="primary" size="sm" className="w-full">

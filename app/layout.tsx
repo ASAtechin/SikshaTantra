@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
+import { siteUrl } from "@/lib/site";
 
 const heading = Plus_Jakarta_Sans({
   variable: "--font-heading",
@@ -15,22 +16,41 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Shikshatantra — The Operating System for Modern Schools",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Siksha Tantra — A Living Learning World",
+    template: "%s · Siksha Tantra",
+  },
   description:
-    "Shikshatantra is a complete school management ERP with built-in DigiBoard digital signage — admissions to alumni, attendance to analytics, one secure system your whole school actually enjoys using.",
+    "Explore a spatial learning universe, interactive sample lessons, the Siksha Tantra school system, and DigiBoard campus experiences.",
+  applicationName: "Siksha Tantra",
+  alternates: { canonical: "/" },
   keywords: [
     "school management system",
     "school ERP",
     "DigiBoard",
     "digital signage for schools",
-    "Shikshatantra",
+    "Siksha Tantra",
     "education technology India",
   ],
   openGraph: {
-    title: "Shikshatantra — The Operating System for Modern Schools",
+    title: "Siksha Tantra — A Living Learning World",
     description:
-      "One secure platform for admissions, attendance, fees, exams, communication, safeguarding, and real-time digital signage.",
+      "A spatial canvas for school life and exploratory learning, with clearly marked sample content and connected DigiBoard experiences.",
+    url: "/",
+    siteName: "Siksha Tantra",
+    locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Siksha Tantra — A Living Learning World",
+    description:
+      "A spatial canvas for school life and exploratory learning, connected to DigiBoard campus signage.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

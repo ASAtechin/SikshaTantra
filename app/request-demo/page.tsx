@@ -1,9 +1,17 @@
 import { Clock, MessageCircle, ShieldCheck } from "lucide-react";
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { RequestDemoForm } from "@/components/sections/RequestDemoForm";
+
+export const metadata: Metadata = {
+  title: "Request a Demo",
+  description:
+    "Request a tailored Siksha Tantra walkthrough for your school — built around your boards, campus size, and calendar. We respond within one business day.",
+  alternates: { canonical: "/request-demo" },
+};
 
 const reassurances = [
   { icon: Clock, text: "We respond within one business day" },
@@ -27,7 +35,7 @@ export default function RequestDemoPage() {
             <div>
               <Badge>Request Implementation</Badge>
               <h1 className="mt-6 text-balance font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
-                Let&apos;s bring Shikshatantra to your school
+                Let&apos;s bring Siksha Tantra to your school
               </h1>
               <p className="mt-5 max-w-md text-balance leading-relaxed text-brand-950/60">
                 Tell us a little about your school and what&apos;s slowing you down today. Our

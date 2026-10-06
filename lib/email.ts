@@ -62,7 +62,7 @@ function renderLeadEmailHtml(lead: LeadRequestInput): string {
       ${lead.message ? row("Message", lead.message) : ""}
     </table>
     <p style="padding:16px 12px;font-size:12px;color:#9094ac;border-radius:0 0 16px 16px;background:#fff;border:1px solid #eee;border-top:none;margin:0;">
-      Submitted via the Shikshatantra website request-a-demo form. Reply directly to this email to
+      Submitted via the Siksha Tantra website request-a-demo form. Reply directly to this email to
       reach ${escapeHtml(lead.contactName)}.
     </p>
   </div>`;
@@ -76,7 +76,7 @@ export async function sendLeadNotificationEmail(lead: LeadRequestInput): Promise
   const transporter = getTransporter();
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM || `"Shikshatantra Website" <${process.env.SMTP_USER}>`,
+    from: process.env.SMTP_FROM || `"Siksha Tantra Website" <${process.env.SMTP_USER}>`,
     to: NOTIFICATION_EMAIL,
     replyTo: lead.email,
     subject: `New implementation request — ${lead.schoolName}`,
