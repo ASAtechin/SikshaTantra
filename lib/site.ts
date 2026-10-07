@@ -5,9 +5,12 @@
  */
 import type { Metadata } from "next";
 
-export const siteUrl = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL || "https://siksha-tantra.vercel.app"
-).origin;
+const primaryOrigin = "https://www.shikshatantra.shop";
+const configuredOrigin = new URL(process.env.NEXT_PUBLIC_SITE_URL || primaryOrigin).origin;
+
+export const siteUrl = ["https://siksha-tantra.vercel.app", "https://shikshatantra.shop"].includes(configuredOrigin)
+  ? primaryOrigin
+  : configuredOrigin;
 
 export const siteName = "Siksha Tantra";
 

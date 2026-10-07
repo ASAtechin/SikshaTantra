@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || (
-      siteUrl === "https://siksha-tantra.vercel.app"
+      ["https://siksha-tantra.vercel.app", "https://www.shikshatantra.shop"].includes(siteUrl)
         ? "LYB8OAtgWkPTcVVl6kLKzKdz9QklzS8FJ8X62VGE9vM"
         : undefined
     ),

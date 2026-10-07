@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  async redirects() {
+    return ["siksha-tantra.vercel.app", "shikshatantra.shop"].map((host) => ({
+      source: "/:path*",
+      has: [{ type: "host" as const, value: host }],
+      destination: "https://www.shikshatantra.shop/:path*",
+      permanent: true,
+    }));
+  },
 };
 
 export default nextConfig;
