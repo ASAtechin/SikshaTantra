@@ -29,7 +29,7 @@ export function CommandDock({ destinations, activeId, coordinates, onFocus }: Co
   }, [destinations, query]);
 
   return (
-    <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 w-[min(94%,760px)] -translate-x-1/2 md:bottom-5">
+    <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 hidden w-[min(94%,760px)] -translate-x-1/2 md:bottom-5 lg:block">
       <div className="pointer-events-auto mx-auto flex max-w-fit flex-col items-center gap-2 rounded-[22px] border border-white/75 bg-[#fbfaf5]/80 p-2 shadow-[0_18px_60px_-28px_rgba(30,48,40,.42)] backdrop-blur-2xl sm:flex-row">
         <div className="relative">
           <label className="flex h-10 w-full min-w-[205px] items-center gap-2 rounded-full border border-[#26312e]/10 bg-white/75 px-3 sm:w-[230px]" aria-label="Search the canvas">
