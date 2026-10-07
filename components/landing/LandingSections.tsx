@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -47,18 +47,15 @@ const after = [
   "One login across every module",
 ];
 
-/** Scrolling capability strip. Pauses on hover and stops under reduced motion. */
+/** Scrolling capability strip. Pauses on hover; CSS halts it under reduced motion. */
 export function TrustStrip() {
-  const reduced = useReducedMotion();
   const row = [...trustSignals, ...trustSignals];
 
   return (
     <section className="border-y border-brand-950/5 bg-white/60 py-7">
       <div className="mask-fade-x w-full overflow-hidden">
-        <div
-          className={`flex w-max items-center gap-10 ${reduced ? "flex-wrap justify-center" : "animate-marquee hover:[animation-play-state:paused]"}`}
-        >
-          {(reduced ? trustSignals : row).map((item, index) => (
+        <div className="flex w-max animate-marquee items-center gap-10 hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:[animation:none]">
+          {row.map((item, index) => (
             <div key={`${item.label}-${index}`} className="flex shrink-0 items-center gap-2.5 text-brand-950/55">
               <item.icon className="h-[18px] w-[18px] text-amber-600" />
               <span className="whitespace-nowrap text-sm font-semibold">{item.label}</span>
@@ -72,8 +69,6 @@ export function TrustStrip() {
 
 /** The upfront feature glimpse: all twelve modules visible at a glance. */
 export function ModuleShowcase() {
-  const reduced = useReducedMotion();
-
   return (
     <section id="modules" className="scroll-mt-24 py-20 sm:py-24">
       <Container>
@@ -89,7 +84,7 @@ export function ModuleShowcase() {
           {modules.map((module, index) => (
             <Reveal key={module.slug} delay={Math.min(index * 0.03, 0.24)}>
               <motion.div
-                whileHover={reduced ? undefined : { y: -4 }}
+                whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
                 className="h-full"
               >
