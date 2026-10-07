@@ -48,7 +48,11 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
+    google: process.env.GOOGLE_SITE_VERIFICATION || (
+      siteUrl === "https://siksha-tantra.vercel.app"
+        ? "LYB8OAtgWkPTcVVl6kLKzKdz9QklzS8FJ8X62VGE9vM"
+        : undefined
+    ),
     other: process.env.BING_SITE_VERIFICATION
       ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
       : undefined,
