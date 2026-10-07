@@ -1,11 +1,14 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 /**
  * Shared scroll-reveal wrapper. Kept deliberately brief and subtle: NN/g
  * guidance is that scroll animation should not delay reading, so only
  * containers animate and never the body copy itself.
+ *
+ * Reduced motion is handled globally by MotionConfig so that the server and
+ * client always render identical markup.
  */
 export function Reveal({
   children,
@@ -16,10 +19,6 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const reduced = useReducedMotion();
-
-  if (reduced) return <div className={className}>{children}</div>;
-
   return (
     <motion.div
       className={className}
@@ -35,31 +34,27 @@ export function Reveal({
 
 /** Thin reading-progress bar driven by native scroll position. */
 export function ScrollProgress() {
-  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
-
-  if (reduced) return null;
 
   return (
     <motion.div
       aria-hidden="true"
       style={{ scaleX, originX: 0 }}
-      className="fixed inset-x-0 top-0 z-[70] h-[3px] bg-gradient-to-r from-[#c9a44c] via-[#e6c46f] to-[#4d7d63]"
+      className="fixed inset-x-0 top-0 z-[70] h-[3px] bg-gradient-to-r from-[#c9a44c] via-[#e6c46f] to-[#4d7d63] motion-reduce:hidden"
     />
   );
 }
 
 /** Nudges the visitor that there is more below the canvas hero. */
 export function ScrollCue({ label = "Scroll to explore" }: { label?: string }) {
-  const reduced = useReducedMotion();
   return (
     <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-[#7d8a80]">
       {label}
       <motion.span
         aria-hidden="true"
         className="flex h-5 w-5 items-center justify-center rounded-full border border-[#7d8a80]/40"
-        animate={reduced ? undefined : { y: [0, 3, 0] }}
+        animate={{ y: [0, 3, 0] }}
         transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
       >
         <svg viewBox="0 0 10 10" className="h-2.5 w-2.5 fill-none stroke-current stroke-[1.6]">
