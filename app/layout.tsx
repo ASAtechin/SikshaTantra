@@ -53,9 +53,9 @@ export const metadata: Metadata = {
         ? "LYB8OAtgWkPTcVVl6kLKzKdz9QklzS8FJ8X62VGE9vM"
         : undefined
     ),
-    other: process.env.BING_SITE_VERIFICATION
-      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
-      : undefined,
+    other: {
+      "msvalidate.01": process.env.BING_SITE_VERIFICATION || "B4EF2757D61EEFF0233E9A656CF50ECE",
+    },
   },
 };
 
