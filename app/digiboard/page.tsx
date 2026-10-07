@@ -16,13 +16,13 @@ import { Badge } from "@/components/ui/Badge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/Button";
 import { SignageIllustration } from "@/components/illustrations/SignageIllustration";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "DigiBoard Campus Signage",
-  description:
-    "DigiBoard turns live school data into real-time campus displays — timetable changes, announcements, and drill-tested emergency alerts that fail safe.",
-  alternates: { canonical: "/digiboard" },
-};
+export const metadata: Metadata = pageMetadata(
+  "DigiBoard Digital Signage for Schools",
+  "Explore DigiBoard campus signage for school announcements, timetable updates and emergency display workflows. Discuss your campus display requirements.",
+  "/digiboard"
+);
 
 const capabilities = [
   {

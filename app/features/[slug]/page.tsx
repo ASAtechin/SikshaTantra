@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { LinkButton } from "@/components/ui/Button";
 import { ModuleMockup } from "@/components/illustrations/ModuleMockup";
 import { modules, getModule, getAdjacentModules } from "@/lib/modules-data";
+import { pageMetadata, siteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return modules.map((m) => ({ slug: m.slug }));
@@ -22,10 +23,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const mod = getModule(slug);
   if (!mod) return {};
-  return {
-    title: mod.name,
-    description: mod.summary,
-  };
+  return pageMetadata(`${mod.name} School ERP`, mod.summary, `/features/${mod.slug}`);
 }
 
 export default async function ModuleDetailPage({
@@ -41,6 +39,18 @@ export default async function ModuleDetailPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Siksha Tantra", item: `${siteUrl}/` },
+            { "@type": "ListItem", position: 2, name: "School ERP Modules", item: `${siteUrl}/features` },
+            { "@type": "ListItem", position: 3, name: mod.name, item: `${siteUrl}/features/${mod.slug}` },
+          ],
+        }).replace(/</g, "\\u003c") }}
+      />
       <Navbar />
       <main className="flex-1">
         <section className="relative overflow-hidden pb-16 pt-12">

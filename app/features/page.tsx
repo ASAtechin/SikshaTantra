@@ -6,11 +6,13 @@ import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { modules } from "@/lib/modules-data";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Every ERP Module",
-  description: "A detailed look at all twelve Siksha Tantra modules, how each one works, and what it replaces.",
-};
+export const metadata: Metadata = pageMetadata(
+  "School ERP Modules: Admissions, Attendance & Fees",
+  "Explore Siksha Tantra school ERP workflows for admissions, attendance, fees, timetable, report cards and transport. Discuss an implementation for your school.",
+  "/features"
+);
 
 export default function FeaturesIndexPage() {
   return (
@@ -21,10 +23,10 @@ export default function FeaturesIndexPage() {
           <div className="text-center">
             <Badge>All Modules</Badge>
             <h1 className="mx-auto mt-6 max-w-3xl text-balance font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
-              Pick a module. See exactly how it works.
+              School ERP modules for your campus.
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-balance text-brand-950/60">
-              Every page below shows the actual workflow — not a feature list.
+              Explore admissions, attendance, fees, timetable and report-card workflows. Implementation scope and integrations are agreed with each school.
             </p>
           </div>
 
