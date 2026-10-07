@@ -261,32 +261,56 @@ export function SpatialCanvas() {
           <div className="absolute bottom-7 right-7 z-10 hidden items-center gap-2 text-[10px] font-semibold text-[#818d82] lg:flex"><Network className="h-3.5 w-3.5"/> Drag to wander · Scroll to change scale</div>
         </div>
 
-        <div className="flex h-full flex-col px-4 pb-5 pt-5 lg:hidden">
-          <div className="relative mb-4 overflow-hidden rounded-[26px] border border-white/80 bg-[#293f35] p-5 text-white shadow-[0_22px_60px_-32px_rgba(30,48,40,.6)]">
+        <div className="h-full overflow-y-auto overscroll-contain px-4 pb-24 pt-4 lg:hidden">
+          <div className="mx-auto w-full max-w-xl">
+          <div className="relative overflow-hidden rounded-[26px] border border-white/80 bg-[#293f35] p-5 text-white shadow-[0_22px_60px_-32px_rgba(30,48,40,.6)]">
             <div className="spatial-mobile-glow pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full" />
             <div className="relative flex items-start justify-between gap-4">
               <div>
                 <p className="text-[9px] font-extrabold uppercase tracking-[.19em] text-[#e4c871]">A living learning world</p>
-                <h1 className="mt-2 max-w-[250px] font-display text-2xl font-extrabold leading-tight">Siksha Tantra<br/><span className="font-medium italic text-[#e7cf91]">School life, connected.</span></h1>
-                <p className="mt-2 text-xs leading-relaxed text-white/75">School ERP, DigiBoard signage &amp; learning samples.</p>
+                <h1 className="mt-2 max-w-[250px] font-display text-[26px] font-extrabold leading-tight">Siksha Tantra<br/><span className="font-medium italic text-[#e7cf91]">School life, connected.</span></h1>
+                <p className="mt-2.5 text-xs leading-relaxed text-white/75">School ERP, DigiBoard signage &amp; learning samples.</p>
               </div>
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-[#f0d17c]"><GraduationCap className="h-6 w-6"/></span>
             </div>
-            <button onClick={openLibrary} className="relative mt-4 inline-flex items-center gap-2 rounded-full bg-[#efd080] px-4 py-2.5 text-xs font-extrabold text-[#26382f]"><BookOpen className="h-4 w-4"/> Explore books <ArrowRight className="h-3.5 w-3.5"/></button>
+            <button onClick={openLibrary} className="relative mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-[#efd080] px-4 py-3.5 text-sm font-extrabold text-[#26382f] active:scale-[.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"><BookOpen className="h-4 w-4"/> Explore books <ArrowRight className="h-4 w-4"/></button>
           </div>
-          <p className="mb-3 px-1 text-[10px] font-extrabold uppercase tracking-[.16em] text-[#7d8a80]">Choose a portal</p>
-          <div className="grid min-h-0 flex-1 grid-cols-2 gap-3">
+
+          <div className="mb-3 mt-7 flex items-baseline justify-between px-1">
+            <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-[#7d8a80]">Choose a portal</p>
+            <span className="text-[10px] font-semibold text-[#9aa49b]">4 places to explore</span>
+          </div>
+
+          <div className="grid gap-2.5 sm:grid-cols-2">
             {nodes.map((node) => {
               const Icon = node.icon;
               return (
-                <button key={node.id} onClick={() => { setActiveNode(node.id); setPanel(node.panel); }} className="flex min-h-[105px] flex-col items-start justify-between rounded-[22px] border border-white/80 bg-white/68 p-4 text-left shadow-[0_14px_36px_-26px_rgba(30,48,40,.4)] backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#386b58]">
-                  <span className={cn("flex h-9 w-9 items-center justify-center rounded-xl", node.color === "ochre" && "bg-[#f0e5c7] text-[#8d6d35]", node.color === "sage" && "bg-[#e1ebe0] text-[#416c56]", node.color === "plum" && "bg-[#ebe3ed] text-[#775f7c]", node.color === "blue" && "bg-[#e1eeed] text-[#3e6970]")}><Icon className="h-[18px] w-[18px]"/></span>
-                  <span><span className="block font-display text-sm font-bold text-[#293a31]">{node.title}</span><span className="mt-0.5 block text-[10px] text-[#7b877d]">{node.caption}</span></span>
+                <button
+                  key={node.id}
+                  onClick={() => { setActiveNode(node.id); setPanel(node.panel); }}
+                  className="flex min-h-[76px] items-center gap-3.5 rounded-[20px] border border-white/80 bg-white/75 p-3.5 text-left shadow-[0_14px_36px_-26px_rgba(30,48,40,.4)] backdrop-blur transition-transform active:scale-[.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#386b58]"
+                  aria-label={`${node.eyebrow.replace("·", "")}: ${node.title} — ${node.caption}`}
+                >
+                  <span className={cn(
+                    "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl",
+                    node.color === "ochre" && "bg-[#f0e5c7] text-[#8d6d35]",
+                    node.color === "sage" && "bg-[#e1ebe0] text-[#416c56]",
+                    node.color === "plum" && "bg-[#ebe3ed] text-[#775f7c]",
+                    node.color === "blue" && "bg-[#e1eeed] text-[#3e6970]"
+                  )}><Icon className="h-[22px] w-[22px]"/></span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[9px] font-extrabold tracking-[.14em] text-[#9aa49b]">{node.eyebrow}</span>
+                    <span className="mt-0.5 block font-display text-[15px] font-bold leading-tight text-[#293a31]">{node.title}</span>
+                    <span className="mt-1 block text-[11px] leading-snug text-[#7b877d]">{node.caption}</span>
+                  </span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#a3ada4]"/>
                 </button>
               );
             })}
           </div>
-          <p className="mt-3 text-center text-[9px] font-medium text-[#98a097]">A touch-sized map of the learning universe</p>
+
+          <p className="mt-6 text-center text-[10px] font-medium leading-relaxed text-[#98a097]">Tap a portal to explore · sample content</p>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -319,7 +343,7 @@ export function SpatialCanvas() {
         coordinates={camera}
         onFocus={focusDestination}
       />
-      <div className="fixed bottom-[82px] right-4 z-[60] lg:hidden"><ContactHub onOpen={() => setPanel(null)} /></div>
+      <div className="fixed bottom-5 right-4 z-[60] lg:hidden"><ContactHub onOpen={() => setPanel(null)} /></div>
     </main>
   );
 }
@@ -345,9 +369,11 @@ function InfoPanel({ node, onClose, onOpenSimulator }: { node: CanvasNode; onClo
       <div className="mt-5 grid grid-cols-2 gap-2">
         {content.items.map((item, i) => <div key={item} className="rounded-xl border border-[#253d34]/8 bg-white/70 p-3"><span className="text-[9px] font-extrabold text-[#bd9448]">0{i + 1}</span><p className="mt-1 text-[11px] font-bold leading-snug text-[#43534a]">{item}</p></div>)}
       </div>
-      {node.id === "digiboard" ? <Link href="/digiboard" className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#263e34] px-4 py-2.5 text-xs font-bold text-white">Open DigiBoard overview <ArrowRight className="h-3.5 w-3.5"/></Link> : null}
-      {node.id === "school" ? <Link href="/features" className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#263e34] px-4 py-2.5 text-xs font-bold text-white">Browse the ERP system <ArrowRight className="h-3.5 w-3.5"/></Link> : null}
-      {node.id === "school" ? <button onClick={onOpenSimulator} className="ml-2 mt-5 inline-flex items-center gap-2 rounded-full border border-[#263e34]/15 px-4 py-2.5 text-xs font-bold text-[#344c3e]">Open operations simulator <Command className="h-3.5 w-3.5"/></button> : null}
+      <div className="mt-5 flex flex-wrap gap-2">
+        {node.id === "digiboard" ? <Link href="/digiboard" className="inline-flex items-center gap-2 rounded-full bg-[#263e34] px-4 py-2.5 text-xs font-bold text-white">Open DigiBoard overview <ArrowRight className="h-3.5 w-3.5"/></Link> : null}
+        {node.id === "school" ? <Link href="/features" className="inline-flex items-center gap-2 rounded-full bg-[#263e34] px-4 py-2.5 text-xs font-bold text-white">Browse the ERP system <ArrowRight className="h-3.5 w-3.5"/></Link> : null}
+        {node.id === "school" ? <button onClick={onOpenSimulator} className="inline-flex items-center gap-2 rounded-full border border-[#263e34]/15 px-4 py-2.5 text-xs font-bold text-[#344c3e]">Open operations simulator <Command className="h-3.5 w-3.5"/></button> : null}
+      </div>
     </motion.aside>
   );
 }
