@@ -5,13 +5,13 @@ import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { RequestDemoForm } from "@/components/sections/RequestDemoForm";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Request a Demo",
-  description:
-    "Request a tailored Siksha Tantra walkthrough for your school — built around your boards, campus size, and calendar. We respond within one business day.",
-  alternates: { canonical: "/request-demo" },
-};
+export const metadata: Metadata = pageMetadata(
+  "Request a School ERP & DigiBoard Demo",
+  "Discuss Siksha Tantra school ERP and DigiBoard signage for your school. Share your campus size and requirements, or call +91 94071 74355.",
+  "/request-demo"
+);
 
 const reassurances = [
   { icon: Clock, text: "We respond within one business day" },

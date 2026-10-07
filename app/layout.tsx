@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
-import { siteUrl } from "@/lib/site";
+import { pageMetadata, siteName, siteUrl } from "@/lib/site";
 
 const heading = Plus_Jakarta_Sans({
   variable: "--font-heading",
@@ -16,13 +16,16 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
+  ...pageMetadata(
+    "School ERP, Learning & Campus Signage",
+    "Explore Siksha Tantra school ERP workflows, interactive learning samples and DigiBoard campus signage. Request a walkthrough for your school in India.",
+    "/"
+  ),
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Siksha Tantra — A Living Learning World",
+    default: "Siksha Tantra | School ERP & DigiBoard Campus Signage",
     template: "%s · Siksha Tantra",
   },
-  description:
-    "Explore a spatial learning universe, interactive sample lessons, the Siksha Tantra school system, and DigiBoard campus experiences.",
   applicationName: "Siksha Tantra",
   alternates: { canonical: "/" },
   keywords: [
@@ -33,25 +36,52 @@ export const metadata: Metadata = {
     "Siksha Tantra",
     "education technology India",
   ],
-  openGraph: {
-    title: "Siksha Tantra — A Living Learning World",
-    description:
-      "A spatial canvas for school life and exploratory learning, with clearly marked sample content and connected DigiBoard experiences.",
-    url: "/",
-    siteName: "Siksha Tantra",
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Siksha Tantra — A Living Learning World",
-    description:
-      "A spatial canvas for school life and exploratory learning, connected to DigiBoard campus signage.",
-  },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : undefined,
+  },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: siteName,
+      url: siteUrl,
+      email: "hello@shikshatantra.in",
+      telephone: "+919407174355",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+919407174355",
+        email: "hello@shikshatantra.in",
+        contactType: "sales",
+        areaServed: "IN",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteName,
+      inLanguage: "en-IN",
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -61,6 +91,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${heading.variable} ${body.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-cream-50 font-sans text-[var(--foreground)]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+        />
         {children}
       </body>
     </html>

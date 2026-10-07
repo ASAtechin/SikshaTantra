@@ -206,8 +206,8 @@ export function SpatialCanvas() {
                   <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-[#fbfaf5] bg-[#d1a947]" />
                 </motion.div>
                 <p className="mt-4 text-[10px] font-extrabold uppercase tracking-[.24em] text-[#718378]">A curriculum, not a corridor</p>
-                <h1 className="mt-2 text-balance font-display text-3xl font-extrabold leading-tight text-[#24382f] lg:text-4xl xl:text-5xl">Follow a question.<br/><span className="font-medium italic text-[#9a7433]">Find a universe.</span></h1>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-[#6f7b71]">Move through ideas, school systems, and sample learning experiences as a connected landscape.</p>
+                <h1 className="mt-2 text-balance font-display text-3xl font-extrabold leading-tight text-[#24382f] lg:text-4xl xl:text-5xl">Siksha Tantra<br/><span className="font-medium italic text-[#9a7433]">School life, connected.</span></h1>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-[#6f7b71]">School ERP workflows, DigiBoard campus signage, and interactive learning samples for schools in India.</p>
                 <button onClick={openLibrary} className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#263e34] px-5 py-3 text-xs font-bold text-white shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89e48]"><BookOpen className="h-4 w-4 text-[#efd080]"/> Enter the learning universe <ArrowRight className="h-3.5 w-3.5"/></button>
               </div>
 
@@ -267,7 +267,8 @@ export function SpatialCanvas() {
             <div className="relative flex items-start justify-between gap-4">
               <div>
                 <p className="text-[9px] font-extrabold uppercase tracking-[.19em] text-[#e4c871]">A living learning world</p>
-                <h1 className="mt-2 max-w-[250px] font-display text-2xl font-extrabold leading-tight">Follow a question.<br/><span className="font-medium italic text-[#e7cf91]">Find a universe.</span></h1>
+                <h1 className="mt-2 max-w-[250px] font-display text-2xl font-extrabold leading-tight">Siksha Tantra<br/><span className="font-medium italic text-[#e7cf91]">School life, connected.</span></h1>
+                <p className="mt-2 text-xs leading-relaxed text-white/75">School ERP, DigiBoard signage &amp; learning samples.</p>
               </div>
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-[#f0d17c]"><GraduationCap className="h-6 w-6"/></span>
             </div>
