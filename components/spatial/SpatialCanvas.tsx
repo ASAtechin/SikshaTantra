@@ -23,6 +23,7 @@ import { LivingBookReader } from "@/components/spatial/LivingBookReader";
 import { ContactHub } from "@/components/spatial/ContactHub";
 import { CommandDock } from "@/components/spatial/CommandDock";
 import { SchoolOperationsSimulator } from "@/components/spatial/SchoolOperationsSimulator";
+import { ScrollCue } from "@/components/landing/motion-primitives";
 import { type CurriculumSelection } from "@/lib/curriculum-types";
 import { cn } from "@/lib/utils";
 
@@ -112,6 +113,9 @@ export function SpatialCanvas() {
 
   const onWheel = (event: React.WheelEvent<HTMLElement>) => {
     if (!window.matchMedia("(min-width: 1024px)").matches) return;
+    // Only claim the wheel for zoom when the user explicitly asks (ctrl/⌘ or
+    // trackpad pinch), so the page itself stays scrollable.
+    if (!event.ctrlKey && !event.metaKey) return;
     event.preventDefault();
     setCamera((current) => ({
       ...current,
@@ -142,7 +146,7 @@ export function SpatialCanvas() {
   };
 
   return (
-    <main className="spatial-shell relative flex h-dvh min-h-[560px] w-full flex-col overflow-hidden text-[#20322b]">
+    <div className="spatial-shell relative flex h-[92svh] min-h-[560px] w-full flex-col overflow-hidden text-[#20322b]">
       <header className="relative z-30 flex h-[68px] shrink-0 items-center justify-between border-b border-[#26312e]/8 bg-[#f7f5ee]/78 px-4 backdrop-blur-xl sm:px-7">
         <button onClick={resetCanvas} className="flex items-center gap-2.5 rounded-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#386b58]" aria-label="Return to canvas overview">
           <span className="flex h-9 w-9 items-center justify-center rounded-[13px] bg-[#253d34] text-[#efd080]"><GraduationCap className="h-5 w-5" /></span>
@@ -258,7 +262,7 @@ export function SpatialCanvas() {
             <button onClick={() => setCamera((c) => ({ ...c, scale: Math.max(.76, c.scale - .12) }))} className="rounded-xl p-2.5 text-[#57695f] hover:bg-white" aria-label="Zoom out"><ZoomOut className="h-4 w-4"/></button>
             <button onClick={resetCanvas} className="rounded-xl p-2.5 text-[#57695f] hover:bg-white" aria-label="Reset canvas"><LocateFixed className="h-4 w-4"/></button>
           </div>
-          <div className="absolute bottom-7 right-7 z-10 hidden items-center gap-2 text-[10px] font-semibold text-[#818d82] lg:flex"><Network className="h-3.5 w-3.5"/> Drag to wander · Scroll to change scale</div>
+          <div className="absolute bottom-7 right-7 z-10 hidden items-center gap-2 text-[10px] font-semibold text-[#818d82] lg:flex"><Network className="h-3.5 w-3.5"/> Drag to wander · Ctrl + scroll to zoom</div>
         </div>
 
         <div className="h-full overflow-y-auto overscroll-contain px-4 pb-24 pt-4 lg:hidden">
@@ -310,6 +314,7 @@ export function SpatialCanvas() {
           </div>
 
           <p className="mt-6 text-center text-[10px] font-medium leading-relaxed text-[#98a097]">Tap a portal to explore · sample content</p>
+          <div className="mt-5 flex justify-center"><ScrollCue label="More below" /></div>
           </div>
         </div>
 
@@ -343,8 +348,8 @@ export function SpatialCanvas() {
         coordinates={camera}
         onFocus={focusDestination}
       />
-      <div className="fixed bottom-5 right-4 z-[60] lg:hidden"><ContactHub onOpen={() => setPanel(null)} /></div>
-    </main>
+      <div className="absolute bottom-5 right-4 z-[60] lg:hidden"><ContactHub onOpen={() => setPanel(null)} /></div>
+    </div>
   );
 }
 
