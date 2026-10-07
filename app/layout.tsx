@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || (
       ["https://siksha-tantra.vercel.app", "https://www.shikshatantra.shop"].includes(siteUrl)
-        ? "LYB8OAtgWkPTcVVl6kLKzKdz9QklzS8FJ8X62VGE9vM"
+        ? "BGrRfD5OpIGK8cNQ_3RkBsqgd7nA0rH0Y8BBUPt2lJo"
         : undefined
     ),
     other: {
