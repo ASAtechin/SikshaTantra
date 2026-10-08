@@ -13,6 +13,7 @@ import { modules } from "@/lib/modules-data";
 const navLinks = [
   { href: "/", label: "Explore" },
   { href: "/digiboard", label: "DigiBoard" },
+  { href: "/library", label: "Library" },
 ];
 
 const megaMenuModules = modules.slice(0, 8);
@@ -40,7 +41,7 @@ export function Navbar() {
     closeTimer.current = setTimeout(() => setFeaturesOpen(false), 150);
   }
 
-  const isActive = (href: string) => href !== "/digiboard" ? false : pathname === href;
+  const isActive = (href: string) => (href === "/digiboard" || href === "/library") && pathname === href;
 
   return (
     <header
