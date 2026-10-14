@@ -1,3 +1,11 @@
+/**
+ * ERP module catalogue (W1-C). Copy describes how each module is DESIGNED to work: Shiksha Tantra is in
+ * early access and the ERP modules are being built with founding schools (only the DigiBoard scheduling
+ * and display foundation exists today). Keep wording to "designed to…", "planned" — never "live" claims.
+ *
+ * Backward-compatible fields: slug, icon, name, tag (internal code, no longer shown in UI), tagline,
+ * summary, accent, mockup, steps, capabilities. Added: group, audience, indiaDetails, currentState.
+ */
 import {
   UserPlus,
   Fingerprint,
@@ -13,12 +21,10 @@ import {
   BarChart3,
   FileCheck2,
   ScanLine,
-  Dices,
   FileSignature,
   KeyRound,
   UserCheck,
   Ban,
-  Camera,
   ClipboardCheck,
   SplitSquareHorizontal,
   RefreshCcw,
@@ -30,11 +36,7 @@ import {
   Landmark,
   PiggyBank,
   CalendarX2,
-  Inbox,
-  MessageSquareWarning,
   MapPin,
-  Radio,
-  BusFront,
   BookMarked,
   PackageSearch,
   Boxes,
@@ -46,10 +48,40 @@ import {
   Gauge,
   ShieldAlert,
   FileClock,
+  BellRing,
+  Monitor,
+  Clock3,
+  Languages,
+  Smartphone,
+  LayoutDashboard,
+  BookOpen,
+  ClipboardList,
+  Building2,
+  IdCard,
+  NotebookPen,
+  ListChecks,
+  Layers,
+  Route,
+  Navigation,
+  Timer,
+  FileSpreadsheet,
+  IndianRupee,
+  Camera,
+  CalendarRange,
+  BadgeCheck,
   type LucideIcon,
 } from "lucide-react";
 
+/** Legacy hint for older consumers of ModuleMockup; each module now has its own mockup keyed by slug. */
 export type MockupKind = "chart" | "calendar" | "ledger" | "shield" | "chat" | "cards";
+
+export type ModuleGroup =
+  | "Admissions & records"
+  | "Academics"
+  | "Fees & finance"
+  | "Safety"
+  | "Staff & operations"
+  | "Leadership";
 
 export interface ModuleStep {
   icon: LucideIcon;
@@ -66,14 +98,49 @@ export interface ModuleDetail {
   slug: string;
   icon: LucideIcon;
   name: string;
+  /** Internal short code. Not shown in the UI; render `group` instead. */
   tag: string;
+  group: ModuleGroup;
+  /** Who in the school uses the module day to day. */
+  audience: string;
   tagline: string;
   summary: string;
   accent: string;
   mockup: MockupKind;
   steps: ModuleStep[];
   capabilities: ModuleCapability[];
+  /** "In Indian schools" scope bullets, worded as design/scope, not as shipped features. */
+  indiaDetails: string[];
+  /** Only set where something already exists today (the DigiBoard foundation). */
+  currentState?: string;
 }
+
+export const moduleGroups: { name: ModuleGroup; description: string }[] = [
+  {
+    name: "Admissions & records",
+    description: "Bringing a child into the school, and controlling who can see and change their record.",
+  },
+  {
+    name: "Academics",
+    description: "The daily academic cycle: attendance, the timetable, marks and report cards.",
+  },
+  {
+    name: "Fees & finance",
+    description: "Fee plans, collection, concessions and reconciliation with your accounts.",
+  },
+  {
+    name: "Safety",
+    description: "Getting children to school and home safely, and protecting them while they are with you.",
+  },
+  {
+    name: "Staff & operations",
+    description: "Parent communication, staff records, the library and school assets.",
+  },
+  {
+    name: "Leadership",
+    description: "What the principal and management need to see, and be able to trust.",
+  },
+];
 
 export const modules: ModuleDetail[] = [
   {
@@ -81,23 +148,34 @@ export const modules: ModuleDetail[] = [
     icon: UserPlus,
     name: "Admissions & Enrollment",
     tag: "ADM",
-    tagline: "From first enquiry to enrolled — with zero double-bookings.",
-    summary: "Online applications, fair seat allocation, and instant transfer certificates.",
+    group: "Admissions & records",
+    audience: "Admissions office, front desk and principal",
+    tagline: "From first enquiry to an enrolled student, as one continuous record.",
+    summary:
+      "Designed to manage enquiries, online applications, document verification, interaction slots, quota and seat decisions, and certificates such as the TC and bonafide.",
     accent: "from-amber-400/20 to-amber-500/5",
     mockup: "cards",
     steps: [
-      { icon: FileSignature, title: "Apply Online", desc: "Guardian submits form + documents" },
-      { icon: ScanLine, title: "Auto-Verify", desc: "Documents scanned & quota checked" },
-      { icon: Dices, title: "Fair Allocation", desc: "Seats assigned, provably unbiased" },
-      { icon: FileCheck2, title: "Instant TC", desc: "Transfer certificate in one click" },
+      { icon: FileSignature, title: "Enquiry & application", desc: "Guardians apply online or at the front desk, and can save a draft." },
+      { icon: ScanLine, title: "Document verification", desc: "Staff accept or return each document, with a remark." },
+      { icon: CalendarDays, title: "Interaction & decision", desc: "Slots are scheduled; offers, waitlist and decisions are recorded with reasons." },
+      { icon: FileCheck2, title: "Enrol & certify", desc: "Accepted applications become student records without re-entry." },
     ],
     capabilities: [
-      { icon: FileSignature, label: "Online applications" },
-      { icon: ScanLine, label: "Document scanning" },
-      { icon: Dices, label: "Quota & sibling priority" },
-      { icon: Ban, label: "No double-booked seats" },
-      { icon: FileCheck2, label: "Tamper-proof TC" },
-      { icon: ClipboardCheck, label: "Waitlist automation" },
+      { icon: FileSignature, label: "Online and walk-in applications" },
+      { icon: ListChecks, label: "Document checklist you configure" },
+      { icon: CalendarDays, label: "Interaction or entrance slots" },
+      { icon: Layers, label: "Quota and sibling-priority rules" },
+      { icon: ClipboardCheck, label: "Seat availability by class" },
+      { icon: FileCheck2, label: "TC and bonafide certificates" },
+    ],
+    indiaDetails: [
+      "Enquiry → application → document verification → interaction → offer → enrolment, tracked as one record per child.",
+      "Document checklist set by your school: birth certificate, Aadhaar where applicable, the previous school's transfer certificate, address proof and photographs.",
+      "Entrance test or interaction slots per class, with the panel's remarks recorded against the application.",
+      "RTE 25% seats under Section 12(1)(c) kept as a separate category. Whether your state allots them centrally or the school runs the lottery, allotment and lottery records are designed to be kept for inspection.",
+      "Sibling, staff-ward and other priority rules are set by your school, not fixed in the software.",
+      "Transfer and bonafide certificates issued only after fee dues and library clearance are confirmed.",
     ],
   },
   {
@@ -105,23 +183,35 @@ export const modules: ModuleDetail[] = [
     icon: Fingerprint,
     name: "Identity & Access",
     tag: "IAM",
-    tagline: "Exactly the right access, for exactly the right person.",
-    summary: "Role-based logins with independent, instantly revocable guardian permissions.",
+    group: "Admissions & records",
+    audience: "School administrator, all staff and guardians",
+    tagline: "Each person sees only what their role and relationship to the child allow.",
+    summary:
+      "Designed for OTP sign-in for parents, role-based staff access and separate permissions for each guardian, with every access change recorded.",
     accent: "from-brand-600/20 to-brand-600/5",
     mockup: "shield",
     steps: [
-      { icon: KeyRound, title: "Verified Login", desc: "MFA for every sensitive role" },
-      { icon: UserCheck, title: "Scoped Access", desc: "Pickup, contact & data kept separate" },
-      { icon: Ban, title: "Instant Revoke", desc: "One toggle removes access, live" },
-      { icon: FileClock, title: "Full Trail", desc: "Every access change is logged" },
+      { icon: KeyRound, title: "Sign in", desc: "Parents use a one-time password; staff use their own accounts." },
+      { icon: UserCheck, title: "Scoped access", desc: "Staff see their classes; each guardian gets their own permissions." },
+      { icon: Ban, title: "Change or remove", desc: "Access can be withdrawn when a role or relationship changes." },
+      { icon: FileClock, title: "Recorded", desc: "Grants, changes and removals are kept in an access history." },
     ],
     capabilities: [
-      { icon: KeyRound, label: "Mandatory MFA" },
-      { icon: UserCheck, label: "Independent guardian roles" },
-      { icon: Ban, label: "Instant revocation" },
-      { icon: ShieldAlert, label: "Safeguarding-aware checks" },
-      { icon: UserCog, label: "Staff vetting gate" },
-      { icon: FileClock, label: "Immutable access log" },
+      { icon: Smartphone, label: "OTP sign-in for parents" },
+      { icon: UserCog, label: "Role-based staff access" },
+      { icon: UserCheck, label: "Permissions per guardian" },
+      { icon: FileSignature, label: "Parental consent records" },
+      { icon: Ban, label: "Access removal on exit" },
+      { icon: FileClock, label: "Access-change history" },
+    ],
+    indiaDetails: [
+      "Parents sign in with an OTP sent to their registered mobile number, so families do not share one password.",
+      "Staff roles such as class teacher, subject teacher, accountant and principal see only what the role needs.",
+      "Each guardian is set up separately: one may see fees and report cards, another only notices and pickup.",
+      "Designed with the Digital Personal Data Protection Act, 2023 in mind: parents and students are data principals, and a child's data is processed with verifiable parental consent.",
+      "Requests from a data principal to see or correct their data are designed to be logged and tracked to completion.",
+      "An optional second sign-in factor for sensitive staff roles such as fee and administrator accounts.",
+      "Access is designed to end when a staff member leaves or a guardian relationship is removed.",
     ],
   },
   {
@@ -129,23 +219,35 @@ export const modules: ModuleDetail[] = [
     icon: CalendarCheck2,
     name: "Attendance",
     tag: "ATT",
-    tagline: "One tap. Every number agrees, everywhere.",
-    summary: "Live attendance that reconciles instantly across register, app, and report card.",
+    group: "Academics",
+    audience: "Class teachers, subject teachers, front office and parents",
+    tagline: "Daily and period-wise attendance, with the same figure everywhere it appears.",
+    summary:
+      "Designed so a teacher marks a class in a few taps, and the same record flows to the parent, the report card and the principal's dashboard.",
     accent: "from-teal-500/20 to-teal-500/5",
     mockup: "chart",
     steps: [
-      { icon: ScanLine, title: "One-Tap Capture", desc: "Teacher marks the whole class" },
-      { icon: RefreshCcw, title: "Auto-Reconcile", desc: "Every surface updates instantly" },
-      { icon: AlertTriangle, title: "Flag Gaps", desc: "Missing registers surfaced, not hidden" },
-      { icon: FileCheck2, title: "Audit Trail", desc: "Corrections never erase history" },
+      { icon: ScanLine, title: "Mark", desc: "The class teacher marks daily or period-wise attendance on a phone or computer." },
+      { icon: BellRing, title: "Inform", desc: "Guardians who opted in receive an absence alert." },
+      { icon: AlertTriangle, title: "Follow up", desc: "Unmarked registers and repeated absence are shown to the office." },
+      { icon: FileCheck2, title: "Correct with history", desc: "A correction keeps the original entry and the reason." },
     ],
     capabilities: [
-      { icon: ScanLine, label: "Daily & period-wise" },
-      { icon: RefreshCcw, label: "Instant reconciliation" },
-      { icon: DoorClosed, label: "Offline paper fallback" },
-      { icon: FileCheck2, label: "Non-destructive corrections" },
-      { icon: Gauge, label: "Live percentage reports" },
-      { icon: AlertTriangle, label: "Missing-register alerts" },
+      { icon: CalendarCheck2, label: "Daily and period-wise registers" },
+      { icon: Clock3, label: "Late arrivals" },
+      { icon: CalendarX2, label: "Leave requests from parents" },
+      { icon: Users, label: "Staff attendance" },
+      { icon: BellRing, label: "Absence alerts to guardians" },
+      { icon: DoorClosed, label: "Paper-register fallback" },
+    ],
+    indiaDetails: [
+      "Daily attendance in the first period, plus period-wise marking for senior classes if your school uses it.",
+      "Late arrivals recorded separately from absence, with the time of arrival.",
+      "Parents can request leave in advance; approved leave shows as leave, not as an unexplained absence.",
+      "Absence alerts to guardians on WhatsApp or SMS, sent only to guardians who opted in.",
+      "Staff attendance alongside student attendance, feeding leave and substitution.",
+      "If the network is down, teachers mark a paper register and enter it later; the late entry is recorded as such.",
+      "Cumulative percentages for report cards and for checking board-exam attendance requirements, such as CBSE's 75% rule.",
     ],
   },
   {
@@ -153,23 +255,37 @@ export const modules: ModuleDetail[] = [
     icon: CalendarClock,
     name: "Timetable & Substitution",
     tag: "CUR",
-    tagline: "Conflict-free schedules, substitutes in one tap.",
-    summary: "No double-bookings, and every change reflects live on DigiBoard displays.",
+    group: "Academics",
+    audience: "Timetable in-charge, academic coordinator and teachers",
+    tagline: "Clash-checked timetables and quick substitutions, shown on campus screens.",
+    summary:
+      "Builds on the DigiBoard scheduling foundation: weekly timetables with conflict checks, and substitutions and room changes that appear on DigiBoard displays.",
     accent: "from-amber-400/20 to-teal-500/10",
     mockup: "calendar",
+    currentState:
+      "Working today in the DigiBoard foundation: weekly schedule editing, quick substitutions, room changes and schedule-conflict detection. The full ERP timetable builds on it.",
     steps: [
-      { icon: CalendarDays, title: "Build Timetable", desc: "Class, teacher & room, auto-checked" },
-      { icon: Ban, title: "Zero Conflicts", desc: "Hard rules block any clash" },
-      { icon: UserCog, title: "One-Tap Substitute", desc: "Absence covered in seconds" },
-      { icon: Radio, title: "Live Everywhere", desc: "Every screen updates at once" },
+      { icon: CalendarDays, title: "Build", desc: "Periods, classes, teachers and rooms set up to your bell schedule." },
+      { icon: Ban, title: "Check clashes", desc: "A teacher or room booked twice is flagged before publishing." },
+      { icon: UserCog, title: "Substitute", desc: "Free teachers are suggested for an absent teacher's periods." },
+      { icon: Monitor, title: "Display", desc: "Changes appear on DigiBoard screens and in teachers' views." },
     ],
     capabilities: [
-      { icon: Ban, label: "No double-bookings" },
-      { icon: UserCog, label: "Instant substitutes" },
-      { icon: CalendarDays, label: "Multi-day delegation" },
-      { icon: Radio, label: "Live DigiBoard sync" },
-      { icon: ClipboardCheck, label: "Homework workflow" },
-      { icon: FileClock, label: "Full change history" },
+      { icon: CalendarRange, label: "Bell schedules and period structures" },
+      { icon: Ban, label: "Teacher and room clash checks" },
+      { icon: Gauge, label: "Teacher load limits" },
+      { icon: UserCog, label: "Substitution suggestions" },
+      { icon: Monitor, label: "DigiBoard display updates" },
+      { icon: FileClock, label: "Change history" },
+    ],
+    indiaDetails: [
+      "Period structures you define, for example assembly, eight periods, short break and lunch, and Saturday half-days.",
+      "Weekly period counts per subject per class, so each subject gets the periods your scheme of studies sets.",
+      "Teacher load limits (periods per day and per week) checked while the timetable is built.",
+      "Substitution for an absent teacher's periods, such as Period 4, suggests teachers who are free and under their load limit.",
+      "Substitutions and room changes pushed to DigiBoard screens in corridors and staff rooms.",
+      "Lab, library and games periods that need a particular room, or that combine sections.",
+      "A separate exam-week timetable without losing the regular one.",
     ],
   },
   {
@@ -177,23 +293,35 @@ export const modules: ModuleDetail[] = [
     icon: GraduationCap,
     name: "Assessment & Report Cards",
     tag: "ASM",
-    tagline: "Any board. Locked results. Zero tampering.",
-    summary: "Multi-board grading with moderation and digitally signed report cards.",
+    group: "Academics",
+    audience: "Subject teachers, class teachers, exam coordinator and principal",
+    tagline: "Your board's scheme set up once, and results locked before they are published.",
+    summary:
+      "Designed for mark entry against CBSE, CISCE or state-board schemes, co-scholastic grades, review before release, and report cards produced from locked results.",
     accent: "from-brand-600/20 to-amber-400/10",
     mockup: "chart",
     steps: [
-      { icon: ClipboardCheck, title: "Enter Marks", desc: "Per board's own grading rules" },
-      { icon: SplitSquareHorizontal, title: "Moderate", desc: "Statistical checks + grace marks" },
-      { icon: FileLock2, title: "Lock Result", desc: "Tamper-evident, versioned" },
-      { icon: FileCheck2, title: "Publish", desc: "Signed report card, instantly" },
+      { icon: ClipboardList, title: "Configure", desc: "Terms, components, maximum marks and grade bands set for your board." },
+      { icon: ClipboardCheck, title: "Enter marks", desc: "Missing and out-of-range marks are flagged as teachers enter them." },
+      { icon: FileLock2, title: "Review & lock", desc: "After class-teacher and HOD review, results lock; later changes are recorded revisions." },
+      { icon: FileCheck2, title: "Publish", desc: "Report cards are released to parents after approval." },
     ],
     capabilities: [
-      { icon: GraduationCap, label: "CBSE / ICSE / State boards" },
-      { icon: SplitSquareHorizontal, label: "Statistical moderation" },
+      { icon: GraduationCap, label: "CBSE, CISCE and state-board schemes" },
+      { icon: SplitSquareHorizontal, label: "Scholastic and co-scholastic grades" },
+      { icon: AlertTriangle, label: "Missing-mark checks" },
       { icon: FileLock2, label: "Locked, versioned results" },
-      { icon: FileCheck2, label: "Digitally signed cards" },
-      { icon: RefreshCcw, label: "Audited revisions only" },
-      { icon: ClipboardCheck, label: "Board candidate export" },
+      { icon: FileCheck2, label: "Report cards in your format" },
+      { icon: FileSpreadsheet, label: "Board registration exports (planned)" },
+    ],
+    indiaDetails: [
+      "Assessment schemes configured per school: CBSE periodic tests and term exams, CISCE, or your state board's pattern.",
+      "Grade bands such as CBSE's eight-point A1–E scale, calculated from the marks so grade and marks match.",
+      "Co-scholastic areas such as art education, health and physical education, and work education, graded on your school's scale.",
+      "Holistic Progress Card in line with NEP 2020 and PARAKH guidance — planned.",
+      "Board registration data exports, for example CBSE registration and the List of Candidates (LOC) — planned.",
+      "APAAR ID stored on each student's record for board and government reporting.",
+      "Class-teacher remarks, attendance and the promotion decision on the same report card.",
     ],
   },
   {
@@ -201,23 +329,35 @@ export const modules: ModuleDetail[] = [
     icon: Wallet,
     name: "Fees & Finance",
     tag: "FIN",
-    tagline: "Every rupee traced, every month closed clean.",
-    summary: "Online and counter payments reconciled automatically, to the rupee.",
+    group: "Fees & finance",
+    audience: "Accounts office, fee counter, principal and parents",
+    tagline: "Fee plans, collections and receipts that reconcile to the rupee.",
+    summary:
+      "Designed for fee heads and instalments, concessions with approval, online payment through a payment gateway, counter collection, and receipts that match your accounts.",
     accent: "from-teal-500/20 to-brand-600/10",
     mockup: "ledger",
     steps: [
-      { icon: Receipt, title: "Collect", desc: "Online, counter, cash or cheque" },
-      { icon: RefreshCcw, title: "Reconcile", desc: "Matched same-day, automatically" },
-      { icon: SplitSquareHorizontal, title: "Approve", desc: "Dual sign-off on concessions" },
-      { icon: Landmark, title: "Close", desc: "Clean month-end, every time" },
+      { icon: Layers, title: "Set up", desc: "Fee heads, instalments, due dates and late-fee rules per class." },
+      { icon: Receipt, title: "Collect", desc: "Parents pay online through a gateway; the counter takes cash and cheques." },
+      { icon: SplitSquareHorizontal, title: "Approve", desc: "Concessions and waivers go to the approver your school names." },
+      { icon: Landmark, title: "Reconcile", desc: "Gateway settlements and bank deposits matched to receipts." },
     ],
     capabilities: [
-      { icon: Receipt, label: "Online + counter payments" },
-      { icon: RefreshCcw, label: "Same-day reconciliation" },
-      { icon: PiggyBank, label: "Concessions & write-offs" },
-      { icon: Landmark, label: "Bank reconciliation" },
-      { icon: ClipboardCheck, label: "Cashier shift close" },
-      { icon: FileClock, label: "Immutable receipts" },
+      { icon: Layers, label: "Fee heads and instalments" },
+      { icon: Timer, label: "Late-fee rules" },
+      { icon: PiggyBank, label: "Concessions with approval" },
+      { icon: IndianRupee, label: "UPI and net banking via a gateway" },
+      { icon: Receipt, label: "Receipts and fee certificates" },
+      { icon: FileSpreadsheet, label: "Tally export" },
+    ],
+    indiaDetails: [
+      "Fee heads such as tuition, transport, annual charges, lab and activity fees, with monthly, quarterly or term instalments.",
+      "Late-fee rules your school sets, applied after the due date and waived only with approval.",
+      "Sibling, staff-ward and merit concessions, each recorded with who approved it.",
+      "RTE seats marked fee-waived, with tracking of the school's reimbursement claim to the state.",
+      "Online payment by UPI, net banking and cards through a payment gateway, settled to the school's own bank account.",
+      "A receipt for every payment, and annual tuition-fee certificates parents use for income-tax claims.",
+      "Export to Tally for your accountant; GST applied only to items your CA marks as taxable, such as uniforms sold by the school.",
     ],
   },
   {
@@ -225,23 +365,35 @@ export const modules: ModuleDetail[] = [
     icon: MessagesSquare,
     name: "Communication",
     tag: "COM",
-    tagline: "The right message, to the right guardian, every time.",
-    summary: "Targeted notices with delivery proof, plus structured grievance handling.",
+    group: "Staff & operations",
+    audience: "Office staff, class teachers, principal and guardians",
+    tagline: "Notices that reach the right parents, in a language they read.",
+    summary:
+      "Designed for class-wise notices and alerts over WhatsApp, SMS and app notifications, with delivery and read status, PTM scheduling and grievance tracking.",
     accent: "from-amber-400/20 to-brand-600/10",
     mockup: "chat",
     steps: [
-      { icon: Megaphone, title: "Compose", desc: "Draft once, target precisely" },
-      { icon: UserCheck, title: "Smart Audience", desc: "Only the correct guardians" },
-      { icon: CheckCheck, title: "Delivery Proof", desc: "Sent, read & acknowledged" },
-      { icon: Ticket, title: "Grievances", desc: "Tracked to resolution, not lost" },
+      { icon: Megaphone, title: "Compose", desc: "Write once, and add a regional-language version if needed." },
+      { icon: UserCheck, title: "Target", desc: "Whole school, a class, a section, a bus route or named guardians." },
+      { icon: CheckCheck, title: "Track", desc: "Delivered and read status per channel, where the channel reports it." },
+      { icon: Ticket, title: "Resolve", desc: "Parent concerns are logged as tickets with an owner." },
     ],
     capabilities: [
-      { icon: UserCheck, label: "Precise audience targeting" },
-      { icon: CheckCheck, label: "Delivery & read receipts" },
-      { icon: Ticket, label: "Grievance redressal" },
-      { icon: MessageSquareWarning, label: "SLA-based escalation" },
-      { icon: AlertTriangle, label: "Emergency broadcasts" },
-      { icon: Inbox, label: "One inbox, every notice" },
+      { icon: MessagesSquare, label: "WhatsApp, SMS and app channels" },
+      { icon: UserCheck, label: "Class, section and route targeting" },
+      { icon: CheckCheck, label: "Delivery and read status" },
+      { icon: Languages, label: "Regional-language notices" },
+      { icon: CalendarDays, label: "PTM slot booking" },
+      { icon: Ticket, label: "Grievance tracking" },
+    ],
+    indiaDetails: [
+      "WhatsApp Business messages on approved templates, and SMS on DLT-registered templates and sender IDs, as TRAI rules require.",
+      "Notices in English and the regional languages your parents read, such as Hindi, Kannada, Tamil or Marathi.",
+      "Read receipts where the channel supports them (WhatsApp and the app); SMS reports delivery only.",
+      "PTM scheduling: parents book a slot with the class teacher, and each teacher sees the day's list.",
+      "Grievance tracking with an owner and a status, so a bus or fee complaint is not lost in a phone call.",
+      "Circulars with acknowledgement for important notices such as a fee revision or exam schedule.",
+      "Emergency alerts designed to reach guardians and DigiBoard screens together.",
     ],
   },
   {
@@ -249,23 +401,35 @@ export const modules: ModuleDetail[] = [
     icon: Bus,
     name: "Transport",
     tag: "OPS",
-    tagline: "Every child accounted for, every single trip.",
-    summary: "Boarding scans and capacity checks — because GPS alone isn't proof of safety.",
+    group: "Safety",
+    audience: "Transport in-charge, bus attendants, front office and parents",
+    tagline: "Who boarded, who got off, and where the bus is.",
+    summary:
+      "Designed for routes and stops, boarding and alighting records, verified drivers and attendants, GPS device integration, and alerts for the office and parents.",
     accent: "from-teal-500/20 to-amber-400/10",
     mockup: "cards",
     steps: [
-      { icon: Ban, title: "Capacity Check", desc: "Overloaded trips never dispatch" },
-      { icon: ScanLine, title: "Board & Alight", desc: "Scanned per child, per stop" },
-      { icon: AlertTriangle, title: "Missing-Child Alert", desc: "Escalates instantly, not silently" },
-      { icon: MapPin, title: "Safe Close", desc: "Trip closes only when verified" },
+      { icon: Route, title: "Plan routes", desc: "Stops, timings, vehicle capacity and riders per route." },
+      { icon: BadgeCheck, title: "Verify crew", desc: "Driver and attendant documents and police verification on file." },
+      { icon: ScanLine, title: "Board & alight", desc: "Each child marked at their stop, morning and afternoon." },
+      { icon: AlertTriangle, title: "Alert", desc: "Delays, missed stops and route deviations flagged to the office." },
     ],
     capabilities: [
-      { icon: ScanLine, label: "Boarding/alighting scans" },
-      { icon: Ban, label: "Certified capacity checks" },
-      { icon: BusFront, label: "Mid-route rider changes" },
-      { icon: DoorClosed, label: "Breakdown fallback" },
-      { icon: MapPin, label: "Live route tracking" },
-      { icon: AlertTriangle, label: "Safety-first escalation" },
+      { icon: Route, label: "Routes, stops and riders" },
+      { icon: ScanLine, label: "Boarding and alighting records" },
+      { icon: BadgeCheck, label: "Driver and attendant verification" },
+      { icon: MapPin, label: "GPS device integration" },
+      { icon: Navigation, label: "Speed and route alerts" },
+      { icon: FileClock, label: "Vehicle document expiry" },
+    ],
+    indiaDetails: [
+      "Driver and attendant records with police verification, licence and badge details, and reminders before documents expire.",
+      "A female attendant on buses where your state or board guidelines require one.",
+      "Integration with the GPS device fitted to your buses, or your transport vendor's, for location and arrival times.",
+      "Boarding and alighting marked per child per stop, by the attendant on a phone or by scanning ID cards.",
+      "Speed and route-deviation alerts where the GPS device provides them.",
+      "Vehicle fitness, permit, insurance and PUC dates tracked, in line with CBSE and state school-bus safety norms.",
+      "Seat capacity per vehicle checked when riders are assigned.",
     ],
   },
   {
@@ -273,23 +437,35 @@ export const modules: ModuleDetail[] = [
     icon: Library,
     name: "Library & Inventory",
     tag: "OPS",
-    tagline: "Every book, every asset — tracked, not guessed.",
-    summary: "Issue, return, reserve, and resolve stock variance cleanly.",
+    group: "Staff & operations",
+    audience: "Librarian, lab assistants, store and accounts",
+    tagline: "Every book copy and school asset, accounted for.",
+    summary:
+      "Designed for an accession register, copy-level issue and return, fines, stock verification, and an asset register for labs, sports and IT.",
     accent: "from-brand-600/20 to-teal-500/10",
     mockup: "cards",
     steps: [
-      { icon: BookMarked, title: "Issue / Return", desc: "Copy-level, not just title-level" },
-      { icon: Boxes, title: "Reserve", desc: "Hold queue for popular titles" },
-      { icon: PackageSearch, title: "Count", desc: "Physical stock checked regularly" },
-      { icon: FileCheck2, title: "Resolve", desc: "Variance owned, never ignored" },
+      { icon: BookMarked, title: "Accession", desc: "Each copy gets an accession number and a shelf location." },
+      { icon: RefreshCcw, title: "Issue & return", desc: "Issued to a student or staff member by ID card or barcode." },
+      { icon: PackageSearch, title: "Verify stock", desc: "Periodic stock verification against the register." },
+      { icon: FileCheck2, title: "Resolve", desc: "Lost or damaged items written off with approval." },
     ],
     capabilities: [
-      { icon: BookMarked, label: "Copy-level tracking" },
-      { icon: Boxes, label: "Reservation queues" },
-      { icon: PackageSearch, label: "Inventory variance resolution" },
-      { icon: PiggyBank, label: "Configurable fines" },
-      { icon: FileClock, label: "Full custody trail" },
-      { icon: ClipboardCheck, label: "Asset + book tracking" },
+      { icon: BookMarked, label: "Accession register" },
+      { icon: RefreshCcw, label: "Copy-level issue and return" },
+      { icon: IndianRupee, label: "Overdue fines" },
+      { icon: Boxes, label: "Reservations" },
+      { icon: PackageSearch, label: "Stock verification" },
+      { icon: ClipboardList, label: "Asset register" },
+    ],
+    indiaDetails: [
+      "An accession register in the form libraries already keep: accession number, title, author, publisher, price and source (purchase or donation).",
+      "Issue and return by copy, with borrowing limits per class that your librarian sets.",
+      "Overdue fines at a rate your school sets, which can be collected at the fee counter.",
+      "Annual stock verification that lists missing copies for the librarian to resolve.",
+      "Library clearance checked before a transfer certificate is issued.",
+      "An asset register for labs, sports, furniture and IT equipment, with location and condition.",
+      "A book bank of textbook sets lent for the session, if your school runs one.",
     ],
   },
   {
@@ -297,23 +473,34 @@ export const modules: ModuleDetail[] = [
     icon: Users,
     name: "HR & Staff",
     tag: "PSN",
-    tagline: "Onboarding to exit — safeguarded at every step.",
-    summary: "Staff records, leave, and payroll inputs, gated by mandatory safeguarding checks.",
+    group: "Staff & operations",
+    audience: "Principal, HR or administration office and accounts",
+    tagline: "Staff records, checks, leave and payroll inputs in one place.",
+    summary:
+      "Designed so staff receive system and student access only after police verification and document checks, with leave linked to attendance and substitution.",
     accent: "from-amber-400/20 to-brand-600/10",
     mockup: "cards",
     steps: [
-      { icon: ShieldCheck, title: "Vet & Onboard", desc: "Background check before access" },
-      { icon: CalendarX2, title: "Leave", desc: "Linked directly to attendance" },
-      { icon: Landmark, title: "Payroll Input", desc: "Locked batches, traceable edits" },
-      { icon: Ban, title: "Exit", desc: "Access revoked the same day" },
+      { icon: ShieldCheck, title: "Check & onboard", desc: "Police verification and documents recorded before access is granted." },
+      { icon: CalendarX2, title: "Leave", desc: "Leave requests approved and reflected in staff attendance." },
+      { icon: UserCog, title: "Cover", desc: "Approved teacher leave creates substitution needs in the timetable." },
+      { icon: Landmark, title: "Payroll inputs", desc: "Monthly inputs prepared for your payroll provider or accountant." },
     ],
     capabilities: [
-      { icon: ShieldCheck, label: "Safeguarding vetting gate" },
-      { icon: CalendarX2, label: "Leave linked to attendance" },
-      { icon: Landmark, label: "Payroll-input batches" },
-      { icon: Ban, label: "Immediate exit revocation" },
-      { icon: FileClock, label: "Traceable corrections" },
-      { icon: UserCog, label: "Delegated substitute roles" },
+      { icon: IdCard, label: "Staff records and documents" },
+      { icon: BadgeCheck, label: "Police verification status" },
+      { icon: CalendarX2, label: "Leave types and balances" },
+      { icon: UserCog, label: "Leave linked to substitution" },
+      { icon: FileSpreadsheet, label: "Payroll inputs (PF, ESI, PT, TDS)" },
+      { icon: Ban, label: "Access removal on exit" },
+    ],
+    indiaDetails: [
+      "Police verification certificate and document checks (qualifications, previous employment) recorded before system and student access is granted.",
+      "Qualification records such as B.Ed. and CTET or TET where your board or state requires them.",
+      "Leave types you define, such as CL, EL and ML, with balances per staff member.",
+      "Approved teacher leave creates the day's substitution list in Timetable & Substitution.",
+      "Monthly payroll inputs — attendance, leave without pay, PF, ESI, professional tax and TDS details — exported for your payroll provider or accountant. Shiksha Tantra does not run payroll itself.",
+      "System access removed on the staff member's last working day.",
     ],
   },
   {
@@ -321,23 +508,35 @@ export const modules: ModuleDetail[] = [
     icon: ShieldCheck,
     name: "Child Safeguarding",
     tag: "SFG",
-    tagline: "Our biggest differentiator. Not an afterthought.",
-    summary: "Custody-aware gate checks, granular consent, and a sealed incident channel.",
+    group: "Safety",
+    audience: "Principal, child-protection committee, gate security and front office",
+    tagline: "Built to support your school's child-protection duties, not to replace them.",
+    summary:
+      "Designed for authorised-pickup checks, a visitor log, separate consent records, and concern recording that escalates promptly, in line with the POCSO Act.",
     accent: "from-teal-500/20 to-amber-500/15",
     mockup: "shield",
     steps: [
-      { icon: ScanLine, title: "Gate Check", desc: "Pickup verified against court orders" },
-      { icon: FileSignature, title: "Granular Consent", desc: "Excursions, medical, media — separate" },
-      { icon: FileLock2, title: "Sealed Reports", desc: "Visible only to Safeguarding Lead" },
-      { icon: HeartPulse, title: "Medical Alerts", desc: "Actionable, never over-exposed" },
+      { icon: ScanLine, title: "Gate check", desc: "The person collecting a child is checked against the authorised list, with photo." },
+      { icon: DoorClosed, title: "Visitor log", desc: "Visitors recorded with purpose, host, and time in and out." },
+      { icon: FileSignature, title: "Consent", desc: "Photo, excursion and medical consents recorded separately." },
+      { icon: ShieldAlert, title: "Record & escalate", desc: "Concerns are recorded and escalated straight away, without delaying a report to the police or SJPU." },
     ],
     capabilities: [
-      { icon: ScanLine, label: "Court-order aware pickup" },
-      { icon: FileSignature, label: "Independent consent types" },
-      { icon: FileLock2, label: "Sealed incident reporting" },
-      { icon: HeartPulse, label: "Actionable medical alerts" },
-      { icon: Camera, label: "Consent-checked media" },
-      { icon: FileClock, label: "24-hour escalation clock" },
+      { icon: Camera, label: "Authorised pickup list with photos" },
+      { icon: DoorClosed, label: "Visitor log" },
+      { icon: FileSignature, label: "Separate consent types" },
+      { icon: ShieldAlert, label: "Concern recording and escalation" },
+      { icon: HeartPulse, label: "Medical alerts for the staff who need them" },
+      { icon: FileLock2, label: "Restricted access to sensitive records" },
+    ],
+    indiaDetails: [
+      "POCSO Act, 2012: anyone who learns of a concern must report it to the police or the Special Juvenile Police Unit (SJPU). The system is designed to help record and escalate a concern; it must never hold a report back or require an approval before one is made.",
+      "Case records for your school's POCSO or child-protection committee, with access limited to its members.",
+      "Designed with NCPCR's guidance on the safety and security of children in schools, and CBSE's safety circulars, in mind.",
+      "An authorised pickup list per child with photographs, so the guard can confirm identity at the gate.",
+      "A visitor log with ID, purpose, person visited, and time in and out.",
+      "Consent recorded separately for photographs and social media, excursions, and medical treatment.",
+      "Staff complaints of sexual harassment go to the Internal Committee under the POSH Act, 2013, outside general HR access.",
     ],
   },
   {
@@ -345,24 +544,85 @@ export const modules: ModuleDetail[] = [
     icon: BarChart3,
     name: "Governance & Analytics",
     tag: "GOV",
-    tagline: "Dashboards your Principal can actually trust.",
-    summary: "Certified KPIs, gated releases, and an audit trail that's never silently altered.",
+    group: "Leadership",
+    audience: "Principal, management, trust or society",
+    tagline: "Figures your principal and management can trace back to the source.",
+    summary:
+      "Designed for principal and management dashboards, UDISE+ and APAAR data readiness, and an audit history of important changes.",
     accent: "from-brand-600/20 to-brand-600/5",
     mockup: "chart",
     steps: [
-      { icon: FileCheck2, title: "Certify Metrics", desc: "Definitions locked before display" },
-      { icon: Gauge, title: "One Number", desc: "Dashboard, report & export agree" },
-      { icon: ShieldAlert, title: "Gate Every Release", desc: "Evidence required, not assumed" },
-      { icon: FileLock2, title: "Preserve History", desc: "Nothing silently deleted" },
+      { icon: BookOpen, title: "Define", desc: "Each metric has a written definition and scope." },
+      { icon: LayoutDashboard, title: "Monitor", desc: "Principal and management dashboards, with drill-down to records." },
+      { icon: ClipboardCheck, title: "Prepare returns", desc: "Data checked for gaps before UDISE+ and other returns." },
+      { icon: FileClock, title: "Audit", desc: "Important changes kept in an audit history." },
     ],
     capabilities: [
-      { icon: Gauge, label: "Certified, consistent KPIs" },
-      { icon: ShieldAlert, label: "Gated release discipline" },
-      { icon: FileLock2, label: "Honest, permanent audit trail" },
-      { icon: FileCheck2, label: "Data-subject request handling" },
-      { icon: RefreshCcw, label: "Evidence-based completion" },
-      { icon: BarChart3, label: "Real-time school-wide view" },
+      { icon: LayoutDashboard, label: "Principal dashboard" },
+      { icon: BarChart3, label: "Management dashboard" },
+      { icon: ClipboardCheck, label: "UDISE+ and APAAR readiness" },
+      { icon: BookOpen, label: "Written metric definitions" },
+      { icon: FileClock, label: "Audit history" },
+      { icon: Building2, label: "Multi-campus roll-ups (planned)" },
     ],
+    indiaDetails: [
+      "UDISE+ data readiness: student, teacher and facility fields checked for gaps so the annual return is easier to prepare.",
+      "APAAR ID coverage by class, so you know which students still need one.",
+      "A principal dashboard for attendance, timetable gaps, results and pending approvals.",
+      "A management dashboard for admissions, enrolment, fee collection and outstanding dues.",
+      "Roll-ups across schools run by the same trust or society — planned.",
+      "Audit history for changes to marks, fees, attendance and access.",
+      "Reports exported to Excel or PDF for inspections and management meetings.",
+    ],
+  },
+];
+
+/** Further scope from the product specification. All planned; no dates are committed. */
+export const plannedModules: { name: string; icon: LucideIcon; desc: string }[] = [
+  {
+    name: "Parent mobile app",
+    icon: Smartphone,
+    desc: "Attendance, homework, marks, fees, notices, bus route and leave requests, switching between children.",
+  },
+  {
+    name: "Student portal",
+    icon: GraduationCap,
+    desc: "Own timetable, homework, marks and library, with age-appropriate access.",
+  },
+  {
+    name: "Teacher portal",
+    icon: NotebookPen,
+    desc: "Today's periods, substitutions, attendance to mark, homework and marks entry.",
+  },
+  {
+    name: "Principal & management portal",
+    icon: LayoutDashboard,
+    desc: "Dashboards, approvals and comparisons for school leaders.",
+  },
+  {
+    name: "Student information system",
+    icon: IdCard,
+    desc: "One student record from admission to alumni: guardians, documents, health and history.",
+  },
+  {
+    name: "Homework & assignments",
+    icon: ClipboardList,
+    desc: "Set, submit and review homework and assignments by class and subject.",
+  },
+  {
+    name: "Examination management",
+    icon: ClipboardCheck,
+    desc: "Exam schedules, hall tickets, seating plans and invigilation duties.",
+  },
+  {
+    name: "Promotion to new session",
+    icon: RefreshCcw,
+    desc: "Move classes into the next session while last year's records stay unchanged.",
+  },
+  {
+    name: "Multi-campus management",
+    icon: Building2,
+    desc: "Several schools under one trust or society, with separate data and combined reports.",
   },
 ];
 
@@ -375,4 +635,17 @@ export function getAdjacentModules(slug: string, count = 3): ModuleDetail[] {
   if (idx === -1) return modules.slice(0, count);
   const rest = [...modules.slice(idx + 1), ...modules.slice(0, idx)];
   return rest.slice(0, count);
+}
+
+/** Modules in the same group first, then the next modules in catalogue order. */
+export function getRelatedModules(slug: string, count = 3): ModuleDetail[] {
+  const mod = getModule(slug);
+  if (!mod) return modules.slice(0, count);
+  const sameGroup = modules.filter((m) => m.group === mod.group && m.slug !== slug);
+  const others = getAdjacentModules(slug, modules.length).filter((m) => m.group !== mod.group);
+  return [...sameGroup, ...others].slice(0, count);
+}
+
+export function getModulesByGroup(): { name: ModuleGroup; description: string; modules: ModuleDetail[] }[] {
+  return moduleGroups.map((g) => ({ ...g, modules: modules.filter((m) => m.group === g.name) }));
 }
