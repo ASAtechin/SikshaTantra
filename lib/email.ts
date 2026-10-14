@@ -25,10 +25,20 @@ function getTransporter(): Transporter {
 
   if (cachedTransporter) return cachedTransporter;
 
+  const port = SMTP_PORT ? Number(SMTP_PORT) : 587;
+  // Port 465 speaks TLS from the first byte; 587/25 start in plain text and upgrade with STARTTLS.
+  // A mismatch fails with "wrong version number", so the port decides and SMTP_SECURE only matters
+  // for non-standard ports.
+  const secure = port === 465 ? true : port === 587 || port === 25 ? false : SMTP_SECURE === "true";
+  if (SMTP_SECURE !== undefined && (SMTP_SECURE === "true") !== secure) {
+    console.warn(`[email] SMTP_SECURE=${SMTP_SECURE} does not match port ${port}; using secure=${secure}.`);
+  }
+
   cachedTransporter = nodemailer.createTransport({
     host: SMTP_HOST,
-    port: SMTP_PORT ? Number(SMTP_PORT) : 587,
-    secure: SMTP_SECURE === "true",
+    port,
+    secure,
+    requireTLS: !secure,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
 
