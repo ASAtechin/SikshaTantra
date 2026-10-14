@@ -1,51 +1,97 @@
+/*
+ * Shiksha Tantra design tokens (W0 foundation).
+ * The canvas palette (forest / ochre / sage on paper) is the system. Legacy utility names
+ * (brand-*, amber-*, teal-*, cream-*) are remapped to AA-checked values so existing classes
+ * adopt the palette without edits. Prefer the semantic tokens for new work:
+ *   bg-paper, text-ink, text-ink-muted, text-ink-subtle, border-line (form controls, >= 3:1),
+ *   border-line-soft (decorative dividers only), forest / ochre / gold / sage accents.
+ * Contrast numbers live in docs/remediation/status/W0.md.
+ */
 @import "tailwindcss";
 
 :root {
-  --background: #fbfaf8;
-  --foreground: #16182b;
+  /* Canvas palette */
+  --paper: #f7f5ee;
+  --paper-raised: #fbfaf5;
+  --ink: #1e3329;
+  --ink-muted: #5c6a61;
+  --ink-subtle: #636f68;
+  --line: #838d86;
+  --line-soft: #dcdfd6;
 
-  /* Brand palette */
-  --brand-indigo-950: #0e1030;
-  --brand-indigo-900: #181b45;
-  --brand-indigo-800: #21245c;
-  --brand-indigo-700: #2c3074;
-  --brand-indigo-600: #3b3f94;
-  --brand-indigo-500: #4e52b4;
+  --forest: #263e34;
+  --forest-deep: #1e3329;
+  --ochre: #7a5a1e;
+  --gold: #efd080;
+  --sage: #386b58;
 
-  --brand-amber-600: #d97706;
-  --brand-amber-500: #f59e0b;
-  --brand-amber-400: #fbbf24;
+  --background: var(--paper);
+  --foreground: var(--ink);
 
-  --brand-teal-600: #0d9488;
-  --brand-teal-500: #14b8a6;
-
-  --brand-cream-50: #fbfaf8;
-  --brand-cream-100: #f4f1ea;
-
-  --shadow-soft: 0 1px 2px rgba(14, 16, 48, 0.04), 0 8px 24px -8px rgba(14, 16, 48, 0.12);
-  --shadow-lift: 0 20px 50px -20px rgba(14, 16, 48, 0.35);
+  --shadow-soft: 0 1px 2px rgba(30, 51, 41, 0.05), 0 8px 24px -8px rgba(30, 51, 41, 0.14);
+  --shadow-lift: 0 20px 50px -20px rgba(30, 51, 41, 0.36);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-brand-950: var(--brand-indigo-950);
-  --color-brand-900: var(--brand-indigo-900);
-  --color-brand-800: var(--brand-indigo-800);
-  --color-brand-700: var(--brand-indigo-700);
-  --color-brand-600: var(--brand-indigo-600);
-  --color-brand-500: var(--brand-indigo-500);
+  /* Semantic tokens */
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-ochre: var(--ochre);
+  --color-gold: var(--gold);
+  --color-sage: var(--sage);
 
-  --color-amber-600: var(--brand-amber-600);
-  --color-amber-500: var(--brand-amber-500);
-  --color-amber-400: var(--brand-amber-400);
+  /* brand-* = forest scale (950 deepest; 900 is the canvas primary #263E34) */
+  --color-brand-50: #eef3ef;
+  --color-brand-100: #dce6df;
+  --color-brand-200: #bacdbf;
+  --color-brand-300: #93af9c;
+  --color-brand-400: #6f917b;
+  --color-brand-500: #5a7f6b;
+  --color-brand-600: #4a6e5d;
+  --color-brand-700: #3a5a4b;
+  --color-brand-800: #2f4a3e;
+  --color-brand-900: #263e34;
+  --color-brand-950: #1e3329;
 
-  --color-teal-600: var(--brand-teal-600);
-  --color-teal-500: var(--brand-teal-500);
+  /* amber-* = ochre / gold. 300-500 are accents for dark surfaces and fills;
+     600+ are text colours for light surfaces. */
+  --color-amber-50: #fdf9ee;
+  --color-amber-100: #fbf2da;
+  --color-amber-200: #f8eac4;
+  --color-amber-300: #f4dfa6;
+  --color-amber-400: #efd080;
+  --color-amber-500: #e2b85a;
+  --color-amber-600: #7a5a1e;
+  --color-amber-700: #664a17;
+  --color-amber-800: #523b12;
+  --color-amber-900: #3e2c0e;
+  --color-amber-950: #2a1e09;
 
-  --color-cream-50: var(--brand-cream-50);
-  --color-cream-100: var(--brand-cream-100);
+  /* teal-* = sage. 500 carries white text; 600+ are text colours on light surfaces. */
+  --color-teal-50: #eef4ef;
+  --color-teal-100: #ddebe0;
+  --color-teal-200: #c3d8c7;
+  --color-teal-300: #9fc0a6;
+  --color-teal-400: #7aa488;
+  --color-teal-500: #457a62;
+  --color-teal-600: #386b58;
+  --color-teal-700: #2d5a49;
+  --color-teal-800: #24493b;
+  --color-teal-900: #1c3a2f;
+  --color-teal-950: #132820;
+
+  --color-cream-50: var(--paper);
+  --color-cream-100: #efece1;
 
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);
@@ -55,6 +101,7 @@
   --animate-blob: blob 14s ease-in-out infinite;
   --animate-marquee: marquee 28s linear infinite;
   --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-cue: cue 1.8s ease-in-out infinite;
 
   @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -73,65 +120,128 @@
     0% { transform: scale(0.8); opacity: 0.6; }
     80%, 100% { transform: scale(1.8); opacity: 0; }
   }
+  @keyframes cue {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Visible keyboard focus everywhere: dark outline with a light halo so it reads on paper and on forest. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px #fff;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Skip link: first focusable element on every page, targets <main id="main">. */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 200;
+  transform: translateY(-200%);
+  border-radius: 9999px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-lift);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+#main {
+  scroll-margin-top: 6rem;
+}
+
+#main:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Reveal (components/landing/motion-primitives.tsx): hidden only after JS arms it. */
+[data-reveal="armed"] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+[data-reveal="shown"] {
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 0.8, 0.2, 1),
+    transform 0.45s cubic-bezier(0.22, 0.8, 0.2, 1);
 }
 
 .spatial-shell {
   background:
-    radial-gradient(ellipse at 16% 18%, rgba(226, 205, 154, .2), transparent 34%),
-    radial-gradient(ellipse at 82% 75%, rgba(159, 188, 162, .22), transparent 38%),
-    #f2f1e9;
+    radial-gradient(ellipse at 16% 18%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 34%),
+    radial-gradient(ellipse at 82% 75%, color-mix(in srgb, var(--color-teal-300) 24%, transparent), transparent 38%),
+    var(--paper);
 }
 
 .spatial-world {
   background:
-    radial-gradient(ellipse at 50% 46%, rgba(255, 255, 250, .72), transparent 48%),
-    linear-gradient(130deg, rgba(231, 229, 215, .32), rgba(239, 242, 232, .2));
+    radial-gradient(ellipse at 50% 46%, color-mix(in srgb, var(--paper-raised) 72%, transparent), transparent 48%),
+    linear-gradient(
+      130deg,
+      color-mix(in srgb, var(--color-cream-100) 40%, transparent),
+      color-mix(in srgb, var(--color-teal-50) 30%, transparent)
+    );
 }
 
 .spatial-ambient {
   background:
-    radial-gradient(ellipse at 18% 24%, rgba(226, 195, 124, .2), transparent 31%),
-    radial-gradient(ellipse at 80% 28%, rgba(163, 194, 169, .2), transparent 30%),
-    radial-gradient(ellipse at 54% 92%, rgba(189, 172, 199, .12), transparent 36%);
+    radial-gradient(ellipse at 18% 24%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 31%),
+    radial-gradient(ellipse at 80% 28%, color-mix(in srgb, var(--color-teal-300) 22%, transparent), transparent 30%),
+    radial-gradient(ellipse at 54% 92%, color-mix(in srgb, var(--color-brand-200) 18%, transparent), transparent 36%);
 }
 
 .spatial-grain {
-  opacity: .36;
-  background-image: radial-gradient(rgba(36, 55, 45, .15) .7px, transparent .7px);
+  opacity: 0.36;
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 15%, transparent) 0.7px, transparent 0.7px);
   background-size: 17px 17px;
   mask-image: linear-gradient(to bottom, black, transparent 95%);
 }
 
 .spatial-mobile-glow {
-  background: radial-gradient(circle, rgba(238, 207, 125, .36), rgba(125, 159, 133, .13) 52%, transparent 72%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--gold) 36%, transparent),
+    color-mix(in srgb, var(--color-teal-400) 13%, transparent) 52%,
+    transparent 72%
+  );
 }
 
 .spatial-panel {
   transform-origin: center;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .spatial-world *,
-  .spatial-shell * {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-}
-
 .bg-grain {
-  background-image: radial-gradient(rgba(14, 16, 48, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1px);
   background-size: 18px 18px;
 }
 
 .bg-dot-grid {
-  background-image: radial-gradient(rgba(14, 16, 48, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 12%, transparent) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
@@ -144,6 +254,39 @@ body {
 }
 
 ::selection {
-  background: var(--brand-amber-400);
-  color: var(--brand-indigo-950);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* Reduced motion: stop every looping/decorative animation site-wide (spinners excepted). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *:not(.animate-spin),
+  *:not(.animate-spin)::before,
+  *:not(.animate-spin)::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-blob,
+  .animate-float,
+  .animate-float-slow,
+  .animate-pulse,
+  .animate-ping,
+  .animate-bounce,
+  .animate-pulse-ring,
+  .animate-marquee,
+  .animate-cue {
+    animation: none !important;
+  }
+
+  [data-reveal="armed"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

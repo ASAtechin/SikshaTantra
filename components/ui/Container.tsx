@@ -1,3 +1,4 @@
+/** Container / NarrowContainer (W0 foundation contract): page-width wrappers with responsive gutters. */
 import { cn } from "@/lib/utils";
 import { type HTMLAttributes } from "react";
 

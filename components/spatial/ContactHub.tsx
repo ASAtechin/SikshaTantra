@@ -1,99 +1,106 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Mail, MessageCircle, Phone, X } from "lucide-react";
-import { RequestDemoForm } from "@/components/sections/RequestDemoForm";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import { CalendarDays, Mail, MessageCircle, Phone } from "lucide-react";
+import { Dialog, DialogCloseButton } from "@/components/ui/Dialog";
+import { Button, buttonClasses } from "@/components/ui/Button";
+import { contact, CTA } from "@/lib/site";
 
-interface ContactHubProps {
-  onOpen?: () => void;
-}
+// Loaded only when the dialog first opens.
+const RequestDemoForm = dynamic(
+  () => import("@/components/sections/RequestDemoForm").then((m) => m.RequestDemoForm),
+  {
+    ssr: false,
+    loading: () => (
+      <p role="status" className="py-10 text-center text-sm text-ink-muted">
+        Loading the form…
+      </p>
+    ),
+  }
+);
 
-export function ContactHub({ onOpen }: ContactHubProps) {
+const linkClass =
+  "inline-flex min-h-10 items-center gap-2 rounded-full text-sm font-semibold text-ink underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950";
+
+/**
+ * Slim sticky action bar for phones and tablets ("Book a demo" + WhatsApp or call).
+ * It sits in normal flow at the end of the page (sticky, z-40), so it never covers the last content,
+ * and opens the demo request form in a Dialog. Hidden from lg, where the Navbar carries the CTA.
+ */
+export function ContactHub() {
   const [open, setOpen] = useState(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const trigger = triggerRef.current;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
-      if (trigger?.isConnected) trigger.focus();
-    };
-  }, [open]);
+  const close = () => setOpen(false);
 
   return (
     <>
-      <button
-        ref={triggerRef}
-        onClick={() => {
-          onOpen?.();
-          setOpen(true);
-        }}
-        className="group relative z-[60] flex items-center gap-2 rounded-full border border-white/75 bg-[#243d34] px-4 py-3 text-sm font-bold text-white shadow-[0_12px_40px_-18px_rgba(27,48,39,.7)] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e9c56e]"
-        aria-haspopup="dialog"
-        aria-expanded={open}
+      <div
+        className="sticky bottom-0 z-40 border-t border-line-soft bg-paper-raised/95 px-4 pt-2.5 backdrop-blur lg:hidden"
+        style={{ paddingBottom: "max(0.625rem, env(safe-area-inset-bottom))" }}
       >
-        <MessageCircle className="h-4 w-4 text-[#efd080]" />
-        <span>Talk with us</span>
-        <ArrowUpRight className="h-3.5 w-3.5 text-white/55 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </button>
-
-      {typeof document !== "undefined" && createPortal(
-        <AnimatePresence>
-          {open && (
-          <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-[#17211d]/45 p-2 backdrop-blur-sm sm:p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onMouseDown={(event) => {
-              if (event.target === event.currentTarget) setOpen(false);
-            }}
-          >
-            <motion.section
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="contact-hub-title"
-              initial={{ opacity: 0, y: 28, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.99 }}
-              transition={{ type: "spring", stiffness: 230, damping: 27 }}
-              className="flex max-h-[94dvh] w-full max-w-3xl flex-col overflow-hidden rounded-[24px] border border-white/80 bg-[#fbfaf5] shadow-[0_40px_120px_-35px_rgba(15,25,20,.55)] sm:rounded-[28px]"
+        <div className="mx-auto flex max-w-xl items-center gap-2">
+          <Button size="sm" className="flex-1" aria-haspopup="dialog" onClick={() => setOpen(true)}>
+            <CalendarDays aria-hidden="true" className="h-4 w-4" />
+            {CTA.primary}
+          </Button>
+          {contact.whatsappHref ? (
+            <a
+              href={contact.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonClasses({ variant: "outline", size: "sm", className: "flex-1 bg-white" })}
             >
-              <header className="flex items-start justify-between gap-4 border-b border-[#26312e]/10 px-5 py-4 sm:px-7">
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#638173]">Start a conversation</p>
-                  <h2 id="contact-hub-title" className="mt-1 font-display text-xl font-bold text-[#20322b]">Bring Siksha Tantra to your school</h2>
-                  <p className="mt-1 text-xs text-[#78847c]">A few details help us prepare a relevant walkthrough.</p>
-                </div>
-                <button ref={closeRef} onClick={() => setOpen(false)} className="rounded-full p-2 text-[#52615a] hover:bg-black/5" aria-label="Close contact form">
-                  <X className="h-5 w-5" />
-                </button>
-              </header>
-              <div className="overflow-y-auto p-5 sm:p-7">
-                <RequestDemoForm />
-                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#26312e]/10 pt-4 text-xs text-[#738077]">
-                  <a href="mailto:hello@shikshatantra.in" className="inline-flex items-center gap-1.5 hover:text-[#20322b]"><Mail className="h-3.5 w-3.5" /> hello@shikshatantra.in</a>
-                  <a href="tel:+919407174355" className="inline-flex items-center gap-1.5 hover:text-[#20322b]"><Phone className="h-3.5 w-3.5" /> +91 94071 74355</a>
-                </div>
-              </div>
-            </motion.section>
-          </motion.div>
+              <MessageCircle aria-hidden="true" className="h-4 w-4" />
+              WhatsApp
+            </a>
+          ) : (
+            <a
+              href={contact.phoneHref}
+              className={buttonClasses({ variant: "outline", size: "sm", className: "flex-1 bg-white" })}
+            >
+              <Phone aria-hidden="true" className="h-4 w-4" />
+              Call us
+            </a>
           )}
-        </AnimatePresence>,
-        document.body
-      )}
+        </div>
+      </div>
+
+      <Dialog open={open} onClose={close} labelledBy="contact-hub-title" describedBy="contact-hub-desc" size="lg" panelClassName="bg-paper-raised">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 id="contact-hub-title" className="font-display text-2xl font-bold text-ink">
+              {CTA.primary}
+            </h2>
+            <p id="contact-hub-desc" className="mt-1 text-sm leading-relaxed text-ink-muted">
+              Tell us about your school and we will plan a walkthrough around it.
+            </p>
+          </div>
+          <DialogCloseButton onClick={close} />
+        </div>
+        <div className="mt-6">
+          <RequestDemoForm />
+        </div>
+        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-1 border-t border-line-soft pt-4">
+          <a href={contact.phoneHref} className={linkClass}>
+            <Phone aria-hidden="true" className="h-4 w-4 text-sage" /> {contact.phoneDisplay}
+          </a>
+          {contact.emailHref ? (
+            <a href={contact.emailHref} className={linkClass}>
+              <Mail aria-hidden="true" className="h-4 w-4 text-sage" /> {contact.email}
+            </a>
+          ) : null}
+          {contact.whatsappHref ? (
+            <a href={contact.whatsappHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
+              <MessageCircle aria-hidden="true" className="h-4 w-4 text-sage" /> WhatsApp us
+            </a>
+          ) : null}
+          {contact.bookingHref ? (
+            <a href={contact.bookingHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
+              <CalendarDays aria-hidden="true" className="h-4 w-4 text-sage" /> Pick a time
+            </a>
+          ) : null}
+        </div>
+      </Dialog>
     </>
   );
 }

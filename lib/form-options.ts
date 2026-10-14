@@ -4,6 +4,7 @@ import {
   ClipboardList,
   Laptop2,
   BookOpen,
+  BookOpenText,
   MoreHorizontal,
   UserPlus,
   CalendarCheck2,
@@ -14,12 +15,22 @@ import {
   Library,
   Users,
   ShieldCheck,
+  KeyRound,
+  ChartColumn,
   Monitor,
   LayoutGrid,
   School,
+  Phone,
+  MessageCircle,
+  Mail,
   type LucideIcon,
 } from "lucide-react";
-import type { roleOptions, studentCountOptions, moduleOptions } from "@/lib/validation";
+import type {
+  roleOptions,
+  studentCountOptions,
+  moduleOptions,
+  contactPreferenceOptions,
+} from "@/lib/validation";
 
 export const roleIcons: Record<(typeof roleOptions)[number], LucideIcon> = {
   "Principal / Head of School": GraduationCap,
@@ -49,6 +60,15 @@ export const moduleIcons: Record<(typeof moduleOptions)[number], LucideIcon> = {
   "Library & Inventory": Library,
   "HR & Staff": Users,
   "Child Safeguarding": ShieldCheck,
+  "Identity & Access": KeyRound,
+  "Governance & Analytics": ChartColumn,
   "DigiBoard Signage": Monitor,
+  "Learning library": BookOpenText,
   "Full Suite": LayoutGrid,
+};
+
+export const contactPreferenceIcons: Record<(typeof contactPreferenceOptions)[number], LucideIcon> = {
+  Phone,
+  WhatsApp: MessageCircle,
+  Email: Mail,
 };
