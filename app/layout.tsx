@@ -6,7 +6,9 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { ReducedMotionProvider } from "@/components/landing/ReducedMotionProvider";
+import { AttributionCapture } from "@/components/layout/AttributionCapture";
 import { contact, pageMetadata, siteName, siteUrl } from "@/lib/site";
 
 // Variable fonts (no fixed weights) so every weight and the italic face are real, not synthesised.
@@ -116,6 +118,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         />
         <ReducedMotionProvider>{children}</ReducedMotionProvider>
+        <AttributionCapture />
+        <Analytics />
       </body>
     </html>
   );

@@ -52,6 +52,14 @@ const leadRequestSchema = new Schema(
       default: "new",
     },
     source: { type: String, default: "website" },
+    /** Which link or site brought the visitor (utm tags or referrer); see lib/attribution.ts. */
+    attribution: {
+      source: { type: String, trim: true, maxlength: 200 },
+      medium: { type: String, trim: true, maxlength: 200 },
+      campaign: { type: String, trim: true, maxlength: 200 },
+      referrer: { type: String, trim: true, maxlength: 200 },
+      landingPage: { type: String, trim: true, maxlength: 200 },
+    },
   },
   { timestamps: true }
 );
