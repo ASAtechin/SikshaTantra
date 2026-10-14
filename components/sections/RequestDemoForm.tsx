@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState, type FormEvent, type K
 import { useForm, useWatch, type FieldErrors, type UseFormRegisterReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@vercel/analytics";
 import {
   CheckCircle2,
   Loader2,
@@ -32,6 +33,7 @@ import {
 } from "@/lib/validation";
 import { roleIcons, studentCountMeta, moduleIcons, contactPreferenceIcons } from "@/lib/form-options";
 import { contact } from "@/lib/site";
+import { readAttribution } from "@/lib/attribution";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -341,7 +343,7 @@ export function RequestDemoForm() {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, turnstileToken: turnstileToken || undefined }),
+        body: JSON.stringify({ ...data, attribution: readAttribution(), turnstileToken: turnstileToken || undefined }),
       });
       const response = (await res.json().catch(() => null)) as
         | { success?: boolean; error?: string; acknowledged?: boolean }
@@ -360,6 +362,7 @@ export function RequestDemoForm() {
         }
         return;
       }
+      track("Demo request", { source: readAttribution()?.source ?? "unknown" });
       setAcknowledged(response.acknowledged === true);
       setStatus("success");
       setAnnouncement("");

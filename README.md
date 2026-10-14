@@ -105,6 +105,21 @@ Before deployment:
 4. Configure the production domain, HTTPS, monitoring, backups/retention for lead data, and a production rate limiter appropriate to the hosting environment.
 5. Submit a real end-to-end request and verify delivery to the intended inbox before announcing the form as live.
 
+## Analytics and Lead Attribution
+
+- **Vercel Web Analytics** (`<Analytics />` in `app/layout.tsx`) counts page views without cookies. Enable it once in the Vercel project (Analytics tab) or the script is not served. A successful demo request also sends a `Demo request` custom event with its source (custom events need a Vercel Pro plan).
+- **Lead attribution** (`lib/attribution.ts`): the first page of a tab session records `utm_source`/`utm_medium`/`utm_campaign` (or `?ref=`), the external referrer and the landing page in `sessionStorage`. The demo form sends it with the lead; it appears as "Came from" in the lead email and as `attribution` in MongoDB.
+- Tag every outreach link so leads show their channel, for example:
+  - WhatsApp: `https://www.shikshatantra.shop/?utm_source=whatsapp&utm_campaign=bengaluru-principals`
+  - Brochure QR code: `https://www.shikshatantra.shop/request-demo?utm_source=brochure&utm_medium=qr&utm_campaign=school-visits`
+  - LinkedIn post: `https://www.shikshatantra.shop/?utm_source=linkedin&utm_medium=social`
+- The `/privacy` notice describes both; keep it in step with any change here.
+
+## Search Engines
+
+- Google Search Console and Bing Webmaster Tools are verified by the meta tags in `app/layout.tsx` (Google also by `public/googlee2077de8374a0d66.html`). Submit `https://www.shikshatantra.shop/sitemap.xml` in both.
+- `npm run indexnow` submits every sitemap URL to IndexNow (Bing, Yandex and others) using the key file `public/9d87829647ba6d8baf46e25cb9c9ce19.txt`. Run it after a production deploy that adds or changes pages.
+
 ## Data and Security Notes
 
 - `.env.local` and other `.env.*` files are ignored by Git; `.env.example` contains blank placeholders only.
@@ -119,4 +134,5 @@ npm run dev      # local development
 npm run build    # production build and type-check
 npm run start    # serve the production build
 npm run lint     # run ESLint
+npm run indexnow # submit the live sitemap to IndexNow (after deploy)
 ```

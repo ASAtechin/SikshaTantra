@@ -58,6 +58,25 @@ const requiredText = (label: string, max: number) =>
 const optionalText = (max: number) =>
   z.string().trim().max(max, { error: `Keep this under ${max} characters` }).optional();
 
+// Attribution is advisory: over-long values are cut, and a malformed object is dropped (see `.catch`
+// below), so it can never block a real lead.
+const attributionText = z
+  .string()
+  .trim()
+  .transform((value) => value.slice(0, 200))
+  .optional();
+
+/** How the visitor reached the site (first touch in the tab session); see lib/attribution.ts. */
+export const leadAttributionSchema = z.object({
+  source: attributionText,
+  medium: attributionText,
+  campaign: attributionText,
+  referrer: attributionText,
+  landingPage: attributionText,
+});
+
+export type LeadAttribution = z.infer<typeof leadAttributionSchema>;
+
 export const leadRequestSchema = z.object({
   // Step 1 — school
   schoolName: requiredText("School name", 160),
@@ -105,6 +124,9 @@ export const leadRequestSchema = z.object({
   consent: z.boolean({ error: "Please tick this box so we can contact you" }).refine((value) => value === true, {
     error: "Please tick this box so we can contact you",
   }),
+
+  /** Sent automatically by the form; never shown to the visitor as a field. */
+  attribution: leadAttributionSchema.optional().catch(undefined),
 
   /** Cloudflare Turnstile token; only checked by the API when TURNSTILE_SECRET_KEY is set. */
   turnstileToken: z.string().max(2048).optional(),

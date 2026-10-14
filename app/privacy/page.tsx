@@ -92,6 +92,7 @@ export default function PrivacyPage() {
                   about your needs: the areas you are interested in, the system you use today (and the name of your
                   current ERP or software, if you give it), when you would like to start, and an optional message;
                 </li>
+                <li>which website or campaign link brought you to this site, if your browser noted one (see below);</li>
                 <li>your confirmation that we may contact you about the request, and the time you gave it.</li>
               </ul>
               <p>
@@ -113,8 +114,19 @@ export default function PrivacyPage() {
                 this site&apos;s data in your browser.
               </p>
               <p>
-                <strong>No advertising or analytics trackers.</strong> This website does not use advertising or
-                analytics tracking scripts.
+                <strong>Visit statistics.</strong> We use Vercel Web Analytics to count visits: which pages are viewed,
+                the referring website, and your country, browser and device type. It does not use cookies and does not
+                follow you across other websites. Visitors are told apart only by a hash of the request that is
+                discarded after 24 hours, so it cannot be used to identify you. We see totals, not individual visitors.
+              </p>
+              <p>
+                <strong>How you found us.</strong> When you arrive, your browser notes (in session storage, cleared
+                when you close the tab) the website or campaign link that brought you and the first page you opened.
+                It is sent to us only if you submit the demo form, as part of your request.
+              </p>
+              <p>
+                <strong>No advertising trackers.</strong> This website does not use advertising or cross-site tracking
+                scripts, and does not set cookies for analytics.
               </p>
             </Section>
 
@@ -122,7 +134,8 @@ export default function PrivacyPage() {
               <p>
                 We use the details you send only to respond to your request: to contact you, arrange and prepare a demo,
                 and send you an email confirming we received it. That confirmation repeats your name, school, boards and
-                chosen areas, but not your message. We do not sell your information or use it for advertising.
+                chosen areas, but not your message. We use visit statistics and how you found us only to understand
+                which pages and outreach channels are useful. We do not sell your information or use it for advertising.
               </p>
             </Section>
 
@@ -137,7 +150,8 @@ export default function PrivacyPage() {
                   Atlas database, so that we can keep track of enquiries.
                 </li>
                 <li>
-                  <strong>Hosting:</strong> the website runs on Vercel.
+                  <strong>Hosting and visit statistics:</strong> the website runs on Vercel, which also provides the
+                  visit statistics described above.
                 </li>
               </ul>
               <p>

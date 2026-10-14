@@ -68,6 +68,20 @@ function oneLine(value: string): string {
   return value.replace(/[\r\n]+/g, " ").trim();
 }
 
+/** "whatsapp / social · campaign bengaluru-principals · landed on /pricing" — or empty when unknown. */
+function describeAttribution({ attribution }: LeadRecord): string {
+  if (!attribution?.source) return "";
+  const channel = attribution.medium ? `${attribution.source} / ${attribution.medium}` : attribution.source;
+  return [
+    channel,
+    attribution.campaign && `campaign ${attribution.campaign}`,
+    attribution.referrer && attribution.referrer !== attribution.source && `via ${attribution.referrer}`,
+    attribution.landingPage && `landed on ${attribution.landingPage}`,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
 function leadRows(lead: LeadRecord): [string, string][] {
   const currentSystem = lead.currentSystem
     ? lead.currentErp
@@ -89,6 +103,7 @@ function leadRows(lead: LeadRecord): [string, string][] {
     ["Current system", currentSystem],
     ["Planned go-live", lead.goLive],
     ["Message", lead.message],
+    ["Came from", describeAttribution(lead)],
     ["Consent", "Agreed to be contacted about this request"],
   ];
   return rows.filter((row): row is [string, string] => !!row[1]);
