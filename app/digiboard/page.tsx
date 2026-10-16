@@ -65,8 +65,8 @@ const workingToday: Item[] = [
   },
   {
     icon: Siren,
-    title: "Emergency broadcast to displays",
-    desc: "An alert message pushed to the screens on campus.",
+    title: "Notices on displays",
+    desc: "A message set by the administrator and shown on the campus screens. It does not replace the school's alarm, bell or PA system.",
   },
   {
     icon: CloudSun,
@@ -117,7 +117,7 @@ const useCases = [
   { title: "Reception and lobby", desc: "Today's events and notices suitable for visitors." },
   { title: "Corridors and classroom doors", desc: "The current period, subject and teacher for each room." },
   { title: "Staff room", desc: "The day's substitutions, room changes and internal notices." },
-  { title: "Gates and assembly points", desc: "Emergency messages during drills and incidents." },
+  { title: "Gates and assembly points", desc: "Drill and incident messages, alongside the school's alarm and PA system." },
 ];
 
 const requirements: Item[] = [
