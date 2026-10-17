@@ -210,7 +210,7 @@ export const modules: ModuleDetail[] = [
       "Each guardian is set up separately: one may see fees and report cards, another only notices and pickup.",
       "Designed with the Digital Personal Data Protection Act, 2023 in mind: parents and students are data principals, and a child's data is processed with verifiable parental consent.",
       "Requests from a data principal to see or correct their data are designed to be logged and tracked to completion.",
-      "An optional second sign-in factor for sensitive staff roles such as fee and administrator accounts.",
+      "A required second sign-in factor for sensitive staff roles such as fee and administrator accounts.",
       "Access is designed to end when a staff member leaves or a guardian relationship is removed.",
     ],
   },

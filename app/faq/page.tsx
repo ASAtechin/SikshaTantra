@@ -23,7 +23,7 @@ interface FaqItem {
 const faqs: FaqItem[] = [
   {
     q: "Is Shiksha Tantra live today?",
-    a: "Shiksha Tantra is in early access. DigiBoard scheduling, substitution notices and emergency broadcast work today as a working foundation. The ERP modules are being built with our founding schools, so in a demo we tell you plainly what is ready for your school and what is planned.",
+    a: "Shiksha Tantra is in early access. DigiBoard scheduling, substitution notices and display notices work today as a working foundation. Durable emergency alerts for the displays are being built. The ERP modules are being built with our founding schools, so in a demo we tell you plainly what is ready for your school and what is planned.",
   },
   {
     q: "Which boards do you support?",
