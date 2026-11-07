@@ -21,7 +21,7 @@ const RequestDemoForm = dynamic(
 );
 
 const linkClass =
-  "inline-flex min-h-10 items-center gap-2 rounded-full text-sm font-semibold text-ink underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950";
+  "inline-flex min-h-10 items-center gap-2 rounded-control text-sm font-semibold text-ink underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950";
 
 /**
  * Slim sticky action bar for phones and tablets ("Book a demo" + WhatsApp or call).
@@ -35,7 +35,7 @@ export function ContactHub() {
   return (
     <>
       <div
-        className="sticky bottom-0 z-40 border-t border-line-soft bg-paper-raised/95 px-4 pt-2.5 backdrop-blur lg:hidden"
+        className="sticky bottom-0 z-40 border-t border-line-soft bg-paper-raised px-4 pt-2.5 lg:hidden"
         style={{ paddingBottom: "max(0.625rem, env(safe-area-inset-bottom))" }}
       >
         <div className="mx-auto flex max-w-xl items-center gap-2">

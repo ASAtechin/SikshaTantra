@@ -111,8 +111,8 @@ export function AudienceStrip() {
           {audiences.map((a, index) => (
             <li key={a.title}>
               <Reveal delay={index * 0.04} className="h-full">
-                <div className="flex h-full flex-col rounded-3xl border border-line-soft bg-white/80 p-6">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-forest text-gold">
+                <div className="flex h-full flex-col rounded-card border border-line-soft bg-white/80 shadow-card p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-control bg-forest text-gold">
                     <a.icon aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <h3 className="mt-5 font-display text-lg font-semibold text-ink">{a.title}</h3>
@@ -122,7 +122,7 @@ export function AudienceStrip() {
                       <li key={link.href}>
                         <Link
                           href={link.href}
-                          className={`inline-flex min-h-10 items-center gap-1.5 rounded-full text-sm font-bold text-brand-700 underline-offset-4 hover:underline ${focusRing}`}
+                          className={`inline-flex min-h-10 items-center gap-1.5 rounded-control text-sm font-bold text-brand-700 underline-offset-4 hover:underline ${focusRing}`}
                         >
                           {link.label}
                           <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -185,16 +185,16 @@ export function ModuleShowcase() {
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {groups.map((group, index) => (
             <Reveal key={group.title} delay={Math.min(index * 0.04, 0.2)} className="h-full">
-              <div className="h-full rounded-3xl border border-line-soft bg-paper-raised p-5 sm:p-6">
-                <h3 className="text-xs font-bold uppercase tracking-[0.08em] text-ochre">{group.title}</h3>
+              <div className="h-full rounded-card border border-line-soft bg-paper-raised shadow-card p-5 sm:p-6">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.08em] text-ochre">{group.title}</h3>
                 <ul className="mt-3 flex flex-col gap-1">
                   {group.items.map((module) => (
                     <li key={module.slug}>
                       <Link
                         href={`/features/${module.slug}`}
-                        className={`group -mx-2 flex items-start gap-3 rounded-2xl p-2 transition-colors hover:bg-white ${focusRing}`}
+                        className={`group -mx-2 flex items-start gap-3 rounded-control p-2 transition-colors hover:bg-white ${focusRing}`}
                       >
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest text-gold">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-forest text-gold">
                           <module.icon aria-hidden="true" className="h-5 w-5" />
                         </span>
                         <span className="min-w-0 flex-1">
@@ -242,16 +242,17 @@ export function SafeguardingBand() {
     <section aria-labelledby="safeguarding-title" className="py-20 sm:py-24">
       <Container>
         <Reveal>
-          <div className="grid items-center gap-10 rounded-[32px] border border-teal-200 bg-teal-50 px-6 py-12 sm:px-12 lg:grid-cols-[auto_1fr] lg:gap-14 lg:px-16">
-            <span className="flex h-20 w-20 items-center justify-center rounded-[28px] bg-forest text-gold shadow-[var(--shadow-soft)] lg:h-28 lg:w-28">
+          <div className="grid items-center gap-10 rounded-card border border-teal-200 bg-teal-50 px-6 py-12 sm:px-12 lg:grid-cols-[auto_1fr] lg:gap-14 lg:px-16">
+            <span className="flex h-20 w-20 items-center justify-center rounded-card bg-forest text-gold lg:h-28 lg:w-28">
               <ShieldCheck aria-hidden="true" className="h-10 w-10 lg:h-14 lg:w-14" />
             </span>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">Child safety</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-sage">Child safety</p>
               <h2 id="safeguarding-title" className="mt-2 text-balance font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl">
                 Know who may collect every child
               </h2>
-              <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-muted">
+              <span aria-hidden="true" className="gold-rule mt-4" />
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-muted">
                 The safeguarding module is designed around the questions a school has to answer at the gate and in a crisis.
               </p>
               <ul className="mt-6 flex flex-col gap-3">
@@ -310,11 +311,11 @@ export function BeforeAfter() {
 
         <div className="mt-14 grid gap-5 lg:grid-cols-2 xl:gap-8">
           <Reveal className="h-full">
-            <div className="h-full rounded-3xl border border-red-200 bg-red-50/60 p-7 sm:p-8">
+            <div className="h-full rounded-card border border-red-200 bg-red-50/60 p-7 sm:p-8">
               <h3 className="font-display text-lg font-semibold text-ink">Without a connected system</h3>
               <ul className="mt-6 flex flex-col gap-3">
                 {before.map((text) => (
-                  <li key={text} className="flex items-center gap-3 rounded-2xl bg-white/70 p-3.5 text-sm font-semibold leading-snug text-ink">
+                  <li key={text} className="flex items-center gap-3 rounded-control bg-white/70 p-3.5 text-sm font-semibold leading-snug text-ink">
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-700">
                       <X aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={3} />
                     </span>
@@ -326,11 +327,11 @@ export function BeforeAfter() {
           </Reveal>
 
           <Reveal delay={0.08} className="h-full">
-            <div className="h-full rounded-3xl border border-teal-200 bg-teal-50/70 p-7 sm:p-8">
+            <div className="h-full rounded-card border border-teal-200 bg-teal-50/70 p-7 sm:p-8">
               <h3 className="font-display text-lg font-semibold text-ink">What Shiksha Tantra is designed to do</h3>
               <ul className="mt-6 flex flex-col gap-3">
                 {after.map((text) => (
-                  <li key={text} className="flex items-center gap-3 rounded-2xl bg-white/80 p-3.5 text-sm font-semibold leading-snug text-ink">
+                  <li key={text} className="flex items-center gap-3 rounded-control bg-white/80 p-3.5 text-sm font-semibold leading-snug text-ink">
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-teal-500 text-white">
                       <Check aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={3} />
                     </span>
@@ -366,19 +367,17 @@ export function DigiBoardBand() {
     <section aria-labelledby="digiboard-title" className="py-20 sm:py-24">
       <Container>
         <Reveal>
-          <div className="relative overflow-hidden rounded-[32px] bg-brand-950 px-6 py-14 text-white sm:px-12 lg:px-16">
-            <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full bg-amber-500/15 blur-3xl" />
-            <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-teal-500/15 blur-3xl" />
-
+          <div className="relative overflow-hidden rounded-card bg-brand-950 px-6 py-14 text-white sm:px-12 lg:px-16">
             <div className="relative grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
               <div>
-                <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-amber-300">
+                <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-amber-300">
                   <Monitor aria-hidden="true" className="h-3.5 w-3.5" /> DigiBoard
                 </p>
                 <h2 id="digiboard-title" className="mt-5 text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl">
                   Campus screens fed by the same records
                 </h2>
-                <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/85">
+                <span aria-hidden="true" className="gold-rule mt-5" />
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
                   Timetable changes, substitutions and announcements come from the records the office already keeps,
                   so screens are designed not to show a schedule that has since changed.
                 </p>
@@ -390,7 +389,7 @@ export function DigiBoardBand() {
 
               <ul className="grid gap-3 sm:grid-cols-2">
                 {digiboardPoints.map((item) => (
-                  <li key={item.title} className="rounded-2xl border border-white/15 bg-white/5 p-4">
+                  <li key={item.title} className="rounded-card border border-white/15 bg-white/5 p-4">
                     <p className="font-display text-base font-semibold text-amber-300">{item.title}</p>
                     <p className="mt-1 text-sm leading-relaxed text-white/85">{item.desc}</p>
                   </li>
@@ -430,7 +429,7 @@ export function OnboardingTeaser() {
           {onboardingSteps.map((step, index) => (
             <li key={step.title}>
               <Reveal delay={index * 0.04} className="h-full">
-                <div className="h-full rounded-3xl border border-line-soft bg-paper-raised p-6">
+                <div className="h-full rounded-card border border-line-soft bg-paper-raised shadow-card p-6">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500/20 font-display text-sm font-semibold text-amber-700">
                     {index + 1}
                   </span>
@@ -480,9 +479,9 @@ export function FaqTeaser() {
         </Reveal>
         <div className="mt-10 flex flex-col gap-3">
           {faqs.map((item) => (
-            <details key={item.q} className="group rounded-2xl border border-line-soft bg-white/80 open:bg-white">
+            <details key={item.q} className="group rounded-card border border-line-soft bg-white/80 shadow-card open:bg-white">
               <summary
-                className={`flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-display text-base font-semibold text-ink [&::-webkit-details-marker]:hidden ${focusRing}`}
+                className={`flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-card px-5 py-4 font-display text-base font-semibold text-ink [&::-webkit-details-marker]:hidden ${focusRing}`}
               >
                 {item.q}
                 <ChevronDown aria-hidden="true" className="h-5 w-5 shrink-0 text-ink-muted transition-transform group-open:rotate-180" />
@@ -492,10 +491,10 @@ export function FaqTeaser() {
           ))}
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
-          <Link href="/faq" className={`inline-flex min-h-10 items-center gap-1.5 rounded-full text-sm font-bold text-brand-700 underline-offset-4 hover:underline ${focusRing}`}>
+          <Link href="/faq" className={`inline-flex min-h-10 items-center gap-1.5 rounded-control text-sm font-bold text-brand-700 underline-offset-4 hover:underline ${focusRing}`}>
             Read all questions <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
-          <Link href="/pricing" className={`inline-flex min-h-10 items-center gap-1.5 rounded-full text-sm font-bold text-brand-700 underline-offset-4 hover:underline ${focusRing}`}>
+          <Link href="/pricing" className={`inline-flex min-h-10 items-center gap-1.5 rounded-control text-sm font-bold text-brand-700 underline-offset-4 hover:underline ${focusRing}`}>
             How pricing works <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
         </div>
@@ -513,7 +512,7 @@ export function ClosingCta() {
     <section aria-labelledby="closing-title" className="pb-24 pt-4">
       <Container>
         <Reveal>
-          <div className="mx-auto max-w-3xl rounded-[32px] border border-line-soft bg-white/80 px-6 py-14 text-center sm:px-12">
+          <div className="mx-auto max-w-3xl rounded-card border border-line-soft bg-white/80 shadow-card px-6 py-14 text-center sm:px-12">
             <SectionHeading
               id="closing-title"
               eyebrow="Next step"

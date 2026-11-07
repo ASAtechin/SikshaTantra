@@ -124,13 +124,13 @@ export function SubjectCover({ theme, className, size = "md" }: { theme: Subject
   const Icon = tokens.icon;
   const iconSize = size === "lg" ? "h-10 w-10" : size === "sm" ? "h-5 w-5" : "h-7 w-7";
   return (
-    <div aria-hidden="true" className={`relative overflow-hidden ${className ?? ""}`} style={{ background: `linear-gradient(150deg, ${tokens.soft}, #ffffff 120%)` }}>
+    <div aria-hidden="true" className={`relative overflow-hidden ${className ?? ""}`} style={{ background: tokens.soft }}>
       <svg viewBox="0 0 160 160" className="absolute inset-0 h-full w-full" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
         <Pattern pattern={tokens.pattern} accent={tokens.accent} />
       </svg>
       <div className="absolute left-3 top-3 h-1.5 w-8 rounded-full" style={{ background: tokens.accent, opacity: 0.5 }} aria-hidden="true" />
       <div className="relative flex h-full items-center justify-center">
-        <span className="flex items-center justify-center rounded-2xl p-3 shadow-sm" style={{ background: "#ffffffcc", color: tokens.accent }}>
+        <span className="flex items-center justify-center rounded-card p-3 shadow-sm" style={{ background: "#ffffffcc", color: tokens.accent }}>
           <Icon className={iconSize} strokeWidth={1.6} />
         </span>
       </div>

@@ -52,8 +52,8 @@ export function Footer() {
       <Container className="py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-12">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" aria-label="Shiksha Tantra home" className="inline-flex items-center gap-2.5 rounded-xl focus-visible:outline-amber-300">
-              <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500 text-brand-950">
+            <Link href="/" aria-label="Shiksha Tantra home" className="inline-flex items-center gap-2.5 rounded-control focus-visible:outline-amber-300">
+              <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-control bg-amber-500 text-brand-950">
                 <GraduationCap className="h-5 w-5" />
               </span>
               <span className="font-display text-lg font-semibold">
@@ -65,7 +65,7 @@ export function Footer() {
               attendance, fees, safeguarding and more share one set of school records.
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/85">
-              <span className="mr-2 inline-flex items-center rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-bold uppercase tracking-[0.08em] text-amber-300">
+              <span className="mr-2 inline-flex items-center rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.08em] text-amber-300">
                 {siteStatus.label}
               </span>
               {siteStatus.short}
@@ -107,7 +107,7 @@ export function Footer() {
             <nav key={col.title} aria-labelledby={`footer-${col.title.toLowerCase()}`}>
               <h2
                 id={`footer-${col.title.toLowerCase()}`}
-                className="text-xs font-bold uppercase tracking-[0.08em] text-amber-300"
+                className="text-xs font-semibold uppercase tracking-[0.08em] text-amber-300"
               >
                 {col.title}
               </h2>

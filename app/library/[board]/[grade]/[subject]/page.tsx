@@ -56,7 +56,7 @@ export default async function BookPage({ params }: { params: Params }) {
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[300px_minmax(0,1fr)]">
             <div className="space-y-5 lg:sticky lg:top-24 lg:self-start">
-              <SubjectCover theme={book.theme} size="lg" className="aspect-[4/3] w-full rounded-3xl border border-line-soft lg:aspect-[3/4]" />
+              <SubjectCover theme={book.theme} size="lg" className="aspect-[4/3] w-full rounded-card border border-line-soft lg:aspect-[3/4]" />
               <dl className="grid grid-cols-3 gap-2 text-center">
                 <Stat icon={<Layers className="h-4 w-4" aria-hidden="true" />} value={book.chapters.length} label="chapters" />
                 <Stat icon={<BookOpen className="h-4 w-4" aria-hidden="true" />} value={book.topicCount} label="topics" />
@@ -82,10 +82,10 @@ export default async function BookPage({ params }: { params: Params }) {
                   <li key={chapter.number}>
                     <Link
                       href={chapterHref(book, chapter.number)}
-                      className="group flex w-full items-start gap-4 rounded-2xl border border-line-soft bg-white p-5 transition hover:border-line hover:shadow-sm"
+                      className="group flex w-full items-start gap-4 rounded-card border border-line-soft bg-white shadow-card p-5 transition hover:border-line"
                     >
                       <span
-                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-base font-semibold"
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control text-base font-semibold"
                         style={{ background: tokens.soft, color: tokens.ink }}
                         aria-hidden="true"
                       >
@@ -114,7 +114,7 @@ export default async function BookPage({ params }: { params: Params }) {
               </ol>
 
               {book.chapters.length < 2 && (
-                <p className="mt-4 rounded-2xl border border-dashed border-line bg-white p-5 text-base text-ink-muted">
+                <p className="mt-4 rounded-card border border-dashed border-line bg-white p-5 text-base text-ink-muted">
                   More chapters for this class are being written.
                 </p>
               )}
@@ -131,7 +131,7 @@ export default async function BookPage({ params }: { params: Params }) {
 
 function Stat({ icon, value, label }: { icon: ReactNode; value: number; label: string }) {
   return (
-    <div className="flex flex-col-reverse rounded-2xl border border-line-soft bg-white px-2 py-3">
+    <div className="flex flex-col-reverse rounded-card border border-line-soft bg-white shadow-card px-2 py-3">
       <dt className="text-xs text-ink-muted">{label}</dt>
       <dd className="text-lg font-semibold text-ink">
         <span className="mb-1 flex justify-center text-ink-muted">{icon}</span>

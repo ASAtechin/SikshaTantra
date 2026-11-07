@@ -25,7 +25,7 @@ export function StatusBanner({ tone = "dark", className }: StatusBannerProps) {
       <p className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-2 gap-y-1">
         <span
           className={cn(
-            "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-[0.08em]",
+            "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.08em]",
             dark ? "bg-white/10 text-amber-300" : "bg-amber-500/15 text-amber-700"
           )}
         >

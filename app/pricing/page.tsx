@@ -85,10 +85,10 @@ export default function PricingPage() {
         >
           <ul className="grid gap-4 sm:grid-cols-2">
             {factors.map((f) => (
-              <li key={f.title} className="rounded-2xl border border-line-soft bg-white p-6">
+              <li key={f.title} className="rounded-card border border-line-soft bg-white shadow-card p-6">
                 <span
                   aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-950 text-amber-400"
+                  className="flex h-10 w-10 items-center justify-center rounded-control bg-brand-950 text-amber-400"
                 >
                   <f.icon className="h-5 w-5" />
                 </span>
@@ -132,7 +132,7 @@ export default function PricingPage() {
         <ContentSection id="pricing-questions" tone="raised" title="Common pricing questions">
           <dl className="flex flex-col gap-6">
             {questions.map((item) => (
-              <div key={item.q} className="rounded-2xl border border-line-soft bg-white p-6">
+              <div key={item.q} className="rounded-card border border-line-soft bg-white shadow-card p-6">
                 <dt className="font-display text-lg font-semibold text-ink">{item.q}</dt>
                 <dd className="mt-2 text-base leading-relaxed text-ink-muted">{item.a}</dd>
               </div>

@@ -54,10 +54,6 @@ export default async function ModuleDetailPage({
       <Navbar />
       <main id="main" tabIndex={-1} className="flex-1">
         <section aria-labelledby="module-title" className="relative overflow-hidden pb-16 pt-10">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-dot-grid opacity-30 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]"
-          />
           <Container>
             <nav aria-label="Breadcrumb">
               <ol className="flex flex-wrap items-center gap-1 text-sm text-ink-muted">
@@ -90,11 +86,12 @@ export default async function ModuleDetailPage({
                 <Badge>{mod.group}</Badge>
                 <h1
                   id="module-title"
-                  className="mt-6 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl xl:text-5xl"
+                  className="mt-3 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl xl:text-5xl"
                 >
                   {mod.name}
                 </h1>
-                <p className="mt-4 text-balance text-xl font-semibold text-amber-700">{mod.tagline}</p>
+                <span aria-hidden="true" className="gold-rule mt-5" />
+                <p className="mt-5 text-balance text-xl font-semibold text-amber-700">{mod.tagline}</p>
                 <p className="mt-4 max-w-xl text-balance text-lg leading-relaxed text-ink-muted">{mod.summary}</p>
                 <p className="mt-4 flex max-w-xl items-start gap-2 text-ink-muted">
                   <Users className="mt-1 h-4 w-4 shrink-0 text-brand-600" aria-hidden="true" />
@@ -103,12 +100,12 @@ export default async function ModuleDetailPage({
                   </span>
                 </p>
                 {mod.currentState ? (
-                  <p className="mt-4 max-w-xl rounded-2xl border border-teal-700/20 bg-teal-50 px-4 py-3 text-sm text-teal-700">
+                  <p className="mt-4 max-w-xl rounded-card border border-teal-700/20 bg-teal-50 px-4 py-3 text-sm text-teal-700">
                     {mod.currentState}
                   </p>
                 ) : null}
                 <p className="mt-4 max-w-xl text-sm text-ink-muted">
-                  <span className="mr-2 inline-flex rounded-full bg-amber-500/15 px-2.5 py-0.5 text-xs font-bold uppercase tracking-[0.06em] text-amber-700">
+                  <span className="mr-2 inline-flex rounded-full bg-amber-500/15 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.06em] text-amber-700">
                     {siteStatus.label}
                   </span>
                   {siteStatus.text}
@@ -126,7 +123,7 @@ export default async function ModuleDetailPage({
                   </LinkButton>
                 </div>
               </div>
-              <ModuleMockup slug={mod.slug} kind={mod.mockup} accent={mod.accent} />
+              <ModuleMockup slug={mod.slug} kind={mod.mockup} />
             </div>
           </Container>
         </section>
@@ -138,12 +135,12 @@ export default async function ModuleDetailPage({
             </h2>
             <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {mod.steps.map((s, i) => (
-                <li key={s.title} className="rounded-2xl border border-line-soft bg-white p-6">
+                <li key={s.title} className="rounded-card border border-line-soft bg-white shadow-card p-6">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand-700">
                       <s.icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span className="text-xs font-bold uppercase tracking-[0.08em] text-amber-700">Step {i + 1}</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.08em] text-ochre">Step {i + 1}</span>
                   </div>
                   <h3 className="mt-4 font-display text-base font-semibold text-ink">{s.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{s.desc}</p>
@@ -155,7 +152,7 @@ export default async function ModuleDetailPage({
 
         <section aria-labelledby="covers-title" className="pb-16">
           <Container>
-            <div className={`rounded-[2.5rem] bg-gradient-to-br p-6 sm:p-12 ${mod.accent}`}>
+            <div className="rounded-card border border-line-soft bg-brand-50 p-6 sm:p-12">
               <h2 id="covers-title" className="font-display text-2xl font-semibold text-ink sm:text-3xl">
                 What the module covers
               </h2>
@@ -163,9 +160,9 @@ export default async function ModuleDetailPage({
                 {mod.capabilities.map((c) => (
                   <li
                     key={c.label}
-                    className="flex items-center gap-3 rounded-2xl bg-white/85 px-4 py-3.5 text-sm font-semibold text-ink"
+                    className="flex items-center gap-3 rounded-card bg-white/85 px-4 py-3.5 text-sm font-semibold text-ink"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-amber-700">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-white text-amber-700">
                       <c.icon className="h-[18px] w-[18px]" aria-hidden="true" />
                     </span>
                     {c.label}
@@ -180,7 +177,7 @@ export default async function ModuleDetailPage({
           <Container>
             <div className="grid gap-8 lg:grid-cols-[1fr_2fr] lg:gap-16">
               <div>
-                <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.08em] text-amber-700">
+                <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-ochre">
                   <MapPin className="h-3.5 w-3.5" aria-hidden="true" /> In Indian schools
                 </p>
                 <h2 id="india-title" className="mt-3 font-display text-2xl font-semibold text-ink sm:text-3xl">
@@ -193,7 +190,7 @@ export default async function ModuleDetailPage({
               </div>
               <ul className="space-y-3">
                 {mod.indiaDetails.map((d) => (
-                  <li key={d} className="flex gap-3 rounded-2xl border border-line-soft bg-white px-4 py-3.5 leading-relaxed text-ink">
+                  <li key={d} className="flex gap-3 rounded-card border border-line-soft bg-white shadow-card px-4 py-3.5 leading-relaxed text-ink">
                     <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-teal-700" aria-hidden="true" />
                     <span>{d}</span>
                   </li>
@@ -221,13 +218,13 @@ export default async function ModuleDetailPage({
                 <li key={r.slug}>
                   <Link
                     href={`/features/${r.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-line-soft bg-white p-5 transition-shadow hover:shadow-[var(--shadow-soft)]"
+                    className="group flex h-full flex-col rounded-card border border-line-soft bg-white shadow-card p-5 transition-colors hover:border-line"
                   >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-control bg-brand-50 text-brand-700">
                       <r.icon className="h-[18px] w-[18px]" aria-hidden="true" />
                     </span>
                     <h3 className="mt-3 font-display text-base font-semibold text-ink">{r.name}</h3>
-                    <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.06em] text-amber-700">{r.group}</p>
+                    <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.08em] text-ochre">{r.group}</p>
                     <p className="mt-2 text-sm leading-snug text-ink-muted">{r.tagline}</p>
                   </Link>
                 </li>
@@ -238,7 +235,7 @@ export default async function ModuleDetailPage({
 
         <section aria-labelledby="cta-title" className="pb-24">
           <Container>
-            <div className="flex flex-col items-center gap-5 rounded-[2.5rem] bg-brand-950 px-6 py-14 text-center text-white sm:px-16">
+            <div className="flex flex-col items-center gap-5 rounded-card bg-brand-950 px-6 py-14 text-center text-white sm:px-16">
               <h2 id="cta-title" className="max-w-xl text-balance font-display text-2xl font-semibold sm:text-3xl">
                 Walk through how {mod.name} is designed for your school
               </h2>
@@ -252,7 +249,7 @@ export default async function ModuleDetailPage({
                 </LinkButton>
                 <a
                   href={contact.phoneHref}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full px-4 font-semibold text-white hover:text-amber-300 hover:underline"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-control px-4 font-semibold text-white hover:text-amber-300 hover:underline"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   Call {contact.phoneDisplay}

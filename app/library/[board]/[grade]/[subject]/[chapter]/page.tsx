@@ -84,8 +84,8 @@ export default async function ChapterPage({ params }: { params: Params }) {
             <article className="min-w-0 lg:col-start-2 lg:row-start-1">
               <ReaderShell early={early} segments={readAloudSegments(chapter)}>
                 <header
-                  className="mt-6 rounded-3xl border border-line-soft p-6 sm:p-8"
-                  style={{ background: `linear-gradient(160deg, ${tokens.soft}, #ffffff 80%)` }}
+                  className="mt-6 rounded-card border border-line-soft p-6 sm:p-8"
+                  style={{ background: tokens.soft }}
                 >
                   <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium" style={{ color: tokens.ink }}>
                     <span>
@@ -111,7 +111,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                         key={topic.id}
                         id={`topic-${topic.id}`}
                         aria-labelledby={`topic-${topic.id}-title`}
-                        className="scroll-mt-24 rounded-2xl border border-line-soft border-l-4 bg-white p-5 sm:p-6"
+                        className="scroll-mt-24 rounded-card border border-line-soft border-l-4 bg-white shadow-card p-5 sm:p-6"
                         style={{ borderLeftColor: tokens.accent }}
                       >
                         <p className="flex items-center gap-2 text-xs font-semibold tracking-[0.06em]" style={{ color: tokens.ink }}>
@@ -142,7 +142,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                     topics={chapter.topics.map(({ id, title, keyPoints }) => ({ id, title, keyPoints }))}
                   />
 
-                  <section aria-labelledby="reflect-title" className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
+                  <section aria-labelledby="reflect-title" className="rounded-card border border-line-soft bg-white shadow-card p-5 sm:p-8">
                     <h2 id="reflect-title" className="font-display text-2xl font-semibold text-ink">
                       Reflect
                     </h2>
@@ -153,14 +153,14 @@ export default async function ChapterPage({ params }: { params: Params }) {
                       id="reflection"
                       rows={early ? 4 : 5}
                       aria-describedby="reflection-note"
-                      className={`mt-3 w-full max-w-[var(--reader-measure)] rounded-2xl border border-line bg-white p-3 text-ink ${bodyText}`}
+                      className={`mt-3 w-full max-w-[var(--reader-measure)] rounded-control border border-line bg-white p-3 text-ink ${bodyText}`}
                     />
                     <p id="reflection-note" className="mt-2 text-sm text-ink-muted">
                       What you type stays on this page. It is not saved or sent anywhere.
                     </p>
                   </section>
 
-                  <div className="rounded-3xl border border-line-soft bg-white p-5 sm:p-6">
+                  <div className="rounded-card border border-line-soft bg-white shadow-card p-5 sm:p-6">
                     <MarkReadPanel bookKey={book.key} number={chapter.number} total={book.chapters.length} />
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                   <Link
                     href={chapterHref(book, prev.number)}
                     rel="prev"
-                    className="group inline-flex items-center gap-3 rounded-2xl border border-line-soft bg-white px-4 py-3 transition hover:border-line"
+                    className="group inline-flex items-center gap-3 rounded-card border border-line-soft bg-white shadow-card px-4 py-3 transition hover:border-line"
                   >
                     <ArrowLeft className="h-5 w-5 shrink-0 text-ink-muted group-hover:text-ink" aria-hidden="true" />
                     <span>
@@ -186,7 +186,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                   <Link
                     href={chapterHref(book, next.number)}
                     rel="next"
-                    className="group inline-flex items-center justify-end gap-3 rounded-2xl border border-line-soft bg-white px-4 py-3 text-right transition hover:border-line"
+                    className="group inline-flex items-center justify-end gap-3 rounded-card border border-line-soft bg-white shadow-card px-4 py-3 text-right transition hover:border-line"
                   >
                     <span>
                       <span className="block text-sm text-ink-muted">Next chapter</span>
@@ -197,7 +197,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                 ) : (
                   <Link
                     href={book.href}
-                    className="group inline-flex items-center justify-end gap-3 rounded-2xl border border-line-soft bg-white px-4 py-3 text-right transition hover:border-line"
+                    className="group inline-flex items-center justify-end gap-3 rounded-card border border-line-soft bg-white shadow-card px-4 py-3 text-right transition hover:border-line"
                   >
                     <span>
                       <span className="block text-sm text-ink-muted">Last chapter of this book</span>
@@ -210,7 +210,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
             </article>
 
             <aside className="lg:col-start-1 lg:row-start-1 lg:sticky lg:top-24 lg:self-start">
-              <nav aria-label={`Chapters in ${book.subject.name}, Class ${book.grade}`} className="rounded-2xl border border-line-soft bg-white p-4">
+              <nav aria-label={`Chapters in ${book.subject.name}, Class ${book.grade}`} className="rounded-card border border-line-soft bg-white shadow-card p-4">
                 <p className="mb-3 text-sm font-semibold text-ink">
                   <Link href={book.href} className="underline-offset-4 hover:underline">
                     {book.subject.name}, Class {book.grade}
@@ -224,7 +224,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                         <Link
                           href={chapterHref(book, item.number)}
                           aria-current={active ? "page" : undefined}
-                          className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2 text-sm transition ${active ? "bg-brand-950 text-white" : "text-ink hover:bg-brand-50"}`}
+                          className={`flex min-h-11 items-center gap-3 rounded-control px-3 py-2 text-sm transition ${active ? "bg-brand-950 text-white" : "text-ink hover:bg-brand-50"}`}
                         >
                           <span className="w-5 shrink-0 text-center font-semibold">{item.number}</span>
                           <span className="flex-1 leading-snug">{item.title}</span>

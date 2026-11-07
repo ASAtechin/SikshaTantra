@@ -56,7 +56,7 @@ export function HowItWorks({
         <div className="relative mt-12 xl:mx-auto xl:max-w-5xl">
           <div
             aria-hidden="true"
-            className="absolute left-6 top-0 hidden h-full w-px bg-gradient-to-b from-brand-950/15 via-brand-950/10 to-transparent lg:left-1/2 lg:block"
+            className="absolute left-6 top-0 hidden h-full w-px bg-line-soft lg:left-1/2 lg:block"
           />
 
           <ol className="flex flex-col gap-10 lg:gap-14">
@@ -69,7 +69,7 @@ export function HowItWorks({
                   <div className={`flex items-center gap-4 ${i % 2 === 0 ? "lg:flex-row-reverse" : ""}`}>
                     <span
                       aria-hidden="true"
-                      className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-950 text-amber-400 shadow-[var(--shadow-soft)]"
+                      className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-control bg-brand-950 text-amber-400 shadow-card"
                     >
                       <s.icon className="h-5 w-5" />
                       <span className="absolute -right-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-brand-950">

@@ -6,6 +6,11 @@
  *   bg-paper, text-ink, text-ink-muted, text-ink-subtle, border-line (form controls, >= 3:1),
  *   border-line-soft (decorative dividers only), forest / ochre / gold / sage accents.
  * Contrast numbers live in docs/remediation/status/W0.md.
+ *
+ * Classic finish ("Forest and Paper", design language sections 4 and 5): radii are 6px for controls
+ * (rounded-control) and 10px for cards and panels (rounded-card); pills only for badges and chips.
+ * Depth is a hairline plus shadow-card on cards, shadow-popover on sticky panels and popovers,
+ * shadow-dialog on dialogs. No gradients, blur or glow.
  */
 @import "tailwindcss";
 
@@ -27,9 +32,6 @@
 
   --background: var(--paper);
   --foreground: var(--ink);
-
-  --shadow-soft: 0 1px 2px rgba(30, 51, 41, 0.05), 0 8px 24px -8px rgba(30, 51, 41, 0.14);
-  --shadow-lift: 0 20px 50px -20px rgba(30, 51, 41, 0.36);
 }
 
 @theme inline {
@@ -99,6 +101,13 @@
   --font-display: var(--font-heading), var(--font-heading-devanagari), Georgia, "Times New Roman", serif;
   --tracking-title: -0.01em;
 
+  /* Shape and depth (design language section 4). */
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --shadow-card: 0 1px 2px rgb(30 51 41 / 0.05);
+  --shadow-popover: 0 8px 24px -8px rgb(30 51 41 / 0.14);
+  --shadow-dialog: 0 20px 50px -20px rgb(30 51 41 / 0.36);
+
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out infinite;
   --animate-blob: blob 14s ease-in-out infinite;
@@ -156,14 +165,14 @@
   top: 0.75rem;
   z-index: 200;
   transform: translateY(-200%);
-  border-radius: 9999px;
+  border-radius: 6px;
   background: var(--gold);
   color: var(--ink);
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: var(--shadow-lift);
+  box-shadow: 0 8px 24px -8px rgb(30 51 41 / 0.14);
 }
 
 .skip-link:focus,
@@ -203,58 +212,17 @@
   }
 }
 
-.spatial-shell {
-  background:
-    radial-gradient(ellipse at 16% 18%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 34%),
-    radial-gradient(ellipse at 82% 75%, color-mix(in srgb, var(--color-teal-300) 24%, transparent), transparent 38%),
-    var(--paper);
-}
-
-.spatial-world {
-  background:
-    radial-gradient(ellipse at 50% 46%, color-mix(in srgb, var(--paper-raised) 72%, transparent), transparent 48%),
-    linear-gradient(
-      130deg,
-      color-mix(in srgb, var(--color-cream-100) 40%, transparent),
-      color-mix(in srgb, var(--color-teal-50) 30%, transparent)
-    );
-}
-
-.spatial-ambient {
-  background:
-    radial-gradient(ellipse at 18% 24%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 31%),
-    radial-gradient(ellipse at 80% 28%, color-mix(in srgb, var(--color-teal-300) 22%, transparent), transparent 30%),
-    radial-gradient(ellipse at 54% 92%, color-mix(in srgb, var(--color-brand-200) 18%, transparent), transparent 36%);
-}
-
-.spatial-grain {
-  opacity: 0.36;
-  background-image: radial-gradient(color-mix(in srgb, var(--ink) 15%, transparent) 0.7px, transparent 0.7px);
-  background-size: 17px 17px;
-  mask-image: linear-gradient(to bottom, black, transparent 95%);
-}
-
-.spatial-mobile-glow {
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--gold) 36%, transparent),
-    color-mix(in srgb, var(--color-teal-400) 13%, transparent) 52%,
-    transparent 72%
-  );
-}
-
 .spatial-panel {
   transform-origin: center;
 }
 
-.bg-grain {
-  background-image: radial-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1px);
-  background-size: 18px 18px;
-}
-
-.bg-dot-grid {
-  background-image: radial-gradient(color-mix(in srgb, var(--ink) 12%, transparent) 1px, transparent 1px);
-  background-size: 22px 22px;
+/* 40 x 2px gold rule under a title (design language section 4). Decoration only, never carries text. */
+@utility gold-rule {
+  display: block;
+  flex: none;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--gold);
 }
 
 .text-balance {

@@ -16,7 +16,7 @@ export function BookCard({ book, matches = [] }: BookCardProps) {
   const chapterCount = book.chapters.length;
 
   return (
-    <article className="group relative flex w-full flex-col overflow-hidden rounded-3xl border border-line-soft bg-white transition hover:border-line hover:shadow-md has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-brand-950 has-[a:focus-visible]:ring-offset-2 motion-safe:hover:-translate-y-0.5">
+    <article className="group relative flex w-full flex-col overflow-hidden rounded-card border border-line-soft bg-white shadow-card transition hover:border-line has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-brand-950 has-[a:focus-visible]:ring-offset-2 motion-safe:hover:-translate-y-0.5">
       <SubjectCover theme={book.theme} className="aspect-[16/9] w-full" />
       <div className="flex flex-1 flex-col p-5">
         <p className="text-xs font-semibold tracking-[0.04em]" style={{ color: tokens.ink }}>

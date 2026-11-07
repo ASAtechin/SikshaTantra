@@ -37,7 +37,7 @@ export function ReaderShell({ early, segments, children }: ReaderShellProps) {
         <span id="reader-text-size" className="text-sm font-medium text-ink-muted">
           Text size
         </span>
-        <div role="group" aria-labelledby="reader-text-size" className="-ml-1 inline-flex rounded-full border border-line bg-white p-1">
+        <div role="group" aria-labelledby="reader-text-size" className="-ml-1 inline-flex rounded-control border border-line bg-white p-1">
           <SizeButton active={size === "base"} onClick={() => setSize("base")}>
             A<span className="sr-only"> standard</span>
           </SizeButton>
@@ -58,7 +58,7 @@ function SizeButton({ active, onClick, children }: { active: boolean; onClick: (
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`min-h-10 min-w-12 rounded-full px-3 text-base font-bold transition ${active ? "bg-brand-950 text-white" : "text-ink hover:bg-brand-50"}`}
+      className={`min-h-10 min-w-12 rounded-[4px] px-3 text-base font-bold transition ${active ? "bg-brand-950 text-white" : "text-ink hover:bg-brand-50"}`}
     >
       {children}
     </button>
@@ -116,7 +116,7 @@ function ReadAloud({ segments, slow }: { segments: string[]; slow: boolean }) {
     <button
       type="button"
       onClick={speaking ? stop : start}
-      className="inline-flex min-h-12 items-center gap-2 rounded-full border border-line bg-white px-4 text-base font-semibold text-ink transition hover:border-brand-950"
+      className="inline-flex min-h-12 items-center gap-2 rounded-control border border-line bg-white px-4 text-base font-semibold text-ink transition hover:border-brand-950"
     >
       {speaking ? <Square className="h-4 w-4" aria-hidden="true" /> : <Volume2 className="h-5 w-5" aria-hidden="true" />}
       {speaking ? "Stop reading" : "Read aloud"}

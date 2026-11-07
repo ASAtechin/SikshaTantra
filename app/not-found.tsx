@@ -29,7 +29,7 @@ export default function NotFound() {
       <Navbar />
       <main id="main" tabIndex={-1} className="flex-1 bg-paper py-20 sm:py-28">
         <Container className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.08em] text-amber-700">Error 404</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.08em] text-ochre">Error 404</p>
           <h1 className="mt-4 text-balance font-display text-4xl font-semibold tracking-title text-ink sm:text-5xl">
             We could not find that page
           </h1>
@@ -53,7 +53,7 @@ export default function NotFound() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="group flex h-full items-start justify-between gap-4 rounded-2xl border border-line-soft bg-white p-5 transition-colors hover:border-line"
+                    className="group flex h-full items-start justify-between gap-4 rounded-card border border-line-soft bg-white shadow-card p-5 transition-colors hover:border-line"
                   >
                     <span>
                       <span className="block font-display text-lg font-semibold text-ink">{item.label}</span>

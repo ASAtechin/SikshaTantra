@@ -89,7 +89,7 @@ export function ShelfFilters({ board, grade, stream, query }: ShelfFiltersProps)
       onChange={onChange}
       onSubmit={onSubmit}
       aria-describedby="shelf-status"
-      className="space-y-6 rounded-3xl border border-line-soft bg-white p-5 sm:p-6"
+      className="space-y-6 rounded-card border border-line-soft bg-white shadow-card p-5 sm:p-6"
     >
       <fieldset>
         <legend className="mb-2 text-sm font-semibold text-ink">Board</legend>
@@ -151,7 +151,7 @@ export function ShelfFilters({ board, grade, stream, query }: ShelfFiltersProps)
               value={text}
               onChange={(event) => setText(event.target.value)}
               placeholder="For example: fractions"
-              className="min-h-12 w-full rounded-full border border-line bg-white py-2.5 pl-9 pr-4 text-base text-ink placeholder:text-ink-subtle"
+              className="min-h-12 w-full rounded-control border border-line bg-white py-2.5 pl-9 pr-4 text-base text-ink placeholder:text-ink-subtle"
             />
           </div>
         </div>
@@ -185,7 +185,7 @@ function Choice({ name, value, checked, square, children }: ChoiceProps) {
     <label className="relative cursor-pointer">
       <input type="radio" name={name} value={value} checked={checked} readOnly className="peer sr-only" />
       <span
-        className={`flex min-h-11 items-center justify-center rounded-full border border-line bg-white text-sm font-semibold text-ink transition hover:border-brand-950 peer-checked:border-brand-950 peer-checked:bg-brand-950 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-brand-950 peer-focus-visible:ring-offset-2 ${square ? "w-11 rounded-xl" : "px-4"}`}
+        className={`flex min-h-11 items-center justify-center rounded-control border border-line bg-white text-sm font-semibold text-ink transition hover:border-brand-950 peer-checked:border-brand-950 peer-checked:bg-brand-950 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-brand-950 peer-focus-visible:ring-offset-2 ${square ? "w-11" : "px-4"}`}
       >
         {children}
       </span>

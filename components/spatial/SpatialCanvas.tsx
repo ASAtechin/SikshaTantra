@@ -93,7 +93,7 @@ const erpAreas = [
 const learningSteps = ["Short concept reads", "Interactive models", "Reflection prompts", "Low-stakes practice"];
 
 const portalCard =
-  "group flex min-h-20 w-full items-center gap-4 rounded-[20px] border border-line-soft bg-paper-raised/90 p-4 text-left shadow-[var(--shadow-soft)] backdrop-blur transition-[translate,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950 focus-visible:ring-offset-2 focus-visible:ring-offset-paper motion-reduce:hover:translate-y-0 lg:min-w-[15rem]";
+  "group flex min-h-20 w-full items-center gap-4 rounded-card border border-line-soft bg-paper-raised p-4 text-left shadow-card transition-colors duration-200 hover:border-line focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950 focus-visible:ring-offset-2 focus-visible:ring-offset-paper lg:min-w-[15rem]";
 
 /** Homepage hero: buyer-first message on the paper canvas, with four plain-named entry points. */
 export function SpatialCanvas() {
@@ -101,21 +101,13 @@ export function SpatialCanvas() {
   const close = () => setOverlay(null);
 
   return (
-    <section aria-labelledby="hero-title" className="spatial-shell relative overflow-hidden">
-      <div aria-hidden="true" className="spatial-ambient pointer-events-none absolute inset-0" />
-      <div aria-hidden="true" className="spatial-grain pointer-events-none absolute inset-0" />
+    <section aria-labelledby="hero-title" className="relative overflow-hidden bg-paper">
       <svg
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 hidden h-full w-full text-brand-400 lg:block"
         viewBox="0 0 1000 620"
         preserveAspectRatio="none"
       >
-        <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 8" strokeOpacity=".45">
-          <path d="M500 300 C385 210 280 200 180 190" />
-          <path d="M500 300 C640 200 735 190 820 190" />
-          <path d="M500 320 C370 420 285 460 205 470" />
-          <path d="M500 320 C620 430 740 450 795 468" />
-        </g>
         <g fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity=".2">
           <ellipse cx="500" cy="310" rx="365" ry="206" transform="rotate(-9 500 310)" />
           <ellipse cx="500" cy="310" rx="265" ry="150" transform="rotate(13 500 310)" />
@@ -125,7 +117,7 @@ export function SpatialCanvas() {
       <div className="relative mx-auto w-full max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pt-12 lg:grid lg:min-h-[max(40rem,calc(100svh-6rem))] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)_minmax(0,1fr)] lg:grid-rows-2 lg:gap-x-6 lg:gap-y-10 lg:px-8 lg:py-16">
         <div className="max-w-2xl lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-auto lg:self-center lg:text-center">
           <p className="inline-flex items-center gap-2.5 font-display text-base font-semibold text-ink">
-            <span className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-forest text-gold shadow-[var(--shadow-soft)]">
+            <span className="flex h-10 w-10 items-center justify-center rounded-control bg-forest text-gold">
               <GraduationCap aria-hidden="true" className="h-5 w-5" />
             </span>
             {siteName}
@@ -136,6 +128,7 @@ export function SpatialCanvas() {
           >
             School ERP and campus screens <span className="font-normal italic text-ochre">for Indian schools</span>
           </h1>
+          <span aria-hidden="true" className="gold-rule mt-5 lg:mx-auto" />
           <p className="mt-5 text-pretty text-base leading-relaxed text-ink/80 sm:text-lg">
             A school ERP being built with founding schools for admissions, attendance, fees and report cards, with
             DigiBoard screens that show the day&apos;s timetable and notices around campus. Plus a sample learning library for classes 1–12.
@@ -150,7 +143,7 @@ export function SpatialCanvas() {
             </LinkButton>
           </div>
           <p className="mt-5 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-sm text-ink/80 lg:justify-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/15 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.08em] text-amber-700">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/15 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-amber-700">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-amber-500" />
               {siteStatus.label}
             </span>
@@ -159,7 +152,7 @@ export function SpatialCanvas() {
         </div>
 
         <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:contents">
-          <h2 className="text-xs font-bold uppercase tracking-[0.08em] text-ink/80 sm:col-span-2 lg:sr-only">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-ink/80 sm:col-span-2 lg:sr-only">
             Where to start
           </h2>
           {portals.map((portal) => (
@@ -198,7 +191,7 @@ export function SpatialCanvas() {
             <li key={area.slug}>
               <Link
                 href={`/features/${area.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-line-soft bg-white p-4 transition-colors hover:border-line focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950"
+                className="group flex h-full flex-col rounded-card border border-line-soft bg-white shadow-card p-4 transition-colors hover:border-line focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950"
               >
                 <span className="flex items-center justify-between gap-2 font-display text-base font-semibold text-ink">
                   {getModule(area.slug)?.name ?? area.fallback}
@@ -227,7 +220,7 @@ export function SpatialCanvas() {
         </p>
         <ol className="mt-6 grid gap-3 sm:grid-cols-2">
           {learningSteps.map((step, index) => (
-            <li key={step} className="rounded-2xl border border-line-soft bg-white p-4">
+            <li key={step} className="rounded-card border border-line-soft bg-white shadow-card p-4">
               <span className="text-xs font-bold text-ochre">Step {index + 1}</span>
               <p className="mt-1 text-sm font-bold leading-snug text-ink">{step}</p>
             </li>
@@ -262,7 +255,7 @@ function PortalBody({ portal, isLink = false }: { portal: Portal; isLink?: boole
   const Arrow = isLink ? ArrowUpRight : ArrowRight;
   return (
     <>
-      <span className={cn("flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl", toneClasses[portal.tone])}>
+      <span className={cn("flex h-12 w-12 shrink-0 items-center justify-center rounded-control", toneClasses[portal.tone])}>
         <Icon aria-hidden="true" className="h-[22px] w-[22px]" />
       </span>
       <span className="min-w-0 flex-1">
@@ -291,7 +284,7 @@ function PanelHeader({
   return (
     <div className="flex items-start justify-between gap-4">
       <div className="flex items-center gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-forest text-gold">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-forest text-gold">
           <Icon aria-hidden="true" className="h-5 w-5" />
         </span>
         <h2 id={titleId} className="font-display text-2xl font-semibold leading-tight text-ink">

@@ -149,21 +149,19 @@ export default function DigiBoardPage() {
       <Navbar />
       <main id="main" tabIndex={-1} className="flex-1">
         <section aria-labelledby="digiboard-title" className="relative overflow-hidden bg-brand-950 pb-24 pt-16 text-white sm:pt-24">
-          <div aria-hidden="true" className="pointer-events-none absolute -left-20 top-10 h-80 w-80 rounded-full bg-teal-500/10 blur-3xl" />
-          <div aria-hidden="true" className="pointer-events-none absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-amber-500/10 blur-3xl" />
-
           <Container className="grid items-center gap-16 lg:grid-cols-2">
             <div>
-              <Badge className="border-white/15 bg-white/5 text-amber-300">
+              <Badge className="text-amber-300">
                 <Monitor className="h-3.5 w-3.5" aria-hidden="true" /> DigiBoard campus screens
               </Badge>
               <h1
                 id="digiboard-title"
-                className="mt-6 text-balance font-display text-4xl font-semibold tracking-title sm:text-5xl"
+                className="mt-3 text-balance font-display text-4xl font-semibold tracking-title sm:text-5xl"
               >
                 Campus screens that show the right schedule, notice or alert
               </h1>
-              <p className="mt-6 max-w-lg text-balance text-lg leading-relaxed text-white/85">
+              <span aria-hidden="true" className="gold-rule mt-5" />
+              <p className="mt-5 max-w-lg text-balance text-lg leading-relaxed text-white/85">
                 DigiBoard puts the day&apos;s timetable, substitutions, notices and emergency alerts on the TVs and
                 displays around your campus: corridors, the staff room, reception and the gates.
               </p>
@@ -199,8 +197,8 @@ export default function DigiBoardPage() {
             />
             <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {workingToday.map((c) => (
-                <li key={c.title} className="rounded-2xl border border-line-soft bg-white p-6">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-teal-50 text-teal-700">
+                <li key={c.title} className="rounded-card border border-line-soft bg-white shadow-card p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-control bg-teal-50 text-teal-700">
                     <c.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <h3 className="mt-4 font-display text-base font-semibold text-ink">{c.title}</h3>
@@ -213,7 +211,7 @@ export default function DigiBoardPage() {
 
         <section aria-labelledby="building-title" className="pb-20 sm:pb-24">
           <Container>
-            <div className="rounded-[2.5rem] border border-dashed border-line bg-paper-raised p-6 sm:p-12">
+            <div className="rounded-card border border-dashed border-line bg-paper-raised p-6 sm:p-12">
               <SectionHeading
                 id="building-title"
                 align="left"
@@ -223,9 +221,9 @@ export default function DigiBoardPage() {
               />
               <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {beingBuilt.map((c) => (
-                  <li key={c.title} className="rounded-2xl bg-white p-6 shadow-[var(--shadow-soft)]">
+                  <li key={c.title} className="rounded-card bg-white p-6 shadow-card">
                     <div className="flex items-start justify-between gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand-700">
                         <c.icon className="h-5 w-5" aria-hidden="true" />
                       </span>
                       <span className="rounded-full bg-amber-500/15 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
@@ -246,7 +244,7 @@ export default function DigiBoardPage() {
             <SectionHeading id="where-title" align="left" eyebrow="Where it is used" title="Screens around the campus" />
             <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {useCases.map((u) => (
-                <li key={u.title} className="rounded-2xl border border-line-soft bg-white p-6">
+                <li key={u.title} className="rounded-card border border-line-soft bg-white shadow-card p-6">
                   <h3 className="font-display text-base font-semibold text-ink">{u.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{u.desc}</p>
                 </li>
@@ -257,7 +255,7 @@ export default function DigiBoardPage() {
 
         <section aria-labelledby="need-title" className="pb-20 sm:pb-24">
           <Container>
-            <div className="rounded-[2.5rem] bg-brand-50 p-6 sm:p-12">
+            <div className="rounded-card bg-brand-50 p-6 sm:p-12">
               <SectionHeading
                 id="need-title"
                 align="left"
@@ -267,8 +265,8 @@ export default function DigiBoardPage() {
               />
               <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {requirements.map((r) => (
-                  <li key={r.title} className="flex flex-col rounded-2xl bg-white p-6">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-950 text-amber-400">
+                  <li key={r.title} className="flex flex-col rounded-card bg-white p-6">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-control bg-brand-950 text-amber-400">
                       <r.icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <h3 className="mt-4 font-display text-base font-semibold text-ink">{r.title}</h3>
@@ -282,7 +280,7 @@ export default function DigiBoardPage() {
 
         <section aria-labelledby="digiboard-cta-title" className="pb-24">
           <Container>
-            <div className="flex flex-col items-center gap-5 rounded-[2.5rem] bg-brand-950 px-6 py-14 text-center text-white sm:px-16">
+            <div className="flex flex-col items-center gap-5 rounded-card bg-brand-950 px-6 py-14 text-center text-white sm:px-16">
               <CheckCircle2 className="h-10 w-10 text-amber-400" aria-hidden="true" />
               <h2 id="digiboard-cta-title" className="max-w-xl text-balance font-display text-2xl font-semibold sm:text-3xl">
                 Plan DigiBoard for your campus

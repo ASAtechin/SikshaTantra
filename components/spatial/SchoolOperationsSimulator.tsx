@@ -195,7 +195,7 @@ export function SchoolOperationsSimulator({ titleId, onClose }: { titleId: strin
     <div className="flex flex-col">
       <header className="flex items-start justify-between gap-4 border-b border-line-soft px-5 pb-4 pt-5 sm:px-7 sm:pt-6">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-ochre">Demo data · nothing is saved or sent</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ochre">Demo data · nothing is saved or sent</p>
           <h2 id={titleId} className="mt-1 font-display text-2xl font-semibold leading-tight text-ink">
             School operations demo
           </h2>
@@ -297,7 +297,7 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
 
   return (
     <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_15rem]">
-      <div className="overflow-hidden rounded-2xl border border-line-soft bg-white">
+      <div className="overflow-hidden rounded-card border border-line-soft bg-white shadow-card">
         <CardHead eyebrow={`Fee ledger · ${student.admissionNo}`} title={`${student.name} · ${classLabel(student)}`}>
           {fees.kind === "rte" ? (
             <span className="rounded-full bg-white/10 px-2.5 py-1 text-xs font-bold text-gold">RTE seat</span>
@@ -336,10 +336,10 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
         ) : null}
       </div>
 
-      <div aria-live="polite" className="flex flex-col justify-between gap-4 rounded-2xl border border-line-soft bg-teal-50 p-4">
+      <div aria-live="polite" className="flex flex-col justify-between gap-4 rounded-card border border-line-soft bg-teal-50 p-4">
         {fees.kind === "rte" ? (
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">RTE 12(1)(c)</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-sage">RTE 12(1)(c)</p>
             <p className="mt-2 font-display text-2xl font-semibold text-ink">No fee due</p>
             <p className="mt-1 text-sm leading-snug text-ink-muted">
               Tuition is waived for this seat, which runs up to Class 8. The school claims reimbursement from the state.
@@ -347,7 +347,7 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
           </div>
         ) : receipt ? (
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">{fees.instalment}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-sage">{fees.instalment}</p>
             <p className="mt-2 flex items-center gap-2 font-display text-2xl font-semibold text-ink">
               <CheckCircle2 aria-hidden="true" className="h-6 w-6 text-sage" /> Paid
             </p>
@@ -356,7 +356,7 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
         ) : (
           <>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">{fees.instalment}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-sage">{fees.instalment}</p>
               <p className={cn("mt-2 font-display text-2xl font-semibold", fees.overdue ? "text-amber-700" : "text-ink")}>
                 {fees.overdue ? "Overdue" : "Pending"}
               </p>
@@ -401,7 +401,7 @@ function AttendanceDesk({
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      <div className="rounded-2xl bg-forest p-5 text-white">
+      <div className="rounded-card bg-forest p-5 text-white">
         <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/85">
           {classLabel(student)} · 09:10 roll call
         </p>
@@ -420,7 +420,7 @@ function AttendanceDesk({
               aria-pressed={status === o.id}
               onClick={() => onChange(o.id)}
               className={cn(
-                "min-h-10 rounded-full border px-3.5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold",
+                "min-h-10 rounded-control border px-3.5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold",
                 status === o.id ? "border-gold bg-gold text-ink" : "border-white/40 text-white hover:bg-white/10"
               )}
             >
@@ -430,11 +430,11 @@ function AttendanceDesk({
         </div>
       </div>
 
-      <div className="rounded-2xl border border-line-soft bg-teal-50 p-5">
-        <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-sage">
+      <div className="rounded-card border border-line-soft bg-teal-50 p-5">
+        <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-sage">
           <MessageCircle aria-hidden="true" className="h-4 w-4" /> WhatsApp alert preview
         </p>
-        <div aria-live="polite" className="mt-4 rounded-2xl rounded-tl-sm bg-white p-3.5 text-sm leading-relaxed text-ink shadow-[var(--shadow-soft)]">
+        <div aria-live="polite" className="mt-4 rounded-card rounded-tl-sm bg-white p-3.5 text-sm leading-relaxed text-ink shadow-card">
           {message ?? <span className="text-ink-muted">No alert. Guardians are messaged for absence or late arrival only.</span>}
           {message ? <span className="mt-1.5 block text-right text-xs text-ink-muted">Demo message · not sent</span> : null}
         </div>
@@ -451,7 +451,7 @@ function MarksDesk({ student }: { student: DemoStudent }) {
   const rows = student.marks.map((m) => ({ ...m, total: m.internal + m.exam }));
   return (
     <div className="flex flex-col gap-4">
-      <div className="overflow-hidden rounded-2xl border border-line-soft bg-white">
+      <div className="overflow-hidden rounded-card border border-line-soft bg-white shadow-card">
         <CardHead
           eyebrow={`Class ${student.classNumeral} · Term 1 (school-based, CBSE-style)`}
           title={`${student.name} · ${classLabel(student)}`}
@@ -460,7 +460,7 @@ function MarksDesk({ student }: { student: DemoStudent }) {
           <table className="w-full min-w-[30rem] text-left text-sm">
             <caption className="sr-only">Scholastic areas, Term 1</caption>
             <thead>
-              <tr className="border-b border-line-soft text-xs font-bold uppercase tracking-[0.06em] text-ink-muted">
+              <tr className="border-b border-line-soft text-xs font-semibold uppercase tracking-[0.06em] text-ink-muted">
                 <th scope="col" className="px-4 py-2.5">Subject</th>
                 <th scope="col" className="px-3 py-2.5 text-right">Internal / 20</th>
                 <th scope="col" className="px-3 py-2.5 text-right">Term exam / 80</th>
@@ -476,7 +476,7 @@ function MarksDesk({ student }: { student: DemoStudent }) {
                   <td className="px-3 py-2.5 text-right tabular-nums text-ink">{row.exam}</td>
                   <td className="px-3 py-2.5 text-right font-bold tabular-nums text-ink">{row.total}</td>
                   <td className="px-4 py-2.5">
-                    <span className="inline-block rounded-lg bg-teal-100 px-2 py-0.5 font-bold text-teal-700">{cbseGrade(row.total)}</span>
+                    <span className="inline-block rounded-control bg-teal-100 px-2 py-0.5 font-bold text-teal-700">{cbseGrade(row.total)}</span>
                   </td>
                 </tr>
               ))}
@@ -484,7 +484,7 @@ function MarksDesk({ student }: { student: DemoStudent }) {
           </table>
         </div>
         <div className="border-t border-line-soft bg-paper px-4 py-3">
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-ink-muted">Co-scholastic areas (A–C)</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">Co-scholastic areas (A–C)</p>
           <ul className="mt-2 flex flex-wrap gap-2">
             {student.coScholastic.map((c) => (
               <li key={c.area} className="rounded-full border border-line-soft bg-white px-3 py-1 text-sm text-ink">
@@ -513,7 +513,7 @@ function TransportDesk({ routeStop, onNextStop }: { routeStop: number; onNextSto
   const [bx, by] = points[routeStop];
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      <div className="relative min-h-[190px] overflow-hidden rounded-2xl bg-teal-50 p-4">
+      <div className="relative min-h-[190px] overflow-hidden rounded-card bg-teal-50 p-4">
         <svg viewBox="0 0 360 190" className="absolute inset-0 h-full w-full" role="img" aria-label={`Illustrative bus route. Bus at ${stops[routeStop]}.`}>
           <path d="M28 148 C84 142 87 56 153 67 S226 155 315 36" fill="none" className="stroke-teal-300" strokeWidth="5" strokeLinecap="round" />
           <path d="M28 148 C84 142 87 56 153 67 S226 155 315 36" fill="none" className="stroke-sage" strokeWidth="2" strokeDasharray="4 7" strokeLinecap="round" />
@@ -528,7 +528,7 @@ function TransportDesk({ routeStop, onNextStop }: { routeStop: number; onNextSto
         </svg>
         <span className="absolute left-4 top-4 rounded-full bg-white/90 px-2.5 py-1 text-xs font-bold text-ink">Route 04 · demo</span>
       </div>
-      <div className="flex flex-col justify-between gap-4 rounded-2xl border border-line-soft bg-white p-4">
+      <div className="flex flex-col justify-between gap-4 rounded-card border border-line-soft bg-white shadow-card p-4">
         <div>
           <p className="text-sm font-bold text-ink">Green Line · Bus 08</p>
           <ol aria-live="polite" className="mt-3 space-y-2">
@@ -554,16 +554,16 @@ function TransportDesk({ routeStop, onNextStop }: { routeStop: number; onNextSto
 function SubstitutionDesk({ assigned, onAssign }: { assigned: boolean; onAssign: () => void }) {
   return (
     <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
-        <p className="text-xs font-bold uppercase tracking-[0.08em] text-amber-700">Teacher on leave</p>
+      <div className="rounded-card border border-amber-200 bg-amber-50 p-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ochre">Teacher on leave</p>
         <p className="mt-2 font-display text-lg font-semibold text-ink">Ms. Kavita Sharma</p>
         <p className="mt-1 text-sm text-ink-muted">Mathematics · Class VIII-A · Period 4</p>
       </div>
       <div className="flex justify-center text-ink-muted">
         <ArrowRight aria-hidden="true" className="h-5 w-5 rotate-90 sm:rotate-0" />
       </div>
-      <div className="rounded-2xl border border-line-soft bg-teal-50 p-4">
-        <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">
+      <div className="rounded-card border border-line-soft bg-teal-50 p-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.08em] text-sage">
           {assigned ? "Substitute assigned" : "Suggested substitute"}
         </p>
         <p className="mt-2 font-display text-lg font-semibold text-ink">Mr. Rohan Desai</p>
@@ -571,7 +571,7 @@ function SubstitutionDesk({ assigned, onAssign }: { assigned: boolean; onAssign:
       </div>
       <div aria-live="polite" className="sm:col-span-3">
         {assigned ? (
-          <p className="flex items-center gap-2 rounded-xl bg-teal-50 px-4 py-3 text-sm font-semibold text-ink">
+          <p className="flex items-center gap-2 rounded-control bg-teal-50 px-4 py-3 text-sm font-semibold text-ink">
             <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-sage" />
             Assigned. The class timetable and the DigiBoard preview now show the change (demo).
           </p>
