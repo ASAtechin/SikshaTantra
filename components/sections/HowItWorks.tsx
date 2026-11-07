@@ -1,6 +1,6 @@
 /**
  * Onboarding stages (W1-B). Used on /how-it-works; safe to reuse elsewhere (no required props).
- * Content is visible without JS; Reveal only fades in blocks below the fold after hydration.
+ * Content is visible without JS or scrolling; Reveal only nudges blocks below the fold up into place.
  */
 import { Search, Boxes, Rocket, TrendingUp, LifeBuoy } from "lucide-react";
 import { Container } from "@/components/ui/Container";
