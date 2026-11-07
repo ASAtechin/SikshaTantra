@@ -90,7 +90,7 @@ export default async function ModuleDetailPage({
                 <Badge>{mod.group}</Badge>
                 <h1
                   id="module-title"
-                  className="mt-6 text-balance font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl xl:text-5xl"
+                  className="mt-6 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl xl:text-5xl"
                 >
                   {mod.name}
                 </h1>
@@ -133,7 +133,7 @@ export default async function ModuleDetailPage({
 
         <section aria-labelledby="how-title" className="py-16">
           <Container>
-            <h2 id="how-title" className="text-center font-display text-2xl font-bold text-ink sm:text-3xl">
+            <h2 id="how-title" className="text-center font-display text-2xl font-semibold text-ink sm:text-3xl">
               How it is designed to work
             </h2>
             <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -145,7 +145,7 @@ export default async function ModuleDetailPage({
                     </span>
                     <span className="text-xs font-bold uppercase tracking-[0.08em] text-amber-700">Step {i + 1}</span>
                   </div>
-                  <h3 className="mt-4 font-display text-base font-bold text-ink">{s.title}</h3>
+                  <h3 className="mt-4 font-display text-base font-semibold text-ink">{s.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{s.desc}</p>
                 </li>
               ))}
@@ -156,7 +156,7 @@ export default async function ModuleDetailPage({
         <section aria-labelledby="covers-title" className="pb-16">
           <Container>
             <div className={`rounded-[2.5rem] bg-gradient-to-br p-6 sm:p-12 ${mod.accent}`}>
-              <h2 id="covers-title" className="font-display text-2xl font-bold text-ink sm:text-3xl">
+              <h2 id="covers-title" className="font-display text-2xl font-semibold text-ink sm:text-3xl">
                 What the module covers
               </h2>
               <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -183,7 +183,7 @@ export default async function ModuleDetailPage({
                 <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.08em] text-amber-700">
                   <MapPin className="h-3.5 w-3.5" aria-hidden="true" /> In Indian schools
                 </p>
-                <h2 id="india-title" className="mt-3 font-display text-2xl font-bold text-ink sm:text-3xl">
+                <h2 id="india-title" className="mt-3 font-display text-2xl font-semibold text-ink sm:text-3xl">
                   Details your team will ask about
                 </h2>
                 <p className="mt-3 text-ink-muted">
@@ -206,7 +206,7 @@ export default async function ModuleDetailPage({
         <section aria-labelledby="related-title" className="pb-20">
           <Container>
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <h2 id="related-title" className="font-display text-xl font-bold text-ink sm:text-2xl">
+              <h2 id="related-title" className="font-display text-xl font-semibold text-ink sm:text-2xl">
                 Related modules
               </h2>
               <Link
@@ -226,7 +226,7 @@ export default async function ModuleDetailPage({
                     <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
                       <r.icon className="h-[18px] w-[18px]" aria-hidden="true" />
                     </span>
-                    <h3 className="mt-3 font-display text-base font-bold text-ink">{r.name}</h3>
+                    <h3 className="mt-3 font-display text-base font-semibold text-ink">{r.name}</h3>
                     <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.06em] text-amber-700">{r.group}</p>
                     <p className="mt-2 text-sm leading-snug text-ink-muted">{r.tagline}</p>
                   </Link>
@@ -239,7 +239,7 @@ export default async function ModuleDetailPage({
         <section aria-labelledby="cta-title" className="pb-24">
           <Container>
             <div className="flex flex-col items-center gap-5 rounded-[2.5rem] bg-brand-950 px-6 py-14 text-center text-white sm:px-16">
-              <h2 id="cta-title" className="max-w-xl text-balance font-display text-2xl font-bold sm:text-3xl">
+              <h2 id="cta-title" className="max-w-xl text-balance font-display text-2xl font-semibold sm:text-3xl">
                 Walk through how {mod.name} is designed for your school
               </h2>
               <p className="max-w-xl text-balance text-white/85">

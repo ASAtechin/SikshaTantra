@@ -124,7 +124,7 @@ export function SpatialCanvas() {
 
       <div className="relative mx-auto w-full max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pt-12 lg:grid lg:min-h-[max(40rem,calc(100svh-6rem))] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)_minmax(0,1fr)] lg:grid-rows-2 lg:gap-x-6 lg:gap-y-10 lg:px-8 lg:py-16">
         <div className="max-w-2xl lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-auto lg:self-center lg:text-center">
-          <p className="inline-flex items-center gap-2.5 font-display text-base font-bold text-ink">
+          <p className="inline-flex items-center gap-2.5 font-display text-base font-semibold text-ink">
             <span className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-forest text-gold shadow-[var(--shadow-soft)]">
               <GraduationCap aria-hidden="true" className="h-5 w-5" />
             </span>
@@ -132,9 +132,9 @@ export function SpatialCanvas() {
           </p>
           <h1
             id="hero-title"
-            className="mt-5 text-balance font-display text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem]"
+            className="mt-5 text-balance font-display text-[2.25rem] font-semibold leading-[1.12] tracking-title text-ink sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem]"
           >
-            School ERP and campus screens <span className="font-semibold italic text-ochre">for Indian schools</span>
+            School ERP and campus screens <span className="font-normal italic text-ochre">for Indian schools</span>
           </h1>
           <p className="mt-5 text-pretty text-base leading-relaxed text-ink/80 sm:text-lg">
             A school ERP being built with founding schools for admissions, attendance, fees and report cards, with
@@ -163,7 +163,7 @@ export function SpatialCanvas() {
             Where to start
           </h2>
           {portals.map((portal) => (
-            <div key={portal.id} className={cn("lg:w-full lg:max-w-[18rem]", portal.placement)}>
+            <div key={portal.id} className={cn("lg:w-full lg:max-w-[19rem]", portal.placement)}>
               {portal.href ? (
                 <Link href={portal.href} className={portalCard}>
                   <PortalBody portal={portal} isLink />
@@ -200,7 +200,7 @@ export function SpatialCanvas() {
                 href={`/features/${area.slug}`}
                 className="group flex h-full flex-col rounded-2xl border border-line-soft bg-white p-4 transition-colors hover:border-line focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950"
               >
-                <span className="flex items-center justify-between gap-2 font-display text-base font-bold text-ink">
+                <span className="flex items-center justify-between gap-2 font-display text-base font-semibold text-ink">
                   {getModule(area.slug)?.name ?? area.fallback}
                   <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0 text-ink-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
@@ -266,7 +266,7 @@ function PortalBody({ portal, isLink = false }: { portal: Portal; isLink?: boole
         <Icon aria-hidden="true" className="h-[22px] w-[22px]" />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block font-display text-base font-bold leading-tight text-ink">{portal.title}</span>
+        <span className="block font-display text-base font-semibold leading-tight text-ink">{portal.title}</span>
         <span className="mt-1 block text-sm leading-snug text-ink-muted">{portal.caption}</span>
       </span>
       <Arrow
@@ -294,7 +294,7 @@ function PanelHeader({
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-forest text-gold">
           <Icon aria-hidden="true" className="h-5 w-5" />
         </span>
-        <h2 id={titleId} className="font-display text-2xl font-bold leading-tight text-ink">
+        <h2 id={titleId} className="font-display text-2xl font-semibold leading-tight text-ink">
           {title}
         </h2>
       </div>

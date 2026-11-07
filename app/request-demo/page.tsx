@@ -35,7 +35,7 @@ export default function RequestDemoPage() {
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div>
               <Badge>{CTA.primary}</Badge>
-              <h1 className="mt-6 text-balance font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+              <h1 className="mt-6 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl">
                 Let&apos;s bring Shiksha Tantra to your school
               </h1>
               <p className="mt-5 max-w-md text-balance text-base leading-relaxed text-ink-muted">
@@ -64,7 +64,7 @@ export default function RequestDemoPage() {
               </ul>
 
               <div className="mt-10 rounded-3xl border border-line-soft bg-white/60 p-6">
-                <h2 className="font-display text-base font-bold text-ink">What happens next?</h2>
+                <h2 className="font-display text-base font-semibold text-ink">What happens next?</h2>
                 <ol className="mt-4 flex flex-col gap-3">
                   {whatHappensNext.map((step, i) => (
                     <li key={step} className="flex items-start gap-3 text-sm leading-snug text-ink-muted">

@@ -196,7 +196,7 @@ export function SchoolOperationsSimulator({ titleId, onClose }: { titleId: strin
       <header className="flex items-start justify-between gap-4 border-b border-line-soft px-5 pb-4 pt-5 sm:px-7 sm:pt-6">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.08em] text-ochre">Demo data · nothing is saved or sent</p>
-          <h2 id={titleId} className="mt-1 font-display text-2xl font-bold leading-tight text-ink">
+          <h2 id={titleId} className="mt-1 font-display text-2xl font-semibold leading-tight text-ink">
             School operations demo
           </h2>
         </div>
@@ -327,7 +327,7 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
         </ul>
         <div className="flex items-center justify-between px-4 py-3">
           <span className="text-sm font-bold text-ink">Balance due</span>
-          <span className="font-display text-xl font-extrabold tabular-nums text-ink">{rupees.format(balance)}</span>
+          <span className="whitespace-nowrap font-display text-xl font-semibold lining-nums tabular-nums text-ink">{rupees.format(balance)}</span>
         </div>
         {fees.kind === "regular" ? (
           <p className="border-t border-line-soft bg-paper px-4 py-2.5 text-xs leading-relaxed text-ink-muted">
@@ -340,7 +340,7 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
         {fees.kind === "rte" ? (
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">RTE 12(1)(c)</p>
-            <p className="mt-2 font-display text-2xl font-extrabold text-ink">No fee due</p>
+            <p className="mt-2 font-display text-2xl font-semibold text-ink">No fee due</p>
             <p className="mt-1 text-sm leading-snug text-ink-muted">
               Tuition is waived for this seat, which runs up to Class 8. The school claims reimbursement from the state.
             </p>
@@ -348,7 +348,7 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
         ) : receipt ? (
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">{fees.instalment}</p>
-            <p className="mt-2 flex items-center gap-2 font-display text-2xl font-extrabold text-ink">
+            <p className="mt-2 flex items-center gap-2 font-display text-2xl font-semibold text-ink">
               <CheckCircle2 aria-hidden="true" className="h-6 w-6 text-sage" /> Paid
             </p>
             <p className="mt-1 text-sm leading-snug text-ink-muted">UPI payment recorded. Receipt {receipt} is ready.</p>
@@ -357,7 +357,7 @@ function FeesDesk({ student, receipt, onPay }: { student: DemoStudent; receipt?:
           <>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">{fees.instalment}</p>
-              <p className={cn("mt-2 font-display text-2xl font-extrabold", fees.overdue ? "text-amber-700" : "text-ink")}>
+              <p className={cn("mt-2 font-display text-2xl font-semibold", fees.overdue ? "text-amber-700" : "text-ink")}>
                 {fees.overdue ? "Overdue" : "Pending"}
               </p>
               <p className="mt-1 text-sm leading-snug text-ink-muted">
@@ -405,7 +405,7 @@ function AttendanceDesk({
         <p className="text-xs font-semibold uppercase tracking-[0.08em] text-white/85">
           {classLabel(student)} · 09:10 roll call
         </p>
-        <p className="mt-3 font-display text-4xl font-extrabold tabular-nums">
+        <p className="mt-3 font-display text-4xl font-semibold lining-nums tabular-nums">
           {present} <span className="text-lg font-semibold text-white/75">/ {student.classSize} present</span>
         </p>
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/15" aria-hidden="true">
@@ -556,7 +556,7 @@ function SubstitutionDesk({ assigned, onAssign }: { assigned: boolean; onAssign:
     <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
       <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
         <p className="text-xs font-bold uppercase tracking-[0.08em] text-amber-700">Teacher on leave</p>
-        <p className="mt-2 font-display text-lg font-bold text-ink">Ms. Kavita Sharma</p>
+        <p className="mt-2 font-display text-lg font-semibold text-ink">Ms. Kavita Sharma</p>
         <p className="mt-1 text-sm text-ink-muted">Mathematics · Class VIII-A · Period 4</p>
       </div>
       <div className="flex justify-center text-ink-muted">
@@ -566,7 +566,7 @@ function SubstitutionDesk({ assigned, onAssign }: { assigned: boolean; onAssign:
         <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">
           {assigned ? "Substitute assigned" : "Suggested substitute"}
         </p>
-        <p className="mt-2 font-display text-lg font-bold text-ink">Mr. Rohan Desai</p>
+        <p className="mt-2 font-display text-lg font-semibold text-ink">Mr. Rohan Desai</p>
         <p className="mt-1 text-sm text-ink-muted">Free in period 4 · no timetable clash</p>
       </div>
       <div aria-live="polite" className="sm:col-span-3">

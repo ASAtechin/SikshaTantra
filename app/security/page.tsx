@@ -113,7 +113,7 @@ export default function SecurityPage() {
                 >
                   <g.icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 font-display text-lg font-bold text-ink">{g.title}</h3>
+                <h3 className="mt-4 font-display text-lg font-semibold text-ink">{g.title}</h3>
                 <p className="mt-2 text-base leading-relaxed text-ink-muted">{g.text}</p>
               </li>
             ))}
@@ -140,7 +140,7 @@ export default function SecurityPage() {
           <ul className="grid gap-4 sm:grid-cols-2">
             {lawPoints.map((p) => (
               <li key={p.title} className="rounded-2xl border border-line-soft bg-white p-6">
-                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-ink">
+                <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-ink">
                   <Scale aria-hidden="true" className="h-5 w-5 shrink-0 text-teal-600" />
                   {p.title}
                 </h3>

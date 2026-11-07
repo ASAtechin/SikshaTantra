@@ -33,7 +33,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
   return (
     <section aria-labelledby={`${id}-title`} className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
       <p className="text-sm font-semibold text-amber-700">Try it</p>
-      <h2 id={`${id}-title`} className="mt-1 font-display text-2xl font-bold text-ink">
+      <h2 id={`${id}-title`} className="mt-1 font-display text-2xl font-semibold text-ink">
         Pattern machine
       </h2>
 
@@ -88,7 +88,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
                 +{step}
               </span>
             )}
-            <span className="flex h-14 min-w-14 items-center justify-center rounded-2xl bg-teal-50 px-3 font-display text-xl font-bold text-teal-800">
+            <span className="flex h-14 min-w-14 items-center justify-center rounded-2xl bg-teal-50 px-3 font-display text-xl font-semibold text-teal-800">
               {term}
             </span>
           </li>
@@ -99,7 +99,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
             +{step}
           </span>
           <span
-            className="flex h-14 min-w-14 items-center justify-center rounded-2xl border-2 border-dashed border-amber-600 px-3 font-display text-xl font-bold text-amber-700"
+            className="flex h-14 min-w-14 items-center justify-center rounded-2xl border-2 border-dashed border-amber-600 px-3 font-display text-xl font-semibold text-amber-700"
             aria-hidden="true"
           >
             ?

@@ -44,7 +44,7 @@ function Chip({ tone = "neutral", children, className }: { tone?: Tone; children
 function Stat({ value, label, tone }: { value: string; label: string; tone?: Tone }) {
   return (
     <div className={cn("rounded-xl px-2 py-2 text-center", tone ? toneClasses[tone] : "bg-paper")}>
-      <p className="font-display text-lg font-bold leading-none">{value}</p>
+      <p className="font-display text-lg font-semibold leading-none">{value}</p>
       <p className={cn("mt-1 text-xs font-medium", tone ? "" : "text-ink-muted")}>{label}</p>
     </div>
   );
@@ -656,7 +656,7 @@ export function ModuleMockup({ slug, kind = "cards", accent, className }: Module
       >
         <div className="flex items-start justify-between gap-3 border-b border-line-soft pb-3">
           <div className="min-w-0">
-            <p className="font-display text-sm font-bold text-ink">{screen.title}</p>
+            <p className="font-display text-sm font-semibold text-ink">{screen.title}</p>
             <p className="mt-0.5 flex items-center gap-1 text-xs text-ink-muted">
               <Clock3 className="h-3 w-3 shrink-0" />
               {screen.subtitle}

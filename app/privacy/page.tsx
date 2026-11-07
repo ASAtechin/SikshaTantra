@@ -22,7 +22,7 @@ const linkClass = "font-semibold text-ink underline underline-offset-4 hover:tex
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24 border-t border-line-soft py-10 first:border-t-0">
-      <h2 id={`${id}-title`} className="font-display text-2xl font-bold tracking-tight text-ink">
+      <h2 id={`${id}-title`} className="font-display text-2xl font-semibold tracking-title text-ink">
         {title}
       </h2>
       <div className="mt-4 flex flex-col gap-4 text-base leading-relaxed text-ink-muted [&_li]:pl-1 [&_strong]:font-semibold [&_strong]:text-ink [&_ul]:flex [&_ul]:list-disc [&_ul]:flex-col [&_ul]:gap-2 [&_ul]:pl-6">

@@ -80,7 +80,7 @@ export default function HowItWorksPage() {
               <li key={item.title} className="flex items-start gap-3 rounded-2xl border border-line-soft bg-white p-5">
                 <Check aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-teal-600" />
                 <div>
-                  <h3 className="font-display text-base font-bold text-ink">{item.title}</h3>
+                  <h3 className="font-display text-base font-semibold text-ink">{item.title}</h3>
                   <p className="mt-1 text-base leading-relaxed text-ink-muted">{item.text}</p>
                 </div>
               </li>

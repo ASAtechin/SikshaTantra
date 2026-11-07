@@ -17,7 +17,7 @@ export function ClosingCTA({ title, description, secondary }: ClosingCTAProps) {
         <div className="rounded-[2rem] bg-brand-950 px-6 py-10 text-white sm:px-12 sm:py-14">
           <h2
             id="closing-cta-title"
-            className="max-w-2xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl"
+            className="max-w-2xl text-balance font-display text-3xl font-semibold tracking-title sm:text-4xl"
           >
             {title}
           </h2>

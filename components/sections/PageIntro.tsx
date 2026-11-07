@@ -17,7 +17,7 @@ export function PageIntro({ eyebrow, title, lede, children }: PageIntroProps) {
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-amber-500" />
           {eyebrow}
         </p>
-        <h1 className="mt-5 max-w-3xl text-balance font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+        <h1 className="mt-5 max-w-3xl text-balance font-display text-4xl font-semibold tracking-title text-ink sm:text-5xl">
           {title}
         </h1>
         <div className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">{lede}</div>

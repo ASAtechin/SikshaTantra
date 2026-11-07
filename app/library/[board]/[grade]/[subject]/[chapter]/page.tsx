@@ -95,7 +95,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                       <Clock className="h-4 w-4" aria-hidden="true" /> {chapter.minutes} min read
                     </span>
                   </p>
-                  <h1 className={`mt-3 font-display font-bold tracking-tight text-ink ${early ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"}`}>
+                  <h1 className={`mt-3 font-display font-semibold tracking-title text-ink ${early ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"}`}>
                     {chapter.title}
                   </h1>
                   <p className={`mt-3 max-w-[var(--reader-measure)] font-semibold text-ink ${bodyText}`}>{chapter.bigIdea}</p>
@@ -118,7 +118,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                           <KindIcon className="h-4 w-4" aria-hidden="true" />
                           Topic {topicIndex + 1} · {kind.label}
                         </p>
-                        <h2 id={`topic-${topic.id}-title`} className={`mt-2 font-semibold text-ink ${early ? "text-2xl" : "text-xl"}`}>
+                        <h2 id={`topic-${topic.id}-title`} className={`mt-2 font-display font-semibold text-ink ${early ? "text-2xl" : "text-xl"}`}>
                           {topic.title}
                         </h2>
                         <p className={`mt-2 max-w-[var(--reader-measure)] text-ink ${bodyText}`}>{topic.summary}</p>
@@ -143,7 +143,7 @@ export default async function ChapterPage({ params }: { params: Params }) {
                   />
 
                   <section aria-labelledby="reflect-title" className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
-                    <h2 id="reflect-title" className="font-display text-2xl font-bold text-ink">
+                    <h2 id="reflect-title" className="font-display text-2xl font-semibold text-ink">
                       Reflect
                     </h2>
                     <label htmlFor="reflection" className={`mt-2 block max-w-[var(--reader-measure)] text-ink ${bodyText}`}>

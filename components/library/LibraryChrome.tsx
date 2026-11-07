@@ -25,7 +25,7 @@ export function LibraryCta() {
     <section aria-labelledby="library-cta-title" className="mt-16 rounded-3xl bg-brand-950 px-6 py-10 text-white sm:px-10">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl">
-          <h2 id="library-cta-title" className="font-display text-2xl font-bold sm:text-3xl">
+          <h2 id="library-cta-title" className="font-display text-2xl font-semibold sm:text-3xl">
             Bring this library to your school
           </h2>
           <p className="mt-3 text-base leading-relaxed text-white/85">

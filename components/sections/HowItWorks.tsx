@@ -76,7 +76,7 @@ export function HowItWorks({
                         {i + 1}
                       </span>
                     </span>
-                    <h3 className="font-display text-lg font-bold text-ink">
+                    <h3 className="font-display text-lg font-semibold text-ink">
                       <span className="sr-only">Step {i + 1}: </span>
                       {s.title}
                     </h3>

@@ -113,7 +113,7 @@ export default function FaqPage() {
               {faqs.map((item) => (
                 <li key={item.q}>
                   <details className="group rounded-2xl border border-line-soft bg-white open:border-line">
-                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-display text-lg font-bold text-ink sm:px-6 [&::-webkit-details-marker]:hidden">
+                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-display text-lg font-semibold text-ink sm:px-6 [&::-webkit-details-marker]:hidden">
                       <span>{item.q}</span>
                       <ChevronDown
                         aria-hidden="true"

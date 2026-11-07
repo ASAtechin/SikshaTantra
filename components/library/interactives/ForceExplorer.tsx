@@ -44,7 +44,7 @@ export function ForceExplorer({ showFormula }: { showFormula: boolean }) {
   return (
     <section aria-labelledby={`${id}-title`} className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
       <p className="text-sm font-semibold text-amber-700">Try it</p>
-      <h2 id={`${id}-title`} className="mt-1 font-display text-2xl font-bold text-ink">
+      <h2 id={`${id}-title`} className="mt-1 font-display text-2xl font-semibold text-ink">
         Force explorer
       </h2>
 

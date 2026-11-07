@@ -92,7 +92,7 @@ export default function PricingPage() {
                 >
                   <f.icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 font-display text-lg font-bold text-ink">{f.title}</h3>
+                <h3 className="mt-4 font-display text-lg font-semibold text-ink">{f.title}</h3>
                 <p className="mt-2 text-base leading-relaxed text-ink-muted">{f.text}</p>
               </li>
             ))}
@@ -133,7 +133,7 @@ export default function PricingPage() {
           <dl className="flex flex-col gap-6">
             {questions.map((item) => (
               <div key={item.q} className="rounded-2xl border border-line-soft bg-white p-6">
-                <dt className="font-display text-lg font-bold text-ink">{item.q}</dt>
+                <dt className="font-display text-lg font-semibold text-ink">{item.q}</dt>
                 <dd className="mt-2 text-base leading-relaxed text-ink-muted">{item.a}</dd>
               </div>
             ))}

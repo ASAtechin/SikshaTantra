@@ -49,7 +49,7 @@ export default async function LibraryPage({ searchParams }: { searchParams: Sear
         <div className="mx-auto w-full max-w-6xl px-4 pb-20 pt-10 sm:px-6">
           <header className="max-w-3xl">
             <p className="text-sm font-semibold text-amber-700">Learning library</p>
-            <h1 className="mt-2 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl">
+            <h1 className="mt-2 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl md:text-5xl">
               Sample books for Classes 1 to 12
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-muted">
@@ -67,7 +67,7 @@ export default async function LibraryPage({ searchParams }: { searchParams: Sear
           <section aria-labelledby="shelf-title" className="mt-10">
             <div className="flex flex-wrap items-end justify-between gap-2">
               <div>
-                <h2 id="shelf-title" className="font-display text-2xl font-bold text-ink">
+                <h2 id="shelf-title" className="font-display text-2xl font-semibold text-ink">
                   Class {grade} shelf
                 </h2>
                 <p className="mt-1 text-sm text-ink-muted">

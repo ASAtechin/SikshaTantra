@@ -68,7 +68,7 @@ export function ContactHub() {
       <Dialog open={open} onClose={close} labelledBy="contact-hub-title" describedBy="contact-hub-desc" size="lg" panelClassName="bg-paper-raised">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 id="contact-hub-title" className="font-display text-2xl font-bold text-ink">
+            <h2 id="contact-hub-title" className="font-display text-2xl font-semibold text-ink">
               {CTA.primary}
             </h2>
             <p id="contact-hub-desc" className="mt-1 text-sm leading-relaxed text-ink-muted">
