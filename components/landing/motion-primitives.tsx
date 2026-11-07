@@ -2,9 +2,10 @@
 
 /**
  * Shared motion primitives (W0 foundation contract).
- * - Reveal: server-renders fully visible. After hydration it hides only blocks that are still
- *   below the fold and fades them in on scroll, so content never depends on JS to be seen.
- *   Skipped entirely under prefers-reduced-motion (CSS in globals.css also forces visibility).
+ * - Reveal: server-renders fully visible and stays fully opaque in every state. After hydration it
+ *   nudges only blocks that are still below the fold 8px down (transform only, see globals.css) and
+ *   eases them up on scroll, so content never depends on JS, scrolling or motion to be seen: no-JS,
+ *   print, crawlers, full-page screenshots and prefers-reduced-motion all show the final layout.
  * - ScrollProgress: thin reading bar; hidden under reduced motion.
  * - ScrollCue: "scroll for more" hint; its bob animation is CSS and stops under reduced motion.
  */
@@ -27,7 +28,7 @@ export function Reveal({
     const el = ref.current;
     if (!el || typeof IntersectionObserver === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    // Already on screen at hydration: leave it alone rather than flash it out and back in.
+    // Already on screen at hydration: leave it alone rather than nudge it down and back up.
     if (el.getBoundingClientRect().top < window.innerHeight) return;
 
     el.dataset.reveal = "armed";

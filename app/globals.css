@@ -179,16 +179,25 @@
   box-shadow: none;
 }
 
-/* Reveal (components/landing/motion-primitives.tsx): hidden only after JS arms it. */
+/*
+ * Reveal (components/landing/motion-primitives.tsx). Content is never hidden: the server HTML, no-JS,
+ * print, crawlers, full-page screenshots and reduced motion all see every block at full opacity.
+ * After hydration a block that is still below the fold is nudged 8px down and eases up (200ms) as it
+ * scrolls into view. Only transform is animated. Never set opacity, visibility or display on [data-reveal].
+ */
 [data-reveal="armed"] {
-  opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(8px);
 }
 
 [data-reveal="shown"] {
-  transition:
-    opacity 0.45s cubic-bezier(0.22, 0.8, 0.2, 1),
-    transform 0.45s cubic-bezier(0.22, 0.8, 0.2, 1);
+  transition: transform 0.2s ease-out;
+}
+
+@media print {
+  [data-reveal] {
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 .spatial-shell {
@@ -285,8 +294,7 @@
     animation: none !important;
   }
 
-  [data-reveal="armed"] {
-    opacity: 1 !important;
+  [data-reveal] {
     transform: none !important;
   }
 }
