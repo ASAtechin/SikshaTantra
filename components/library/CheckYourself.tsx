@@ -33,7 +33,7 @@ export function CheckYourself({ topics, early }: { topics: RecallTopic[]; early:
 
   return (
     <section aria-labelledby="check-title" className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
-      <h2 id="check-title" className="font-display text-2xl font-bold text-ink">
+      <h2 id="check-title" className="font-display text-2xl font-semibold text-ink">
         Check yourself
       </h2>
       <p className="mt-2 max-w-[var(--reader-measure)] text-[length:var(--reader-body)] leading-[var(--reader-leading)] text-ink-muted">
@@ -47,7 +47,7 @@ export function CheckYourself({ topics, early }: { topics: RecallTopic[]; early:
           const rating = ratings[topic.id];
           return (
             <li key={topic.id} className="rounded-2xl border border-line-soft bg-paper p-4 sm:p-5">
-              <h3 className="text-lg font-semibold text-ink">
+              <h3 className="font-display text-lg font-semibold text-ink">
                 {index + 1}. {topic.title}
               </h3>
               <p className="mt-1 text-[length:var(--reader-body)] leading-[var(--reader-leading)] text-ink-muted">

@@ -4,23 +4,37 @@
  * Contract: every page renders exactly one <main id="main" tabIndex={-1}> so the skip link works.
  */
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Inter, Noto_Sans_Devanagari, Noto_Serif, Noto_Serif_Devanagari } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ReducedMotionProvider } from "@/components/landing/ReducedMotionProvider";
 import { AttributionCapture } from "@/components/layout/AttributionCapture";
 import { contact, pageMetadata, siteName, siteUrl } from "@/lib/site";
 
-// Variable fonts (no fixed weights) so every weight and the italic face are real, not synthesised.
-const heading = Plus_Jakarta_Sans({
+// "Forest and Paper" type (Shiksha Tantra design language, November 2026, section 3):
+// Noto Serif for headings, titles and figures (600; 400 italic for the hero's second line), Inter for the rest.
+const heading = Noto_Serif({
   variable: "--font-heading",
   subsets: ["latin"],
+  weight: ["400", "600"],
   style: ["normal", "italic"],
 });
 
 const body = Inter({
   variable: "--font-body",
   subsets: ["latin"],
+});
+
+// Devanagari companions. Not preloaded: the browser fetches them only when Hindi text is on the page.
+const headingDevanagari = Noto_Serif_Devanagari({
+  variable: "--font-heading-devanagari",
+  weight: ["400", "600"],
+  preload: false,
+});
+
+const bodyDevanagari = Noto_Sans_Devanagari({
+  variable: "--font-body-devanagari",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -107,7 +121,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-IN"
       data-scroll-behavior="smooth"
-      className={`${heading.variable} ${body.variable} h-full antialiased`}
+      className={`${heading.variable} ${headingDevanagari.variable} ${body.variable} ${bodyDevanagari.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper font-sans text-ink">
         <a href="#main" className="skip-link">

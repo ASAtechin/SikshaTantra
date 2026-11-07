@@ -190,7 +190,7 @@ export function Navbar() {
             >
               <GraduationCap className="h-5 w-5" />
             </span>
-            <span className="font-display text-lg font-bold text-ink">
+            <span className="font-display text-lg font-semibold text-ink">
               Shiksha <span className="text-amber-600">Tantra</span>
             </span>
           </Link>

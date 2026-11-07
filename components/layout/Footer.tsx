@@ -56,7 +56,7 @@ export function Footer() {
               <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500 text-brand-950">
                 <GraduationCap className="h-5 w-5" />
               </span>
-              <span className="font-display text-lg font-bold">
+              <span className="font-display text-lg font-semibold">
                 Shiksha <span className="text-amber-400">Tantra</span>
               </span>
             </Link>

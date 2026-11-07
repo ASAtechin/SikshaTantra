@@ -26,7 +26,7 @@ export function ContentSection({ id, title, eyebrow, intro, children, tone = "pa
         <h2
           id={`${id}-title`}
           className={cn(
-            "max-w-3xl text-balance font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl",
+            "max-w-3xl text-balance font-display text-2xl font-semibold tracking-title text-ink sm:text-3xl",
             eyebrow && "mt-3"
           )}
         >

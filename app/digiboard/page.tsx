@@ -159,7 +159,7 @@ export default function DigiBoardPage() {
               </Badge>
               <h1
                 id="digiboard-title"
-                className="mt-6 text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl"
+                className="mt-6 text-balance font-display text-4xl font-semibold tracking-title sm:text-5xl"
               >
                 Campus screens that show the right schedule, notice or alert
               </h1>
@@ -203,7 +203,7 @@ export default function DigiBoardPage() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-teal-50 text-teal-700">
                     <c.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-4 font-display text-base font-bold text-ink">{c.title}</h3>
+                  <h3 className="mt-4 font-display text-base font-semibold text-ink">{c.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{c.desc}</p>
                 </li>
               ))}
@@ -232,7 +232,7 @@ export default function DigiBoardPage() {
                         Being built
                       </span>
                     </div>
-                    <h3 className="mt-4 font-display text-base font-bold text-ink">{c.title}</h3>
+                    <h3 className="mt-4 font-display text-base font-semibold text-ink">{c.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-muted">{c.desc}</p>
                   </li>
                 ))}
@@ -247,7 +247,7 @@ export default function DigiBoardPage() {
             <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {useCases.map((u) => (
                 <li key={u.title} className="rounded-2xl border border-line-soft bg-white p-6">
-                  <h3 className="font-display text-base font-bold text-ink">{u.title}</h3>
+                  <h3 className="font-display text-base font-semibold text-ink">{u.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{u.desc}</p>
                 </li>
               ))}
@@ -271,7 +271,7 @@ export default function DigiBoardPage() {
                     <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-950 text-amber-400">
                       <r.icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <h3 className="mt-4 font-display text-base font-bold text-ink">{r.title}</h3>
+                    <h3 className="mt-4 font-display text-base font-semibold text-ink">{r.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-muted">{r.desc}</p>
                   </li>
                 ))}
@@ -284,7 +284,7 @@ export default function DigiBoardPage() {
           <Container>
             <div className="flex flex-col items-center gap-5 rounded-[2.5rem] bg-brand-950 px-6 py-14 text-center text-white sm:px-16">
               <CheckCircle2 className="h-10 w-10 text-amber-400" aria-hidden="true" />
-              <h2 id="digiboard-cta-title" className="max-w-xl text-balance font-display text-2xl font-bold sm:text-3xl">
+              <h2 id="digiboard-cta-title" className="max-w-xl text-balance font-display text-2xl font-semibold sm:text-3xl">
                 Plan DigiBoard for your campus
               </h2>
               <p className="max-w-xl text-balance text-white/85">

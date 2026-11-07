@@ -22,7 +22,7 @@ export function BookCard({ book, matches = [] }: BookCardProps) {
         <p className="text-xs font-semibold tracking-[0.04em]" style={{ color: tokens.ink }}>
           Class {book.grade} · {book.stage.label} stage
         </p>
-        <h3 className="mt-1 text-lg font-semibold text-ink">
+        <h3 className="mt-1 font-display text-lg font-semibold text-ink">
           <Link
             href={book.href}
             className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"

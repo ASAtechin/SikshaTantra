@@ -30,7 +30,7 @@ export default function NotFound() {
       <main id="main" tabIndex={-1} className="flex-1 bg-paper py-20 sm:py-28">
         <Container className="max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.08em] text-amber-700">Error 404</p>
-          <h1 className="mt-4 text-balance font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+          <h1 className="mt-4 text-balance font-display text-4xl font-semibold tracking-title text-ink sm:text-5xl">
             We could not find that page
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">
@@ -56,7 +56,7 @@ export default function NotFound() {
                     className="group flex h-full items-start justify-between gap-4 rounded-2xl border border-line-soft bg-white p-5 transition-colors hover:border-line"
                   >
                     <span>
-                      <span className="block font-display text-lg font-bold text-ink">{item.label}</span>
+                      <span className="block font-display text-lg font-semibold text-ink">{item.label}</span>
                       <span className="mt-1 block text-sm text-ink-muted">{item.text}</span>
                     </span>
                     <ArrowRight

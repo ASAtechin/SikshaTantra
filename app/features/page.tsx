@@ -29,7 +29,7 @@ export default function FeaturesIndexPage() {
         <Container>
           <div className="text-center">
             <Badge>School ERP modules</Badge>
-            <h1 className="mx-auto mt-6 max-w-3xl text-balance font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+            <h1 className="mx-auto mt-6 max-w-3xl text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl">
               School ERP modules designed for Indian K-12 schools
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-balance text-lg leading-relaxed text-ink-muted">
@@ -68,7 +68,7 @@ export default function FeaturesIndexPage() {
             {groups.map((g) => (
               <section key={g.name} id={slugify(g.name)} aria-labelledby={`${slugify(g.name)}-title`} className="scroll-mt-28">
                 <div className="flex flex-col gap-1 border-b border-line-soft pb-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-                  <h2 id={`${slugify(g.name)}-title`} className="font-display text-2xl font-bold text-ink">
+                  <h2 id={`${slugify(g.name)}-title`} className="font-display text-2xl font-semibold text-ink">
                     {g.name}
                   </h2>
                   <p className="max-w-xl text-ink-muted sm:text-right">{g.description}</p>
@@ -89,7 +89,7 @@ export default function FeaturesIndexPage() {
                             className="h-5 w-5 text-ink-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink motion-reduce:transform-none"
                           />
                         </div>
-                        <h3 className="mt-5 font-display text-lg font-bold text-ink">{m.name}</h3>
+                        <h3 className="mt-5 font-display text-lg font-semibold text-ink">{m.name}</h3>
                         <p className="mt-1 text-xs font-semibold uppercase tracking-[0.06em] text-amber-700">{m.group}</p>
                         <p className="mt-3 leading-snug text-ink-muted">{m.tagline}</p>
                       </Link>
@@ -110,7 +110,7 @@ export default function FeaturesIndexPage() {
                   <Monitor className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span>
-                  <span id="digiboard-title" className="block font-display text-lg font-bold">
+                  <span id="digiboard-title" className="block font-display text-lg font-semibold">
                     DigiBoard campus screens
                   </span>
                   <span className="mt-1 block text-white/85">
@@ -128,7 +128,7 @@ export default function FeaturesIndexPage() {
 
           <section id="planned" aria-labelledby="planned-title" className="mt-16 scroll-mt-28">
             <div className="max-w-3xl">
-              <h2 id="planned-title" className="font-display text-2xl font-bold text-ink sm:text-3xl">
+              <h2 id="planned-title" className="font-display text-2xl font-semibold text-ink sm:text-3xl">
                 Also in scope (planned)
               </h2>
               <p className="mt-3 text-ink-muted">
@@ -143,7 +143,7 @@ export default function FeaturesIndexPage() {
                     <p.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <div>
-                    <h3 className="font-display text-base font-bold text-ink">
+                    <h3 className="font-display text-base font-semibold text-ink">
                       {p.name} <span className="ml-1 align-middle text-xs font-semibold text-amber-700">Planned</span>
                     </h3>
                     <p className="mt-1 text-sm leading-relaxed text-ink-muted">{p.desc}</p>
@@ -155,7 +155,7 @@ export default function FeaturesIndexPage() {
 
           <section aria-labelledby="features-cta-title" className="mt-16">
             <div className="flex flex-col items-center gap-5 rounded-[2.5rem] bg-brand-950 px-6 py-14 text-center text-white sm:px-16">
-              <h2 id="features-cta-title" className="max-w-xl text-balance font-display text-2xl font-bold sm:text-3xl">
+              <h2 id="features-cta-title" className="max-w-xl text-balance font-display text-2xl font-semibold sm:text-3xl">
                 Walk through the modules your school needs first
               </h2>
               <p className="max-w-xl text-balance text-white/85">

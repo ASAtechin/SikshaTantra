@@ -93,8 +93,11 @@
   --color-cream-50: var(--paper);
   --color-cream-100: #efece1;
 
-  --font-sans: var(--font-body);
-  --font-display: var(--font-heading);
+  /* Type (design language section 3): Inter for body, Noto Serif for headings, titles and figures,
+     each with its Devanagari companion (loaded on demand when Hindi text appears). */
+  --font-sans: var(--font-body), var(--font-body-devanagari), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-heading-devanagari), Georgia, "Times New Roman", serif;
+  --tracking-title: -0.01em;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out infinite;

@@ -50,7 +50,7 @@ export function SectionHeading({
       <Heading
         id={id}
         className={cn(
-          "text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem]",
+          "text-balance font-display text-3xl font-semibold tracking-title sm:text-4xl lg:text-[2.75rem]",
           light ? "text-white" : "text-ink"
         )}
       >

@@ -410,7 +410,7 @@ export function RequestDemoForm() {
         <span aria-hidden className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-500 text-white">
           <CheckCircle2 className="h-8 w-8" />
         </span>
-        <h2 ref={successHeadingRef} tabIndex={-1} className="font-display text-2xl font-bold text-ink outline-none">
+        <h2 ref={successHeadingRef} tabIndex={-1} className="font-display text-2xl font-semibold text-ink outline-none">
           Request received
         </h2>
         <p className="max-w-sm text-base leading-relaxed text-ink-muted">

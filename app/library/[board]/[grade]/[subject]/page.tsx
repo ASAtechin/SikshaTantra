@@ -70,13 +70,13 @@ export default async function BookPage({ params }: { params: Params }) {
                 {book.board.label} · Class {book.grade} · {book.stage.label} stage
                 {book.subject.optional ? " · Optional" : ""}
               </p>
-              <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{book.subject.name}</h1>
+              <h1 className="mt-2 font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl">{book.subject.name}</h1>
               <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-muted">{book.tagline}</p>
               {book.subject.streams && (
                 <p className="mt-2 text-sm text-ink-muted">Part of the {book.subject.streams.join(", ")} {book.subject.streams.length === 1 ? "stream" : "streams"}.</p>
               )}
 
-              <h2 className="mt-10 font-display text-xl font-bold text-ink">Chapters for Class {book.grade}</h2>
+              <h2 className="mt-10 font-display text-xl font-semibold text-ink">Chapters for Class {book.grade}</h2>
               <ol className="mt-4 space-y-3">
                 {book.chapters.map((chapter) => (
                   <li key={chapter.number}>

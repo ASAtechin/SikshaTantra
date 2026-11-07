@@ -115,7 +115,7 @@ export function AudienceStrip() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-forest text-gold">
                     <a.icon aria-hidden="true" className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-5 font-display text-lg font-bold text-ink">{a.title}</h3>
+                  <h3 className="mt-5 font-display text-lg font-semibold text-ink">{a.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-muted">{a.desc}</p>
                   <ul className="mt-4 flex flex-col gap-1">
                     {a.links.map((link) => (
@@ -198,7 +198,7 @@ export function ModuleShowcase() {
                           <module.icon aria-hidden="true" className="h-5 w-5" />
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="flex items-center gap-1.5 font-display text-base font-bold text-ink">
+                          <span className="flex items-center gap-1.5 font-display text-base font-semibold text-ink">
                             {module.name}
                             <ArrowUpRight
                               aria-hidden="true"
@@ -248,7 +248,7 @@ export function SafeguardingBand() {
             </span>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.08em] text-sage">Child safety</p>
-              <h2 id="safeguarding-title" className="mt-2 text-balance font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+              <h2 id="safeguarding-title" className="mt-2 text-balance font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl">
                 Know who may collect every child
               </h2>
               <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-muted">
@@ -311,7 +311,7 @@ export function BeforeAfter() {
         <div className="mt-14 grid gap-5 lg:grid-cols-2 xl:gap-8">
           <Reveal className="h-full">
             <div className="h-full rounded-3xl border border-red-200 bg-red-50/60 p-7 sm:p-8">
-              <h3 className="font-display text-lg font-bold text-ink">Without a connected system</h3>
+              <h3 className="font-display text-lg font-semibold text-ink">Without a connected system</h3>
               <ul className="mt-6 flex flex-col gap-3">
                 {before.map((text) => (
                   <li key={text} className="flex items-center gap-3 rounded-2xl bg-white/70 p-3.5 text-sm font-semibold leading-snug text-ink">
@@ -327,7 +327,7 @@ export function BeforeAfter() {
 
           <Reveal delay={0.08} className="h-full">
             <div className="h-full rounded-3xl border border-teal-200 bg-teal-50/70 p-7 sm:p-8">
-              <h3 className="font-display text-lg font-bold text-ink">What Shiksha Tantra is designed to do</h3>
+              <h3 className="font-display text-lg font-semibold text-ink">What Shiksha Tantra is designed to do</h3>
               <ul className="mt-6 flex flex-col gap-3">
                 {after.map((text) => (
                   <li key={text} className="flex items-center gap-3 rounded-2xl bg-white/80 p-3.5 text-sm font-semibold leading-snug text-ink">
@@ -375,7 +375,7 @@ export function DigiBoardBand() {
                 <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-amber-300">
                   <Monitor aria-hidden="true" className="h-3.5 w-3.5" /> DigiBoard
                 </p>
-                <h2 id="digiboard-title" className="mt-5 text-balance font-display text-3xl font-bold leading-tight sm:text-4xl">
+                <h2 id="digiboard-title" className="mt-5 text-balance font-display text-3xl font-semibold leading-tight sm:text-4xl">
                   Campus screens fed by the same records
                 </h2>
                 <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/85">
@@ -391,7 +391,7 @@ export function DigiBoardBand() {
               <ul className="grid gap-3 sm:grid-cols-2">
                 {digiboardPoints.map((item) => (
                   <li key={item.title} className="rounded-2xl border border-white/15 bg-white/5 p-4">
-                    <p className="font-display text-base font-bold text-amber-300">{item.title}</p>
+                    <p className="font-display text-base font-semibold text-amber-300">{item.title}</p>
                     <p className="mt-1 text-sm leading-relaxed text-white/85">{item.desc}</p>
                   </li>
                 ))}
@@ -431,10 +431,10 @@ export function OnboardingTeaser() {
             <li key={step.title}>
               <Reveal delay={index * 0.04} className="h-full">
                 <div className="h-full rounded-3xl border border-line-soft bg-paper-raised p-6">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500/20 font-display text-sm font-bold text-amber-700">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500/20 font-display text-sm font-semibold text-amber-700">
                     {index + 1}
                   </span>
-                  <h3 className="mt-4 font-display text-lg font-bold text-ink">{step.title}</h3>
+                  <h3 className="mt-4 font-display text-lg font-semibold text-ink">{step.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.desc}</p>
                 </div>
               </Reveal>
@@ -482,7 +482,7 @@ export function FaqTeaser() {
           {faqs.map((item) => (
             <details key={item.q} className="group rounded-2xl border border-line-soft bg-white/80 open:bg-white">
               <summary
-                className={`flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-display text-base font-bold text-ink [&::-webkit-details-marker]:hidden ${focusRing}`}
+                className={`flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-display text-base font-semibold text-ink [&::-webkit-details-marker]:hidden ${focusRing}`}
               >
                 {item.q}
                 <ChevronDown aria-hidden="true" className="h-5 w-5 shrink-0 text-ink-muted transition-transform group-open:rotate-180" />
