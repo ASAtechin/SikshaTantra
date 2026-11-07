@@ -9,7 +9,7 @@ export function SampleBanner({ className = "" }: { className?: string }) {
   return (
     <aside
       aria-label={sampleNotice.title}
-      className={`flex items-start gap-3 rounded-2xl border border-amber-600/30 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-ink ${className}`}
+      className={`flex items-start gap-3 rounded-card border border-amber-600/30 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-ink ${className}`}
     >
       <Info className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
       <p>
@@ -22,7 +22,7 @@ export function SampleBanner({ className = "" }: { className?: string }) {
 /** Closing call to action on library pages. */
 export function LibraryCta() {
   return (
-    <section aria-labelledby="library-cta-title" className="mt-16 rounded-3xl bg-brand-950 px-6 py-10 text-white sm:px-10">
+    <section aria-labelledby="library-cta-title" className="mt-16 rounded-card bg-brand-950 px-6 py-10 text-white sm:px-10">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl">
           <h2 id="library-cta-title" className="font-display text-2xl font-semibold sm:text-3xl">

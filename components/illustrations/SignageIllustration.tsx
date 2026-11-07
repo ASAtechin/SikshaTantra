@@ -1,23 +1,14 @@
 /**
  * SignageIllustration (W1-C): static, illustrative DigiBoard corridor screen for dark sections.
- * No client JS; text >= 12px; decorative motion only (disabled under reduced motion by globals).
+ * No client JS; text >= 12px; flat forest surfaces, no glow or motion.
  */
 import { Wifi, AlertTriangle, Clock3 } from "lucide-react";
 
 export function SignageIllustration() {
   return (
     <figure className="relative isolate mx-auto w-full max-w-xl select-none">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-10 -top-8 -z-10 h-56 w-56 animate-blob bg-gradient-to-br from-teal-500/25 to-brand-600/25 blur-2xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-8 bottom-0 -z-10 h-48 w-48 animate-blob bg-gradient-to-tr from-amber-400/25 to-teal-500/15 blur-2xl [animation-delay:2.4s]"
-      />
-
-      <div aria-hidden="true" className="rounded-[1.75rem] bg-brand-950 p-3 shadow-[var(--shadow-lift)] ring-1 ring-white/10">
-        <div className="flex flex-col overflow-hidden rounded-2xl bg-gradient-to-b from-brand-900 to-brand-950 p-4 text-white sm:p-5">
+      <div aria-hidden="true" className="rounded-card bg-brand-950 p-3 shadow-popover ring-1 ring-white/10">
+        <div className="flex flex-col overflow-hidden rounded-card bg-brand-900 p-4 text-white sm:p-5">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-xs font-bold tracking-[0.06em] text-white/85">
               <span className="h-2 w-2 rounded-full bg-teal-300" /> DIGIBOARD · CORRIDOR B
@@ -28,7 +19,7 @@ export function SignageIllustration() {
             </span>
           </div>
 
-          <div className="mt-4 flex items-center gap-2 rounded-xl bg-amber-500 px-3 py-2 text-brand-950">
+          <div className="mt-4 flex items-center gap-2 rounded-control bg-amber-500 px-3 py-2 text-brand-950">
             <AlertTriangle className="h-4 w-4 shrink-0" />
             <p className="text-sm font-bold leading-tight">Fire drill in progress · Assembly point: main ground</p>
           </div>
@@ -41,7 +32,7 @@ export function SignageIllustration() {
             ].map((row) => (
               <div
                 key={row.period}
-                className={`flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-sm ${
+                className={`flex items-center justify-between gap-3 rounded-control px-3 py-2 text-sm ${
                   row.active ? "bg-teal-500/25 text-white" : "bg-white/5 text-white/85"
                 }`}
               >

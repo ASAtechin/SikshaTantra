@@ -35,15 +35,16 @@ export default function RequestDemoPage() {
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div>
               <Badge>{CTA.primary}</Badge>
-              <h1 className="mt-6 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl">
+              <h1 className="mt-3 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl">
                 Let&apos;s bring Shiksha Tantra to your school
               </h1>
+              <span aria-hidden="true" className="gold-rule mt-5" />
               <p className="mt-5 max-w-md text-balance text-base leading-relaxed text-ink-muted">
                 Tell us a little about your school and what&apos;s slowing you down today. We&apos;ll prepare a
                 walkthrough shaped around your boards, your campus size and the system you use now.
               </p>
-              <p className="mt-4 max-w-md rounded-2xl border border-line-soft bg-paper-raised px-4 py-3 text-sm leading-relaxed text-ink-muted">
-                <span className="mr-2 inline-flex rounded-full bg-amber-500/15 px-2.5 py-0.5 text-xs font-bold uppercase tracking-[0.08em] text-amber-700">
+              <p className="mt-4 max-w-md rounded-card border border-line-soft bg-paper-raised shadow-card px-4 py-3 text-sm leading-relaxed text-ink-muted">
+                <span className="mr-2 inline-flex rounded-full bg-amber-500/15 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.08em] text-amber-700">
                   {siteStatus.label}
                 </span>
                 {siteStatus.text}
@@ -54,7 +55,7 @@ export default function RequestDemoPage() {
                   <li key={r.text} className="flex items-center gap-3 text-sm font-semibold text-ink">
                     <span
                       aria-hidden
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal-500/10 text-teal-600"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-teal-500/10 text-teal-600"
                     >
                       <r.icon className="h-[18px] w-[18px]" />
                     </span>
@@ -63,7 +64,7 @@ export default function RequestDemoPage() {
                 ))}
               </ul>
 
-              <div className="mt-10 rounded-3xl border border-line-soft bg-white/60 p-6">
+              <div className="mt-10 rounded-card border border-line-soft bg-white/60 shadow-card p-6">
                 <h2 className="font-display text-base font-semibold text-ink">What happens next?</h2>
                 <ol className="mt-4 flex flex-col gap-3">
                   {whatHappensNext.map((step, i) => (
@@ -117,7 +118,7 @@ export default function RequestDemoPage() {
 
             <section
               aria-labelledby="request-form-title"
-              className="rounded-[2rem] border border-line-soft bg-white/70 p-5 shadow-[var(--shadow-soft)] sm:p-10"
+              className="rounded-card border border-line-soft bg-white/70 p-5 shadow-card sm:p-10"
             >
               <h2 id="request-form-title" className="sr-only">
                 Demo request form

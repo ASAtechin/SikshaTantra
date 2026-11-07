@@ -1,7 +1,8 @@
 /**
- * SectionHeading (W0 foundation contract): optional eyebrow pill (12px, tracking 0.08em),
- * an h2 title (or `as` another heading level) and optional description in ink-muted.
- * `light` switches colours for dark (forest) sections; all text pairs are >= 4.5:1.
+ * SectionHeading (W0 foundation contract, classic finish): optional eyebrow (12px semibold uppercase
+ * sans in ochre, no pill), a serif h2 title (or `as` another heading level), a 40 x 2px gold rule and
+ * an optional description in ink-muted. `light` switches colours for dark (forest) sections; all
+ * text pairs are >= 4.5:1.
  */
 import { cn } from "@/lib/utils";
 
@@ -31,19 +32,13 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4",
+        "flex flex-col gap-3",
         align === "center" ? "items-center text-center" : "items-start text-left",
         className
       )}
     >
       {eyebrow ? (
-        <span
-          className={cn(
-            "inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.08em]",
-            light ? "bg-white/10 text-amber-300" : "bg-amber-500/15 text-amber-700"
-          )}
-        >
-          <span aria-hidden="true" className={cn("h-1.5 w-1.5 rounded-full", light ? "bg-amber-300" : "bg-amber-500")} />
+        <span className={cn("text-xs font-semibold uppercase tracking-[0.08em]", light ? "text-amber-300" : "text-ochre")}>
           {eyebrow}
         </span>
       ) : null}
@@ -56,10 +51,11 @@ export function SectionHeading({
       >
         {title}
       </Heading>
+      <span aria-hidden="true" className="gold-rule" />
       {description ? (
         <p
           className={cn(
-            "max-w-2xl text-balance text-lg leading-relaxed",
+            "mt-1 max-w-2xl text-balance text-lg leading-relaxed",
             light ? "text-white/85" : "text-ink-muted",
             align === "center" && "mx-auto"
           )}

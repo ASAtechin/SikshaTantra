@@ -21,7 +21,7 @@ export function ContentSection({ id, title, eyebrow, intro, children, tone = "pa
     >
       <NarrowContainer>
         {eyebrow ? (
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-amber-700">{eyebrow}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ochre">{eyebrow}</p>
         ) : null}
         <h2
           id={`${id}-title`}

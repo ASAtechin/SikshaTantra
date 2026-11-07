@@ -52,7 +52,8 @@ export default async function LibraryPage({ searchParams }: { searchParams: Sear
             <h1 className="mt-2 text-balance font-display text-3xl font-semibold tracking-title text-ink sm:text-4xl md:text-5xl">
               Sample books for Classes 1 to 12
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-ink-muted">
+            <span aria-hidden="true" className="gold-rule mt-5" />
+            <p className="mt-5 text-lg leading-relaxed text-ink-muted">
               Choose a board and a class to open its shelf. Each book is read chapter by chapter, with a short
               self-check at the end of every chapter.
             </p>
@@ -82,7 +83,7 @@ export default async function LibraryPage({ searchParams }: { searchParams: Sear
             </div>
 
             {results.length === 0 ? (
-              <div className="mt-6 rounded-2xl border border-dashed border-line bg-white p-8 text-center text-base text-ink-muted">
+              <div className="mt-6 rounded-card border border-dashed border-line bg-white p-8 text-center text-base text-ink-muted">
                 <p>No subject or chapter on this shelf matches “{query}”.</p>
                 <Link
                   href={shelfHref(board, grade, stream?.id)}

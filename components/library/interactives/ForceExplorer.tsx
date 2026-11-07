@@ -42,13 +42,13 @@ export function ForceExplorer({ showFormula }: { showFormula: boolean }) {
   const barWidth = Math.min(100, (acceleration / 20) * 100);
 
   return (
-    <section aria-labelledby={`${id}-title`} className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
+    <section aria-labelledby={`${id}-title`} className="rounded-card border border-line-soft bg-white shadow-card p-5 sm:p-8">
       <p className="text-sm font-semibold text-amber-700">Try it</p>
       <h2 id={`${id}-title`} className="mt-1 font-display text-2xl font-semibold text-ink">
         Force explorer
       </h2>
 
-      <fieldset className="mt-5 rounded-2xl bg-paper p-4 sm:p-5">
+      <fieldset className="mt-5 rounded-card bg-paper p-4 sm:p-5">
         <legend className="sr-only">Predict first</legend>
         <p className="text-base font-semibold text-ink">
           Predict first: if the push stays the same and the block gets heavier, what happens to its acceleration?
@@ -67,7 +67,7 @@ export function ForceExplorer({ showFormula }: { showFormula: boolean }) {
                 }}
                 className="peer sr-only"
               />
-              <span className="flex min-h-11 items-center rounded-full border border-line bg-white px-4 text-base font-semibold text-ink peer-checked:border-brand-950 peer-checked:bg-brand-950 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-brand-950 peer-focus-visible:ring-offset-2">
+              <span className="flex min-h-11 items-center rounded-control border border-line bg-white px-4 text-base font-semibold text-ink peer-checked:border-brand-950 peer-checked:bg-brand-950 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-brand-950 peer-focus-visible:ring-offset-2">
                 {item.label}
               </span>
             </label>
@@ -122,7 +122,7 @@ export function ForceExplorer({ showFormula }: { showFormula: boolean }) {
         </div>
       </div>
 
-      <div className="mt-5 rounded-2xl bg-brand-50 p-4 text-base text-ink" aria-live="polite">
+      <div className="mt-5 rounded-card bg-brand-50 p-4 text-base text-ink" aria-live="polite">
         {showFormula ? (
           <p className="font-mono text-lg font-semibold">
             a = F ÷ m = {force} ÷ {mass} = {format(acceleration)} m/s²
@@ -139,7 +139,7 @@ export function ForceExplorer({ showFormula }: { showFormula: boolean }) {
       </div>
 
       <div className="mt-5">
-        <div className="relative h-28 overflow-hidden rounded-2xl bg-paper" aria-hidden="true">
+        <div className="relative h-28 overflow-hidden rounded-card bg-paper" aria-hidden="true">
           <div className="absolute inset-x-3 bottom-5 h-1 rounded-full bg-brand-200" />
           <div className="absolute bottom-6 left-3 right-[calc(5rem+0.75rem)] top-4">
             <motion.div
@@ -147,7 +147,7 @@ export function ForceExplorer({ showFormula }: { showFormula: boolean }) {
               initial={{ left: "0%" }}
               animate={{ left: run > 0 && acceleration > 0 ? "100%" : "0%" }}
               transition={reduceMotion ? { duration: 0 } : { duration, ease: "easeIn" }}
-              className="absolute bottom-0 flex h-16 w-20 items-center justify-center rounded-xl bg-teal-600 text-base font-bold text-white shadow"
+              className="absolute bottom-0 flex h-16 w-20 items-center justify-center rounded-control bg-teal-600 text-base font-bold text-white shadow"
             >
               {mass} kg
             </motion.div>
@@ -157,7 +157,7 @@ export function ForceExplorer({ showFormula }: { showFormula: boolean }) {
           <button
             type="button"
             onClick={() => setRun((value) => value + 1)}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-950 px-5 text-base font-semibold text-white hover:bg-brand-900"
+            className="inline-flex min-h-11 items-center gap-2 rounded-control bg-brand-950 px-5 text-base font-semibold text-white hover:bg-brand-900"
           >
             <Play className="h-4 w-4" aria-hidden="true" /> Push the block
           </button>

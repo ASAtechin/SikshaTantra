@@ -13,7 +13,6 @@ interface ModuleMockupProps {
   slug?: string;
   /** Legacy: used only when `slug` is not given. */
   kind?: MockupKind;
-  accent?: string;
   className?: string;
 }
 
@@ -43,7 +42,7 @@ function Chip({ tone = "neutral", children, className }: { tone?: Tone; children
 
 function Stat({ value, label, tone }: { value: string; label: string; tone?: Tone }) {
   return (
-    <div className={cn("rounded-xl px-2 py-2 text-center", tone ? toneClasses[tone] : "bg-paper")}>
+    <div className={cn("rounded-control px-2 py-2 text-center", tone ? toneClasses[tone] : "bg-paper")}>
       <p className="font-display text-lg font-semibold leading-none">{value}</p>
       <p className={cn("mt-1 text-xs font-medium", tone ? "" : "text-ink-muted")}>{label}</p>
     </div>
@@ -52,7 +51,7 @@ function Stat({ value, label, tone }: { value: string; label: string; tone?: Ton
 
 function Row({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn("flex items-center justify-between gap-3 rounded-xl bg-paper px-3 py-2", className)}>
+    <div className={cn("flex items-center justify-between gap-3 rounded-control bg-paper px-3 py-2", className)}>
       {children}
     </div>
   );
@@ -144,7 +143,7 @@ const screens: Record<string, Screen> = {
           <Stat value="71" label="Verified" />
           <Stat value="48" label="Offers" />
         </div>
-        <div className="rounded-2xl border border-line-soft p-3">
+        <div className="rounded-card border border-line-soft p-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-sm font-bold text-ink">Ananya R. · Class IV</p>
             <Chip>Sibling in V-B</Chip>
@@ -273,7 +272,7 @@ const screens: Record<string, Screen> = {
           </Row>
         ))}
         <p className="px-3 py-1 text-ink-muted">Short break · 10:00–10:15</p>
-        <div className="rounded-xl border-2 border-amber-600 bg-amber-50 px-3 py-2">
+        <div className="rounded-control border-2 border-amber-600 bg-amber-50 px-3 py-2">
           <div className="flex items-center justify-between gap-2 text-ink">
             <span className="flex min-w-0 items-center gap-2">
               <span className="w-6 font-bold">P4</span>
@@ -416,10 +415,10 @@ const screens: Record<string, Screen> = {
       "A PTM notice to Class VI parents in English and Hindi, delivery counts by WhatsApp, SMS and app, and an open grievance ticket about a late bus.",
     body: (
       <div className="space-y-3 text-xs">
-        <div className="max-w-[92%] rounded-2xl rounded-tl-sm bg-paper px-3 py-2 text-sm text-ink">
+        <div className="max-w-[92%] rounded-card rounded-tl-sm bg-paper px-3 py-2 text-sm text-ink">
           PTM for Class VI on Saturday, 9 am–12 noon. Please book a 10-minute slot with the class teacher.
         </div>
-        <div lang="hi" className="max-w-[92%] rounded-2xl rounded-tl-sm bg-paper px-3 py-2 text-sm text-ink">
+        <div lang="hi" className="max-w-[92%] rounded-card rounded-tl-sm bg-paper px-3 py-2 text-sm text-ink">
           कक्षा 6 की अभिभावक-शिक्षक बैठक शनिवार सुबह 9 से 12 बजे तक है। कृपया अपना स्लॉट बुक करें।
         </div>
         <div className="grid grid-cols-3 gap-1.5">
@@ -514,7 +513,7 @@ const screens: Record<string, Screen> = {
             <Chip tone="ok">Reserved</Chip>
           </Row>
         </div>
-        <div className="rounded-xl bg-paper p-3">
+        <div className="rounded-control bg-paper p-3">
           <Meter label="Stock check · shelf 500–599" value={212} max={215} />
           <p className="mt-1.5 text-ink-muted">3 copies to resolve with the librarian</p>
         </div>
@@ -551,7 +550,7 @@ const screens: Record<string, Screen> = {
             <Chip tone="warn">Awaited</Chip>
           </Row>
         </div>
-        <div className="rounded-xl border-2 border-amber-600 bg-amber-50 px-3 py-2 font-semibold text-amber-800">
+        <div className="rounded-control border-2 border-amber-600 bg-amber-50 px-3 py-2 font-semibold text-amber-800">
           Student-record access on hold until all checks are complete
         </div>
         <Row>
@@ -574,7 +573,7 @@ const screens: Record<string, Screen> = {
       "A gate screen: one child collected by a person on the authorised list after a photo check, one child kept in school because the person was not on the list, a visitor log entry and excursion consent progress.",
     body: (
       <div className="space-y-3 text-xs">
-        <div className="flex items-center gap-3 rounded-xl bg-teal-50 p-3">
+        <div className="flex items-center gap-3 rounded-control bg-teal-50 p-3">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-teal-700 text-sm font-bold text-white">
             SK
           </span>
@@ -583,7 +582,7 @@ const screens: Record<string, Screen> = {
             <span className="block text-teal-700">On authorised list · photo checked by guard</span>
           </span>
         </div>
-        <div className="rounded-xl bg-red-50 p-3 text-ink">
+        <div className="rounded-control bg-red-50 p-3 text-ink">
           <span className="block font-semibold">Roll 09, I-B · person not on authorised list</span>
           <span className="block text-red-700">Child kept in school · parent being called</span>
         </div>
@@ -593,7 +592,7 @@ const screens: Record<string, Screen> = {
           </span>
           <Chip>In 1:10 pm</Chip>
         </Row>
-        <div className="rounded-xl bg-paper p-3">
+        <div className="rounded-control bg-paper p-3">
           <Meter label="Planetarium visit, Class V · consents" value={31} max={34} />
         </div>
       </div>
@@ -640,19 +639,13 @@ const legacyKindToSlug: Record<MockupKind, string> = {
   cards: "admissions-enrollment",
 };
 
-export function ModuleMockup({ slug, kind = "cards", accent, className }: ModuleMockupProps) {
+export function ModuleMockup({ slug, kind = "cards", className }: ModuleMockupProps) {
   const screen = screens[slug ?? ""] ?? screens[legacyKindToSlug[kind]];
   return (
     <figure className={cn("relative isolate mx-auto w-full max-w-xl select-none", className)}>
-      {accent ? (
-        <div
-          aria-hidden="true"
-          className={cn("pointer-events-none absolute -inset-6 -z-10 animate-blob bg-gradient-to-br blur-3xl", accent)}
-        />
-      ) : null}
       <div
         aria-hidden="true"
-        className="rounded-3xl border border-line-soft bg-white p-4 shadow-[var(--shadow-lift)] sm:p-5"
+        className="rounded-card border border-line-soft bg-white p-4 shadow-popover sm:p-5"
       >
         <div className="flex items-start justify-between gap-3 border-b border-line-soft pb-3">
           <div className="min-w-0">

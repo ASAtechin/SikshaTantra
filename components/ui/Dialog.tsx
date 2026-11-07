@@ -203,7 +203,7 @@ export function Dialog({
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-brand-950/70 backdrop-blur-[2px]"
+            className="absolute inset-0 bg-brand-950/50"
             onPointerDown={(event) => {
               pointerDownOnScrim.current = event.target === event.currentTarget;
             }}
@@ -221,7 +221,7 @@ export function Dialog({
             aria-describedby={describedBy}
             tabIndex={-1}
             className={cn(
-              "relative flex w-full max-h-[calc(100dvh-2rem)] flex-col overflow-y-auto overscroll-contain rounded-3xl bg-white p-6 text-ink shadow-[var(--shadow-lift)] outline-none sm:p-8",
+              "relative flex w-full max-h-[calc(100dvh-2rem)] flex-col overflow-y-auto overscroll-contain rounded-card bg-white p-6 text-ink shadow-dialog outline-none sm:p-8",
               sizeClasses[size],
               panelClassName
             )}
@@ -250,7 +250,7 @@ export function DialogCloseButton({
       type="button"
       aria-label={ariaLabel}
       className={cn(
-        "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink transition-colors hover:bg-brand-950/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
+        "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-control text-ink transition-colors hover:bg-brand-950/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
         className
       )}
       {...props}

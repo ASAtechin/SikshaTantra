@@ -77,7 +77,7 @@ export default function HowItWorksPage() {
         >
           <ul className="grid gap-4 sm:grid-cols-2">
             {fromYourSchool.map((item) => (
-              <li key={item.title} className="flex items-start gap-3 rounded-2xl border border-line-soft bg-white p-5">
+              <li key={item.title} className="flex items-start gap-3 rounded-card border border-line-soft bg-white shadow-card p-5">
                 <Check aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-teal-600" />
                 <div>
                   <h3 className="font-display text-base font-semibold text-ink">{item.title}</h3>

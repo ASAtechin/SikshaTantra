@@ -61,7 +61,7 @@ const defaultValues: Partial<LeadRequestInput> = {
 };
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink placeholder:text-ink-subtle outline-none transition-colors focus:border-brand-950 focus:ring-2 focus:ring-brand-950/20 aria-[invalid=true]:border-red-700";
+  "w-full rounded-control border border-line bg-white px-4 py-3 text-base text-ink placeholder:text-ink-subtle outline-none transition-colors focus:border-brand-950 focus:ring-2 focus:ring-brand-950/20 aria-[invalid=true]:border-red-700";
 const labelClass = "mb-1.5 block text-sm font-semibold text-ink";
 const errorClass = "mt-1.5 text-sm font-medium text-red-700";
 
@@ -101,7 +101,7 @@ function ChoiceTile({
     <label
       htmlFor={id}
       className={cn(
-        "group/tile relative flex min-h-12 cursor-pointer items-center gap-2.5 rounded-2xl border bg-white px-3.5 py-3 text-sm font-semibold leading-tight text-ink transition-colors hover:border-brand-950",
+        "group/tile relative flex min-h-12 cursor-pointer items-center gap-2.5 rounded-card border bg-white px-3.5 py-3 text-sm font-semibold leading-tight text-ink transition-colors hover:border-brand-950",
         "has-checked:border-brand-950 has-checked:bg-brand-950 has-checked:text-white",
         "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-950 has-[:focus-visible]:ring-offset-2",
         invalid ? "border-red-700" : "border-line"
@@ -405,7 +405,7 @@ export function RequestDemoForm() {
         role="status"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center gap-4 rounded-3xl border border-teal-200 bg-teal-50 px-6 py-12 text-center sm:px-8"
+        className="flex flex-col items-center gap-4 rounded-card border border-teal-200 bg-teal-50 px-6 py-12 text-center sm:px-8"
       >
         <span aria-hidden className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-500 text-white">
           <CheckCircle2 className="h-8 w-8" />
@@ -423,7 +423,7 @@ export function RequestDemoForm() {
             <div className="flex flex-wrap justify-center gap-3">
               {contact.bookingHref && (
                 <a
-                  className="rounded-full bg-brand-950 px-5 py-2.5 text-sm font-semibold text-white underline-offset-2 hover:underline"
+                  className="rounded-control bg-brand-950 px-5 py-2.5 text-sm font-semibold text-white underline-offset-2 hover:underline"
                   href={contact.bookingHref}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -433,7 +433,7 @@ export function RequestDemoForm() {
               )}
               {contact.whatsappHref && (
                 <a
-                  className="rounded-full border-2 border-brand-950/40 px-5 py-2 text-sm font-semibold text-ink underline-offset-2 hover:underline"
+                  className="rounded-control border-2 border-brand-950/40 px-5 py-2 text-sm font-semibold text-ink underline-offset-2 hover:underline"
                   href={contact.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -608,7 +608,7 @@ export function RequestDemoForm() {
           {step === 1 && (
             <>
               {schoolNameValue && (
-                <p className="flex items-center gap-2 rounded-xl bg-brand-950/5 px-3.5 py-2 text-sm font-semibold text-ink-muted">
+                <p className="flex items-center gap-2 rounded-control bg-brand-950/5 px-3.5 py-2 text-sm font-semibold text-ink-muted">
                   <School aria-hidden className="h-4 w-4" /> {schoolNameValue}
                 </p>
               )}
@@ -702,7 +702,7 @@ export function RequestDemoForm() {
           {step === 2 && (
             <>
               {contactNameValue && (
-                <p className="flex items-center gap-2 rounded-xl bg-brand-950/5 px-3.5 py-2 text-sm font-semibold text-ink-muted">
+                <p className="flex items-center gap-2 rounded-control bg-brand-950/5 px-3.5 py-2 text-sm font-semibold text-ink-muted">
                   <User aria-hidden className="h-4 w-4" /> {contactNameValue}
                   {selectedRole ? ` · ${selectedRole}` : ""}
                 </p>
@@ -795,7 +795,7 @@ export function RequestDemoForm() {
                 <FieldError id={errorId("message")} message={errors.message?.message} />
               </div>
 
-              <div className="rounded-2xl border border-line-soft bg-paper p-4">
+              <div className="rounded-card border border-line-soft bg-paper p-4">
                 <p className="text-sm text-ink-muted">
                   We use these details only to respond to your request. See our{" "}
                   <a
@@ -844,7 +844,7 @@ export function RequestDemoForm() {
       </AnimatePresence>
 
       {status === "error" && (
-        <div role="alert" className="mt-5 flex items-start gap-2.5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800">
+        <div role="alert" className="mt-5 flex items-start gap-2.5 rounded-control bg-red-50 px-4 py-3 text-sm text-red-800">
           <AlertCircle aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
           <div>
             <p>{errorMessage}</p>

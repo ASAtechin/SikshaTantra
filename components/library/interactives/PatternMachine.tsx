@@ -31,7 +31,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
   }
 
   return (
-    <section aria-labelledby={`${id}-title`} className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
+    <section aria-labelledby={`${id}-title`} className="rounded-card border border-line-soft bg-white shadow-card p-5 sm:p-8">
       <p className="text-sm font-semibold text-amber-700">Try it</p>
       <h2 id={`${id}-title`} className="mt-1 font-display text-2xl font-semibold text-ink">
         Pattern machine
@@ -54,7 +54,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
                   }}
                   className="peer sr-only"
                 />
-                <span className="flex h-11 min-w-11 items-center justify-center rounded-xl border border-line bg-white px-3 text-base font-semibold text-ink peer-checked:border-brand-950 peer-checked:bg-brand-950 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-brand-950 peer-focus-visible:ring-offset-2">
+                <span className="flex h-11 min-w-11 items-center justify-center rounded-control border border-line bg-white px-3 text-base font-semibold text-ink peer-checked:border-brand-950 peer-checked:bg-brand-950 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-brand-950 peer-focus-visible:ring-offset-2">
                   +{value}
                 </span>
               </label>
@@ -88,7 +88,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
                 +{step}
               </span>
             )}
-            <span className="flex h-14 min-w-14 items-center justify-center rounded-2xl bg-teal-50 px-3 font-display text-xl font-semibold text-teal-800">
+            <span className="flex h-14 min-w-14 items-center justify-center rounded-control bg-teal-50 px-3 font-display text-xl font-semibold text-teal-800">
               {term}
             </span>
           </li>
@@ -99,7 +99,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
             +{step}
           </span>
           <span
-            className="flex h-14 min-w-14 items-center justify-center rounded-2xl border-2 border-dashed border-amber-600 px-3 font-display text-xl font-semibold text-amber-700"
+            className="flex h-14 min-w-14 items-center justify-center rounded-control border-2 border-dashed border-amber-600 px-3 font-display text-xl font-semibold text-amber-700"
             aria-hidden="true"
           >
             ?
@@ -117,7 +117,7 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
         )}
       </p>
 
-      <form onSubmit={check} className="mt-5 rounded-2xl bg-paper p-4 sm:p-5">
+      <form onSubmit={check} className="mt-5 rounded-card bg-paper p-4 sm:p-5">
         <label htmlFor={`${id}-guess`} className="block text-base font-semibold text-ink">
           Predict: what comes after {last}?
         </label>
@@ -132,9 +132,9 @@ export function PatternMachine({ showFormula }: { showFormula: boolean }) {
               setResult(null);
             }}
             aria-describedby={`${id}-feedback`}
-            className="min-h-12 w-32 rounded-xl border border-line bg-white px-3 text-lg text-ink"
+            className="min-h-12 w-32 rounded-control border border-line bg-white px-3 text-lg text-ink"
           />
-          <button type="submit" className="min-h-12 rounded-full bg-brand-950 px-5 text-base font-semibold text-white hover:bg-brand-900">
+          <button type="submit" className="min-h-12 rounded-control bg-brand-950 px-5 text-base font-semibold text-white hover:bg-brand-900">
             Check
           </button>
         </div>

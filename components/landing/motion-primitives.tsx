@@ -64,7 +64,7 @@ export function ScrollProgress() {
     <motion.div
       aria-hidden="true"
       style={{ scaleX, originX: 0 }}
-      className="fixed inset-x-0 top-0 z-[70] h-[3px] bg-gradient-to-r from-amber-500 via-gold to-teal-500 motion-reduce:hidden"
+      className="fixed inset-x-0 top-0 z-[70] h-[3px] bg-gold motion-reduce:hidden"
     />
   );
 }
@@ -74,7 +74,7 @@ export function ScrollCue({ label = "Scroll to explore", className }: { label?: 
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-ink-muted",
+        "inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted",
         className
       )}
     >

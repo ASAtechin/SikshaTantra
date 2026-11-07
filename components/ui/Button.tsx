@@ -1,7 +1,8 @@
 /**
- * Button / LinkButton (W0 foundation contract).
+ * Button / LinkButton (W0 foundation contract, classic finish).
  * variant: "primary" | "amber" | "outline" | "ghost" | "white"  (default "primary")
  * size:    "sm" (min-h 40px, 14px) | "md" (min-h 48px, 16px) | "lg" (min-h 56px, 16px)  (default "md")
+ * Shape: 6px radius, flat (no shadow, no lift): forest ink on paper, gold on dark bands.
  * Focus ring: forest ring with a white offset, visible on paper and on dark sections.
  * LinkButton wraps next/link; use it for navigation, Button for actions.
  */
@@ -10,17 +11,14 @@ import Link from "next/link";
 import { type ButtonHTMLAttributes, type AnchorHTMLAttributes } from "react";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full text-center font-semibold leading-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:opacity-50 disabled:pointer-events-none select-none motion-reduce:transform-none";
+  "inline-flex items-center justify-center gap-2 rounded-control text-center font-semibold leading-tight transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:opacity-50 disabled:pointer-events-none select-none";
 
 const variants = {
-  primary:
-    "bg-brand-950 text-white shadow-[var(--shadow-soft)] hover:bg-brand-900 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)] active:translate-y-0",
-  amber:
-    "bg-amber-500 text-brand-950 shadow-[var(--shadow-soft)] hover:bg-amber-400 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)] active:translate-y-0",
-  outline:
-    "border-2 border-brand-950/40 text-brand-950 hover:border-brand-950/70 hover:bg-brand-950/[0.04]",
+  primary: "bg-forest text-paper-raised hover:bg-forest-deep",
+  amber: "bg-amber-500 text-brand-950 hover:bg-amber-400",
+  outline: "border border-line bg-paper-raised text-ink hover:border-ink hover:bg-white",
   ghost: "text-brand-950 hover:bg-brand-950/5",
-  white: "bg-white text-brand-950 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)] shadow-[var(--shadow-soft)]",
+  white: "bg-white text-brand-950 hover:bg-paper-raised",
 };
 
 const sizes = {

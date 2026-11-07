@@ -32,7 +32,7 @@ export function CheckYourself({ topics, early }: { topics: RecallTopic[]; early:
   }
 
   return (
-    <section aria-labelledby="check-title" className="rounded-3xl border border-line-soft bg-white p-5 sm:p-8">
+    <section aria-labelledby="check-title" className="rounded-card border border-line-soft bg-white shadow-card p-5 sm:p-8">
       <h2 id="check-title" className="font-display text-2xl font-semibold text-ink">
         Check yourself
       </h2>
@@ -46,7 +46,7 @@ export function CheckYourself({ topics, early }: { topics: RecallTopic[]; early:
         {topics.map((topic, index) => {
           const rating = ratings[topic.id];
           return (
-            <li key={topic.id} className="rounded-2xl border border-line-soft bg-paper p-4 sm:p-5">
+            <li key={topic.id} className="rounded-card border border-line-soft bg-paper p-4 sm:p-5">
               <h3 className="font-display text-lg font-semibold text-ink">
                 {index + 1}. {topic.title}
               </h3>
@@ -60,7 +60,7 @@ export function CheckYourself({ topics, early }: { topics: RecallTopic[]; early:
                   setOpened((current) => ({ ...current, [topic.id]: open }));
                 }}
               >
-                <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-full border border-line bg-white px-4 text-base font-semibold text-ink hover:border-brand-950 [&::-webkit-details-marker]:hidden">
+                <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-control border border-line bg-white px-4 text-base font-semibold text-ink hover:border-brand-950 [&::-webkit-details-marker]:hidden">
                   <span className="group-open:hidden">Show the key points</span>
                   <span className="hidden group-open:inline">Hide the key points</span>
                 </summary>
@@ -92,7 +92,7 @@ export function CheckYourself({ topics, early }: { topics: RecallTopic[]; early:
 
       <div aria-live="polite" className="mt-6">
         {rated.length > 0 && (
-          <div className="rounded-2xl bg-brand-50 p-4 sm:p-5">
+          <div className="rounded-card bg-brand-50 p-4 sm:p-5">
             <p className="text-base font-semibold text-ink">
               You checked {rated.length} of {topics.length} {topics.length === 1 ? "topic" : "topics"} and remembered {remembered.length}.
             </p>
@@ -116,7 +116,7 @@ export function CheckYourself({ topics, early }: { topics: RecallTopic[]; early:
             <button
               type="button"
               onClick={() => setRatings({})}
-              className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-full px-3 text-sm font-semibold text-ink hover:bg-white"
+              className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-control px-3 text-sm font-semibold text-ink hover:bg-white"
             >
               <RotateCcw className="h-4 w-4" aria-hidden="true" /> Start again
             </button>
@@ -133,7 +133,7 @@ function RateButton({ pressed, onClick, children }: { pressed: boolean; onClick:
       type="button"
       aria-pressed={pressed}
       onClick={onClick}
-      className={`min-h-11 rounded-full border px-4 text-base font-semibold transition ${pressed ? "border-brand-950 bg-brand-950 text-white" : "border-line bg-white text-ink hover:border-brand-950"}`}
+      className={`min-h-11 rounded-control border px-4 text-base font-semibold transition ${pressed ? "border-brand-950 bg-brand-950 text-white" : "border-line bg-white text-ink hover:border-brand-950"}`}
     >
       {children}
     </button>

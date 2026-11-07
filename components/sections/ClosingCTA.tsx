@@ -14,7 +14,7 @@ export function ClosingCTA({ title, description, secondary }: ClosingCTAProps) {
   return (
     <section aria-labelledby="closing-cta-title" className="py-14 sm:py-20">
       <NarrowContainer>
-        <div className="rounded-[2rem] bg-brand-950 px-6 py-10 text-white sm:px-12 sm:py-14">
+        <div className="rounded-card bg-brand-950 px-6 py-10 text-white sm:px-12 sm:py-14">
           <h2
             id="closing-cta-title"
             className="max-w-2xl text-balance font-display text-3xl font-semibold tracking-title sm:text-4xl"
@@ -37,7 +37,7 @@ export function ClosingCTA({ title, description, secondary }: ClosingCTAProps) {
             ) : null}
             <a
               href={contact.phoneHref}
-              className="inline-flex min-h-12 items-center gap-2 rounded-full px-2 text-base font-semibold text-white/85 underline-offset-4 hover:text-white hover:underline focus-visible:outline-amber-300"
+              className="inline-flex min-h-12 items-center gap-2 rounded-control px-2 text-base font-semibold text-white/85 underline-offset-4 hover:text-white hover:underline focus-visible:outline-amber-300"
             >
               <Phone aria-hidden="true" className="h-4 w-4 text-amber-300" /> or call {contact.phoneDisplay}
             </a>

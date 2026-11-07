@@ -106,10 +106,10 @@ export default function SecurityPage() {
         >
           <ul className="grid gap-4 sm:grid-cols-2">
             {designGoals.map((g) => (
-              <li key={g.title} className="rounded-2xl border border-line-soft bg-white p-6">
+              <li key={g.title} className="rounded-card border border-line-soft bg-white shadow-card p-6">
                 <span
                   aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-950 text-amber-400"
+                  className="flex h-10 w-10 items-center justify-center rounded-control bg-brand-950 text-amber-400"
                 >
                   <g.icon className="h-5 w-5" />
                 </span>
@@ -139,7 +139,7 @@ export default function SecurityPage() {
         >
           <ul className="grid gap-4 sm:grid-cols-2">
             {lawPoints.map((p) => (
-              <li key={p.title} className="rounded-2xl border border-line-soft bg-white p-6">
+              <li key={p.title} className="rounded-card border border-line-soft bg-white shadow-card p-6">
                 <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-ink">
                   <Scale aria-hidden="true" className="h-5 w-5 shrink-0 text-teal-600" />
                   {p.title}

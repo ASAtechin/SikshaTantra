@@ -47,7 +47,7 @@ export function BookProgressPanel({ bookKey, chapters }: { bookKey: string; chap
   const target = resume ?? chapters[0];
 
   return (
-    <div className="rounded-2xl border border-line-soft bg-white p-5">
+    <div className="rounded-card border border-line-soft bg-white shadow-card p-5">
       <p className="text-sm font-semibold text-ink">
         {count} of {total} {total === 1 ? "chapter" : "chapters"} read
       </p>
